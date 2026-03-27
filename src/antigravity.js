@@ -4,24 +4,23 @@ export class Antigravity {
     constructor(container, options = {}) {
         this.container = container;
         this.options = {
-            count: options.count || 300,
-            magnetRadius: options.magnetRadius || 8.0,
-            ringRadius: options.ringRadius || 12.0,
-            waveSpeed: options.waveSpeed || 0.6,
-            waveAmplitude: options.waveAmplitude || 1.5,
-            particleSize: options.particleSize || 0.1,
+            count: options.count || 800, // Higher density for galaxy look
+            magnetRadius: options.magnetRadius || 10.0,
+            ringRadius: options.ringRadius || 25.0,
+            waveSpeed: options.waveSpeed || 0.4,
+            waveAmplitude: options.waveAmplitude || 0.8,
+            particleSize: options.particleSize || 0.12,
             lerpSpeed: options.lerpSpeed || 0.08,
             color: options.color || "#FFFFFF",
             autoAnimate: options.autoAnimate !== undefined ? options.autoAnimate : true,
-            rotationSpeed: options.rotationSpeed || 0.2,
-            depthFactor: options.depthFactor || 1.0,
-            pulseSpeed: options.pulseSpeed || 2.0,
-            fieldStrength: options.fieldStrength || 5.0,
+            rotationSpeed: options.rotationSpeed || 0.05,
+            exclusionRadius: options.exclusionRadius || 6.0, // Area for text
+            fieldStrength: options.fieldStrength || 6.0,
             ...options
         };
 
-        this.mouse = new Vec2(0, 0);
-        this.targetMouse = new Vec2(0, 0);
+        this.mouse = new Vec2(-10, -10);
+        this.targetMouse = new Vec2(-10, -10);
         this.time = 0;
         this.init();
     }
@@ -33,10 +32,9 @@ export class Antigravity {
 
         this.gl.clearColor(0, 0, 0, 0);
 
-        this.camera = new Camera(this.gl, { fov: 35 });
-        this.camera.position.z = 25;
+        this.camera = new Camera(this.gl, { fov: 40 });
+        this.camera.position.z = 30;
 
-        // Use a simple flat plane for single-particle look (Billboard)
         const geo = new Plane(this.gl, {
             width: this.options.particleSize,
             height: this.options.particleSize,
@@ -47,13 +45,18 @@ export class Antigravity {
         const randoms = new Float32Array(count * 3);
 
         for (let i = 0; i < count; i++) {
-            positions[i * 3 + 0] = (Math.random() - 0.5) * 35.0;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 25.0;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 15.0;
+            // Circle/Galaxy distribution
+            const angle = Math.random() * Math.PI * 2;
+            // Weighted distribution to have more particles towards middle-radius, but clear center
+            const r = this.options.exclusionRadius + Math.pow(Math.random(), 0.7) * (this.options.ringRadius - this.options.exclusionRadius);
+            
+            positions[i * 3 + 0] = Math.cos(angle) * r;
+            positions[i * 3 + 1] = Math.sin(angle) * r;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 6.0;
 
-            randoms[i * 3 + 0] = Math.random();
-            randoms[i * 3 + 1] = Math.random();
-            randoms[i * 3 + 2] = Math.random();
+            randoms[i * 3 + 0] = Math.random(); // Blink phase
+            randoms[i * 3 + 1] = Math.random(); // Size variance
+            randoms[i * 3 + 2] = Math.random(); // Rotation phase
         }
 
         const geometry = new Geometry(this.gl, {
@@ -75,37 +78,44 @@ export class Antigravity {
             uniform mat4 projectionMatrix;
             uniform float uTime;
             uniform vec2 uMouse;
-            uniform float uWaveSpeed;
-            uniform float uWaveAmplitude;
+            uniform float uExclusionRadius;
             uniform float uMagnetRadius;
             uniform float uFieldStrength;
-            uniform float uPulseSpeed;
+            uniform float uRotationSpeed;
 
             void main() {
                 vUv = uv;
                 vec3 p = offset;
                 
-                // Floating motion
-                p.y += sin(uTime * uWaveSpeed + random.x * 10.0) * uWaveAmplitude;
-                p.x += cos(uTime * uWaveSpeed * 0.5 + random.y * 10.0) * uWaveAmplitude * 0.5;
+                // Slow Global Rotation (Galaxy Style)
+                float globalAngle = uTime * uRotationSpeed;
+                float s = sin(globalAngle);
+                float c = cos(globalAngle);
+                mat2 globalRot = mat2(c, -s, s, c);
+                p.xy = globalRot * p.xy;
+
+                // Twinkle / Flicker
+                float twinkle = sin(uTime * 2.0 + random.x * 10.0) * 0.5 + 0.5;
                 
-                // Mouse Interaction
-                vec2 mousePos = uMouse * vec2(15.0, 10.0);
-                float dist = distance(p.xy, mousePos);
+                // Center Fade (Text Protection)
+                float distCenter = length(p.xy);
+                float centerFade = smoothstep(uExclusionRadius * 0.5, uExclusionRadius, distCenter);
+                
+                // Mouse Attraction/Repulsion (Antigravity Interaction)
+                vec2 mousePos = uMouse * vec2(20.0, 15.0);
+                float distMouse = distance(p.xy, mousePos);
                 float interact = 0.0;
-                if (dist < uMagnetRadius) {
-                    float force = (1.0 - dist / uMagnetRadius) * uFieldStrength;
+                if (distMouse < uMagnetRadius) {
+                    float force = (1.0 - distMouse / uMagnetRadius) * uFieldStrength;
                     p.xy += normalize(p.xy - mousePos) * force;
                     interact = force;
                 }
 
-                float pulse = sin(uTime * uPulseSpeed + random.x * 6.28) * 0.5 + 0.5;
-                vOpacity = (0.2 + pulse * 0.3) + (interact * 0.3);
+                vOpacity = (0.3 + twinkle * 0.5) * centerFade + (interact * 0.3);
 
-                // Billboard effect: ensure particle always faces camera
-                vec3 modelPos = p;
-                vec4 viewPos = viewMatrix * modelMatrix * vec4(modelPos, 1.0);
-                viewPos.xyz += position * (1.0 + interact * 0.5); // Add plane geometry in view space
+                // Billboard
+                vec4 viewPos = viewMatrix * modelMatrix * vec4(p, 1.0);
+                viewPos.xyz += position * (0.8 + random.y * 1.5 + interact);
 
                 gl_Position = projectionMatrix * viewPos;
             }
@@ -119,9 +129,9 @@ export class Antigravity {
 
             void main() {
                 float d = distance(vUv, vec2(0.5));
-                float soft = smoothstep(0.5, 0.45, d);
-                if (soft < 0.01) discard;
-                gl_FragColor = vec4(uColor, vOpacity * soft * 0.8);
+                float alpha = smoothstep(0.5, 0.4, d);
+                if (alpha < 0.01) discard;
+                gl_FragColor = vec4(uColor, vOpacity * alpha);
             }
         `;
 
@@ -132,11 +142,10 @@ export class Antigravity {
                 uTime: { value: 0 },
                 uMouse: { value: this.mouse },
                 uColor: { value: new Color(this.options.color) },
-                uWaveSpeed: { value: this.options.waveSpeed },
-                uWaveAmplitude: { value: this.options.waveAmplitude },
+                uExclusionRadius: { value: this.options.exclusionRadius },
                 uMagnetRadius: { value: this.options.magnetRadius },
                 uFieldStrength: { value: this.options.fieldStrength },
-                uPulseSpeed: { value: this.options.pulseSpeed }
+                uRotationSpeed: { value: this.options.rotationSpeed }
             },
             transparent: true,
             depthTest: false

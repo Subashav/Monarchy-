@@ -220,21 +220,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const trainingAnti = document.getElementById('training-antigravity');
     
     const antiParams = {
-        count: 400,
-        magnetRadius: 6,
-        ringRadius: 12,
-        waveSpeed: 0.6,
+        count: 800,
+        magnetRadius: 8,
+        ringRadius: 20,
+        exclusionRadius: 8,
+        waveSpeed: 0.4,
         waveAmplitude: 1.5,
-        particleSize: 0.1,
+        particleSize: 0.12,
         lerpSpeed: 0.08,
         color: "#FFFFFF",
         autoAnimate: true,
-        particleVariance: 1,
-        rotationSpeed: 0.2,
-        depthFactor: 1,
-        pulseSpeed: 3,
-        particleShape: "dot",
-        fieldStrength: 4
+        rotationSpeed: 0.1,
+        pulseSpeed: 2,
+        fieldStrength: 5
     };
 
     if (antiContainer) new Antigravity(antiContainer, antiParams);
