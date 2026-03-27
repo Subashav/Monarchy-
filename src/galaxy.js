@@ -19,6 +19,7 @@ export class Galaxy {
       transparent: options.transparent || true,
       starSize: options.starSize || 1.0,
       brightness: options.brightness || 1.0,
+      exclusionRadius: options.exclusionRadius || 500,
       ...options
     };
 
@@ -123,9 +124,9 @@ export class Galaxy {
       star.opacity += star.blinkSpeed;
       if (star.opacity > 1 || star.opacity < 0.1) star.blinkSpeed *= -1;
 
-      // Calculate center exclusion/fade (reduce alpha if within 400px of center)
+      // Calculate center exclusion/fade
       let centerFade = 1;
-      const exclusionRadius = 500; // Increased for better text clearance
+      const exclusionRadius = this.options.exclusionRadius; 
       if (distToCenter < exclusionRadius) {
           centerFade = Math.pow(distToCenter / exclusionRadius, 1.5); // Curvy fade
       }

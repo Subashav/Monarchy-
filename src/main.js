@@ -182,18 +182,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (galaxyCanvas && !isTrainingPage) {
         new Galaxy(galaxyCanvas, {
             starSpeed: 0,
-            density: 3.5,
+            density: 5.0,
             hueShift: 0,
             speed: 1,
-            glowIntensity: 0.8,
+            glowIntensity: 1.0,
             saturation: 0,
             mouseRepulsion: true,
-            repulsionStrength: 2,
+            repulsionStrength: 2.5,
             twinkleIntensity: 1.0,
-            rotationSpeed: 0.002,
+            rotationSpeed: 0.003,
             transparent: true,
-            starSize: 0.4,
-            brightness: 1.8
+            starSize: 1.2,
+            brightness: 4.0,
+            exclusionRadius: 200
         });
     }
 
