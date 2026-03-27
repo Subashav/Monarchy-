@@ -17,6 +17,8 @@ export class Galaxy {
       twinkleIntensity: options.twinkleIntensity || 0.5,
       rotationSpeed: options.rotationSpeed || 0.0001,
       transparent: options.transparent || true,
+      starSize: options.starSize || 1.0,
+      brightness: options.brightness || 1.0,
       ...options
     };
 
@@ -54,7 +56,7 @@ export class Galaxy {
         y: centerY + Math.sin(angle) * radius,
         originalX: centerX + Math.cos(angle) * radius,
         originalY: centerY + Math.sin(angle) * radius,
-        size: Math.random() * 2.5 + 0.8,
+        size: (Math.random() * 2.0 + 0.5) * this.options.starSize,
         opacity: Math.random(),
         blinkSpeed: (Math.random() * 0.015 + 0.005) * this.options.speed,
         hue: this.options.hueShift + (Math.random() - 0.5) * 40,
@@ -128,7 +130,7 @@ export class Galaxy {
           centerFade = Math.pow(distToCenter / exclusionRadius, 1.5); // Curvy fade
       }
 
-      const alpha = star.opacity * this.options.twinkleIntensity * centerFade;
+      const alpha = star.opacity * this.options.twinkleIntensity * centerFade * this.options.brightness;
       const color = `hsla(${star.hue}, ${this.options.saturation}%, 100%, ${alpha})`;
       
       this.ctx.beginPath();
