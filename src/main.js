@@ -3,6 +3,7 @@ import './border-glow.css'
 import { Orb } from './orb.js'
 import { Galaxy } from './galaxy.js'
 import { Prism } from './prism.js'
+import { SplashCursor } from './splash-cursor.js'
 import { initBorderGlow } from './border-glow.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -210,6 +211,22 @@ document.addEventListener('DOMContentLoaded', () => {
             inertia: 0.05,
             bloom: 0.5,
             timeScale: 0.2
+        });
+    }
+
+    // Initialize SplashCursor on about hero
+    const splashContainer = document.getElementById('hero-splash');
+    if (splashContainer) {
+        new SplashCursor(splashContainer, {
+            SIM_RESOLUTION: 128,
+            DYE_RESOLUTION: 1440,
+            DENSITY_DISSIPATION: 3.5,
+            VELOCITY_DISSIPATION: 2,
+            PRESSURE: 0.1,
+            CURL: 3,
+            SPLAT_RADIUS: 0.2,
+            SPLAT_FORCE: 6000,
+            COLOR_UPDATE_SPEED: 10
         });
     }
 
