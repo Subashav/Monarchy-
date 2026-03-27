@@ -16,11 +16,16 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 body {
   background-color: #000;
   color: #fafafa;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -601,10 +606,10 @@ header.scrolled {
 /* Testimonials - Auto-scrolling Marquee */
 .marquee {
   position: relative;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
 }
 
 .marquee-track {
@@ -824,13 +829,19 @@ footer {
 
 @media (max-width: 968px) {
   section {
-    padding: 6rem 0;
+    padding: 5rem 0 !important; /* Reduced padding and override inline styles */
+    min-height: auto;
+    display: block !important; /* Critical fix for stacking children vertically */
+    height: auto !important;
   }
   
   .hero {
     height: auto;
     min-height: 80vh;
-    padding: 120px 0 60px;
+    padding: 120px 0 60px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
   .hero h1 {
@@ -847,21 +858,27 @@ footer {
   }
 
   .nav-links {
-    display: none; /* Hide desktop nav */
+    display: none !important; /* Strictly hide desktop nav */
   }
 
   /* Hamburger Toggle */
   .mobile-toggle {
     display: flex !important;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     color: #fff;
     z-index: 1001;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Mobile Drawer */
   .nav-links.mobile-active {
-    display: flex;
+    display: flex !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -873,32 +890,44 @@ footer {
     align-items: center;
     gap: 2.5rem;
     z-index: 1000;
-    animation: fadeIn 0.3s ease;
+    padding: 2rem;
+    animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Mobile Links Styling */
+  .nav-links.mobile-active li {
+      width: 100%;
+      text-align: center;
   }
 
   .nav-links.mobile-active a {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
     color: #fff;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    display: block;
+    padding: 0.5rem;
   }
 
   .nav-actions {
-    display: none; /* Hide desktop CTA btn on mobile, it will be in the menu later */
+    display: none !important; /* Hide desktop CTA btn on mobile */
   }
   
   /* Grids and Layouts */
-  .services-grid, .testimonial-grid, .why-grid, .footer-links {
+  .services-grid, .testimonial-grid, .why-grid {
     grid-template-columns: 1fr !important;
   }
   
   .service-card {
     grid-column: span 12 !important;
     height: auto !important;
-    padding: 2.5rem !important;
+    padding: 2rem !important;
   }
 
   .process-timeline {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
   .process-timeline::before {
@@ -906,58 +935,204 @@ footer {
   }
 
   .process-step {
-    padding: 2.5rem;
+    padding: 2rem;
   }
 
   .stack-card {
     height: auto !important;
-    padding: 3rem 2rem !important;
-    top: 10vh !important;
+    padding: 2.5rem 1.5rem !important;
+    top: 12vh !important;
+    border-radius: 32px;
+  }
+
+  /* Force all 2-column grids and flex rows into 1 column */
+  *[style*="display: grid"],
+  *[style*="display: flex"],
+  .container > div,
+  .service-row {
+      grid-template-columns: 1fr !important;
+      flex-direction: column !important;
+      gap: 2.5rem !important;
+  }
+  
+  /* Reset some specific flex containers that should remain flex but column */
+  .container {
+      display: block !important;
+  }
+
+  .nav {
+      display: flex !important;
+      flex-direction: row !important; /* Header nav is special */
+      align-items: center !important;
+      justify-content: space-between !important;
+  }
+
+  .nav-right {
+    display: flex !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Specific Sections Fixes */
+  .why-grid, .services-grid {
+      grid-template-columns: 1fr !important;
+  }
+
+  .service-row {
+      padding: 2.5rem 1.5rem !important;
+  }
+
+  .service-row ul {
+      grid-template-columns: 1fr !important;
   }
 
   .cards-stack-container {
-      padding-bottom: 5rem;
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 1.5rem !important;
+      gap: 1.5rem !important;
+      margin: 2rem 0 !important;
   }
 
-  /* Two column layouts */
-  .container > div[style*="display: grid"] {
-      grid-template-columns: 1fr !important;
-      gap: 3rem !important;
+  .stack-card {
+      position: relative !important;
+      top: 0 !important;
+      width: 100% !important;
+      height: auto !important;
+      padding: 2.5rem 1.5rem !important;
+      border-radius: 24px !important;
+      transform: none !important;
+      filter: none !important;
+      opacity: 1 !important;
+      margin: 0 !important;
   }
 
-  .container > div[style*="display: grid"] div[style*="height"] {
-      height: 300px !important;
+  .stack-card p {
+      max-width: 100% !important;
+  }
+
+  .card-number {
+      font-size: 2rem !important;
+      top: 1rem !important;
+      right: 1.5rem !important;
+  }
+
+  .card-tags {
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+      margin-top: 2rem !important;
+  }
+
+  .container > div[style*="display: grid"] div[style*="height"],
+  .service-img-wrapper {
+      height: 250px !important;
+  }
+
+  .service-row ul {
+      grid-template-columns: 1fr !important; /* Stack checklist on mobile */
+  }
+
+  .glass.glow-card[style*="padding: 4rem"] {
+      padding: 2rem !important;
+  }
+
+  /* Footer */
+  .footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    padding: 0 1.5rem !important;
+  }
+
+  .footer-links {
+    display: flex !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+
+  .footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .footer-legal {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
   }
 
   /* Misc */
+  .marquee {
+      width: 100% !important;
+      margin: 0 !important;
+  }
+
   .marquee-card {
-    width: 300px;
-    padding: 1.5rem;
+    width: 280px !important;
+    padding: 1.25rem !important;
   }
 
   .section-header h2 {
-      font-size: 2rem !important;
+      font-size: 1.85rem !important;
+      padding: 0 1.5rem !important;
+      line-height: 1.2 !important;
   }
+}
+
+@media (max-width: 768px) {
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-btns .btn {
+        width: 100% !important;
+    }
+
+    #cta div[style*="display: flex"] {
+        flex-direction: column;
+        gap: 1rem !important;
+    }
+
+    #cta .btn {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1.25rem;
+        padding: 0 1.5rem;
     }
     
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
-    .btn {
-        width: 100%;
-        padding: 1rem;
+    .section-header h2 {
+        font-size: 1.8rem !important;
     }
-    
-    .hero-btns {
-        flex-direction: column;
-        width: 100%;
+
+    .stack-card h3 {
+        font-size: 1.5rem;
     }
+
+    .card-number {
+        font-size: 2.5rem;
+        top: 1rem;
+        right: 1.5rem;
+    }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {

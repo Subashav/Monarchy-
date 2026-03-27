@@ -129,9 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Stacking Methodology Animation
+        // Stacking Methodology Animation (Desktop Only)
         const stackCards = window.gsap.utils.toArray('.stack-card');
-        if (stackCards.length > 0) {
+        if (stackCards.length > 0 && window.innerWidth > 968) {
             stackCards.forEach((card, index) => {
                 if (index === stackCards.length - 1) return;
                 
