@@ -445,6 +445,45 @@ header.scrolled {
   opacity: 1 !important;
 }
 
+/* Service Rows */
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem;
+  border-radius: 32px;
+  margin-bottom: 2rem;
+}
+
+.service-reverse .service-img-wrapper {
+  order: 2;
+}
+
+.service-reverse .service-text {
+  order: 1;
+}
+
+@media (max-width: 992px) {
+  .service-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+  
+  .service-reverse .service-img-wrapper {
+    order: 1;
+  }
+  
+  .service-reverse .service-text {
+    order: 2;
+  }
+
+  .service-row .service-img-wrapper {
+    height: 300px !important;
+  }
+}
+
 /* Process Section */
 .process-timeline {
   display: flex;
