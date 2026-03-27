@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MONARCHY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+    <header id="header">
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo">
+                <img src="/logo.png" alt="Monarchy Logo">
+            </a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html" class="active">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/contact.html" class="btn btn-primary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about-hero" class="hero">
+            <div class="hero-visual">
+                <img src="/about-hero.png" alt="" style="position: absolute; width: 100%; height: 100%; opacity: 0.1; filter: blur(50px); pointer-events: none;">
+                <canvas id="hero-galaxy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+            </div>
+            <div class="container hero-content">
+                <img src="/src/assets/hero-section.png" alt="Monarchy Branding" class="reveal" style="max-width: 320px; margin-bottom: 2rem; opacity: 0.8;">
+                <h1 class="reveal">Built for<br><span class="gradient-text">Future.</span></h1>
+                <p class="reveal">Monarchy is built on a simple idea: Growth for everyone. Whether it is a business looking to scale or an individual looking to start a career, we provide the right support, tools, and opportunities.</p>
+            </div>
+        </section>
+
+        <!-- About Image Banner -->
+        <section id="about-image" style="padding: 6rem 0 0;">
+            <div class="container">
+                <div class="reveal glow-card" style="border-radius: 32px; overflow: hidden; max-height: 500px; padding: 0;">
+                    <img src="/about-team.png" alt="Monarchy Team - Collaborative workspace" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block;">
+                </div>
+            </div>
+        </section>
+
+        <section id="mission-vision" style="padding: 10rem 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;">
+                    <div class="reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h2 style="font-size: 2.22rem; margin-bottom: 1.5rem;">Our <span class="gradient-text">Mission</span></h2>
+                        <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.8;">To empower individuals with practical, industry-relevant skills and help businesses achieve measurable, sustainable growth. We believe that the right combination of technology, marketing, and talent development can transform any organization and any career.</p>
+                    </div>
+                    <div class="reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h2 style="font-size: 2.22rem; margin-bottom: 1.5rem;">Our <span class="gradient-text">Vision</span></h2>
+                        <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.8;">To become a leading name in career development and comprehensive business solutions across India. We envision a future where every aspiring professional has access to quality training and every growing business has a trusted partner to help them scale efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" style="padding: 8rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <h2 style="font-size: 2.8rem; line-height: 1.15;">Join the <br><span class="gradient-text">Engine.</span></h2>
+                <p style="color: var(--text-secondary); margin-top: 1.5rem; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto;">We are always looking for talented individuals who share our passion for innovation and excellence. Explore career opportunities at Monarchy.</p>
+                <div style="margin-top: 3rem;">
+                    <a href="/contact.html" class="btn btn-primary" style="padding: 1rem 3rem; border-radius: 99px;">View Open Roles</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="/index.html" class="logo">
+                    <img src="/logo.png" alt="Monarchy Logo">
+                </a>
+                <p>Empowering talent and accelerating business growth through expert IT, marketing, and HR solutions.</p>
+                <div class="footer-socials">
+                    <a href="#" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" width="18" height="18" style="filter: invert(1);"></a>
+                    <a href="#" target="_blank" title="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="18" height="18" style="filter: invert(1);"></a>
+                    <a href="#" target="_blank" title="X"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/x.svg" width="18" height="18" style="filter: invert(1);"></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>PAGES</h4>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/training.html">Training</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><i data-lucide="map-pin" size="14"></i> <span style="font-size: 0.85rem; opacity: 0.6;">Your Address, India</span></li>
+                        <li><i data-lucide="phone" size="14"></i> <a href="tel:+910000000000">+91 Your Phone</a></li>
+                        <li><i data-lucide="mail" size="14"></i> <a href="mailto:contact@monarchy.com">contact@monarchy.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
