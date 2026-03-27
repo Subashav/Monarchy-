@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseRepulsion: true,
             repulsionStrength: 2,
             twinkleIntensity: 0.9,
-            rotationSpeed: 0.05,
+            rotationSpeed: 0.005,
             transparent: true
         });
     }
