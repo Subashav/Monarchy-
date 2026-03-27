@@ -200,15 +200,15 @@ document.addEventListener('DOMContentLoaded', () => {
         new Prism(prismCanvas, {
             height: 4,
             baseWidth: 5.5,
-            glow: 1.1,
+            glow: 0.6,
             noise: 0.1,
             transparent: true,
-            scale: 2.4,
+            scale: 3.5,
             hueShift: 0,
             colorFrequency: 0.65,
             hoverStrength: 2,
             inertia: 0.05,
-            bloom: 1,
+            bloom: 0.5,
             timeScale: 0.2
         });
     }
