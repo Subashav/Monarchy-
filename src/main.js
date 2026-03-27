@@ -218,21 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const antiContainer = document.getElementById('hero-antigravity');
     if (antiContainer) {
         new Antigravity(antiContainer, {
-            count: 300,
-            magnetRadius: 8,
+            count: 400,
+            magnetRadius: 6,
             ringRadius: 12,
             waveSpeed: 0.6,
-            waveAmplitude: 2,
-            particleSize: 0.4,
+            waveAmplitude: 1.5,
+            particleSize: 0.1,
             lerpSpeed: 0.08,
-            color: "#FF9FFC",
+            color: "#FFFFFF",
             autoAnimate: true,
             particleVariance: 1,
             rotationSpeed: 0.2,
             depthFactor: 1,
             pulseSpeed: 3,
-            particleShape: "capsule",
-            fieldStrength: 5
+            particleShape: "dot",
+            fieldStrength: 4
         });
     }
 

@@ -1,4 +1,4 @@
-import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Box } from 'ogl';
+import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
 
 export class Antigravity {
     constructor(container, options = {}) {
@@ -9,14 +9,13 @@ export class Antigravity {
             ringRadius: options.ringRadius || 12.0,
             waveSpeed: options.waveSpeed || 0.6,
             waveAmplitude: options.waveAmplitude || 1.5,
-            particleSize: options.particleSize || 0.15,
+            particleSize: options.particleSize || 0.1,
             lerpSpeed: options.lerpSpeed || 0.08,
-            color: options.color || "#FF9FFC",
+            color: options.color || "#FFFFFF",
             autoAnimate: options.autoAnimate !== undefined ? options.autoAnimate : true,
             rotationSpeed: options.rotationSpeed || 0.2,
             depthFactor: options.depthFactor || 1.0,
             pulseSpeed: options.pulseSpeed || 2.0,
-            particleShape: options.particleShape || "capsule",
             fieldStrength: options.fieldStrength || 5.0,
             ...options
         };
@@ -37,11 +36,10 @@ export class Antigravity {
         this.camera = new Camera(this.gl, { fov: 35 });
         this.camera.position.z = 25;
 
-        // Use a simple small box for "capsule" look if requested, or just a small box for particles
-        const geo = new Box(this.gl, {
+        // Use a simple flat plane for single-particle look (Billboard)
+        const geo = new Plane(this.gl, {
             width: this.options.particleSize,
-            height: this.options.particleSize * (this.options.particleShape === 'capsule' ? 4 : 1),
-            depth: this.options.particleSize
+            height: this.options.particleSize,
         });
 
         const count = this.options.count;
@@ -49,10 +47,9 @@ export class Antigravity {
         const randoms = new Float32Array(count * 3);
 
         for (let i = 0; i < count; i++) {
-            // Distribute in a balanced volume
-            positions[i * 3 + 0] = (Math.random() - 0.5) * 30.0;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 20.0;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 10.0;
+            positions[i * 3 + 0] = (Math.random() - 0.5) * 35.0;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 25.0;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 15.0;
 
             randoms[i * 3 + 0] = Math.random();
             randoms[i * 3 + 1] = Math.random();
@@ -88,35 +85,29 @@ export class Antigravity {
                 vUv = uv;
                 vec3 p = offset;
                 
-                // Autonomous floating motion
+                // Floating motion
                 p.y += sin(uTime * uWaveSpeed + random.x * 10.0) * uWaveAmplitude;
-                p.x += cos(uTime * uWaveSpeed * 0.5 + random.y * 10.0) * uWaveAmplitude * 0.3;
-                p.z += sin(uTime * uWaveSpeed * 0.7 + random.z * 10.0) * uWaveAmplitude * 0.5;
-
-                // Mouse Interaction (Magnetic Repulsion)
-                vec2 mousePos = uMouse * vec2(15.0, 10.0); // Normalize to world space scale
+                p.x += cos(uTime * uWaveSpeed * 0.5 + random.y * 10.0) * uWaveAmplitude * 0.5;
+                
+                // Mouse Interaction
+                vec2 mousePos = uMouse * vec2(15.0, 10.0);
                 float dist = distance(p.xy, mousePos);
                 float interact = 0.0;
                 if (dist < uMagnetRadius) {
                     float force = (1.0 - dist / uMagnetRadius) * uFieldStrength;
-                    vec2 dir = normalize(p.xy - mousePos);
-                    p.xy += dir * force;
+                    p.xy += normalize(p.xy - mousePos) * force;
                     interact = force;
                 }
 
-                // Pulse effect
                 float pulse = sin(uTime * uPulseSpeed + random.x * 6.28) * 0.5 + 0.5;
-                vOpacity = 0.4 + pulse * 0.4 + (interact * 0.2);
+                vOpacity = (0.2 + pulse * 0.3) + (interact * 0.3);
 
-                vec3 transformed = position;
-                // Subtle rotation based on time
-                float ang = uTime * 0.2 + random.z * 6.28;
-                float sa = sin(ang);
-                float ca = cos(ang);
-                mat2 rot = mat2(ca, -sa, sa, ca);
-                transformed.xz = rot * transformed.xz;
+                // Billboard effect: ensure particle always faces camera
+                vec3 modelPos = p;
+                vec4 viewPos = viewMatrix * modelMatrix * vec4(modelPos, 1.0);
+                viewPos.xyz += position * (1.0 + interact * 0.5); // Add plane geometry in view space
 
-                gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(p + transformed, 1.0);
+                gl_Position = projectionMatrix * viewPos;
             }
         `;
 
@@ -127,11 +118,10 @@ export class Antigravity {
             uniform vec3 uColor;
 
             void main() {
-                // Soft circle edges
                 float d = distance(vUv, vec2(0.5));
-                float soft = smoothstep(0.5, 0.2, d);
-                if (soft < 0.1) discard;
-                gl_FragColor = vec4(uColor, vOpacity * soft);
+                float soft = smoothstep(0.5, 0.45, d);
+                if (soft < 0.01) discard;
+                gl_FragColor = vec4(uColor, vOpacity * soft * 0.8);
             }
         `;
 
