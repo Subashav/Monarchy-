@@ -224,9 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
             VELOCITY_DISSIPATION: 2,
             PRESSURE: 0.1,
             CURL: 3,
-            SPLAT_RADIUS: 0.2,
+            SPLAT_RADIUS: 0.08,
             SPLAT_FORCE: 6000,
-            COLOR_UPDATE_SPEED: 10
+            COLOR_UPDATE_SPEED: 1,
+            BRAND_COLOR: { r: 0.2, g: 0.8, b: 1.0 } // Matches the Galaxy/Cyan theme
         });
     }
 

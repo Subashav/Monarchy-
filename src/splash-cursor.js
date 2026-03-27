@@ -10,11 +10,11 @@ export class SplashCursor {
             VELOCITY_DISSIPATION: options.VELOCITY_DISSIPATION || 2.0,
             PRESSURE: options.PRESSURE || 0.8,
             CURL: options.CURL || 30.0,
-            SPLAT_RADIUS: options.SPLAT_RADIUS || 0.25,
+            SPLAT_RADIUS: options.SPLAT_RADIUS || 0.1,
             SPLAT_FORCE: options.SPLAT_FORCE || 6000,
-            SHRACH_COLOR: options.SHRACH_COLOR || true,
-            COLOR_UPDATE_SPEED: options.COLOR_UPDATE_SPEED || 10,
+            COLOR_UPDATE_SPEED: options.COLOR_UPDATE_SPEED || 1.0,
             TRANSPARENT: options.TRANSPARENT !== undefined ? options.TRANSPARENT : true,
+            BRAND_COLOR: options.BRAND_COLOR || { r: 0.8, g: 0.6, b: 1.0 }, // Subashav/Monarchy- purple/blue tone
             ...options
         };
 
@@ -33,8 +33,6 @@ export class SplashCursor {
         this.container.appendChild(gl.canvas);
 
         const isWebGL2 = gl instanceof WebGL2RenderingContext;
-        
-        // Texture type detection
         let type = gl.HALF_FLOAT || gl.getExtension('OES_texture_half_float')?.HALF_FLOAT_OES || gl.UNSIGNED_BYTE;
         if (isWebGL2) {
             gl.getExtension('EXT_color_buffer_float');
@@ -42,13 +40,12 @@ export class SplashCursor {
             gl.getExtension('OES_texture_float');
             gl.getExtension('OES_texture_half_float');
         }
-
         const internalFormat = isWebGL2 ? gl.RGBA16F : gl.RGBA;
 
         this.resize();
         window.addEventListener('resize', () => this.resize());
 
-        // Shaders
+        // Shaders (same as before)
         const baseVertex = /* glsl */ `
             attribute vec2 position;
             attribute vec2 uv;
@@ -191,8 +188,8 @@ export class SplashCursor {
             uniform sampler2D uTexture;
             void main () {
                 vec3 color = texture2D(uTexture, vUv).rgb;
-                float luma = dot(color, vec3(0.299, 0.587, 0.114));
-                gl_FragColor = vec4(color, luma);
+                float alpha = dot(color, vec3(0.299, 0.587, 0.114));
+                gl_FragColor = vec4(color, alpha);
             }
         `;
 
@@ -208,14 +205,14 @@ export class SplashCursor {
         this.triangle = new Triangle(gl);
         
         this.programs = {
-            clear: new Program(gl, { vertex: baseVertex, fragment: clearShader, depthTest: false, depthWrite: false }),
-            splat: new Program(gl, { vertex: baseVertex, fragment: splatShader, depthTest: false, depthWrite: false }),
-            advection: new Program(gl, { vertex: baseVertex, fragment: advectionShader, depthTest: false, depthWrite: false }),
-            divergence: new Program(gl, { vertex: baseVertex, fragment: divergenceShader, depthTest: false, depthWrite: false }),
-            curl: new Program(gl, { vertex: baseVertex, fragment: curlShader, depthTest: false, depthWrite: false }),
-            pressure: new Program(gl, { vertex: baseVertex, fragment: pressureShader, depthTest: false, depthWrite: false }),
-            gradSubtract: new Program(gl, { vertex: baseVertex, fragment: gradSubtractShader, depthTest: false, depthWrite: false }),
-            display: new Program(gl, { vertex: baseVertex, fragment: displayShader, depthTest: false, depthWrite: false, transparent: true })
+            clear: new Program(gl, { vertex: baseVertex, fragment: clearShader }),
+            splat: new Program(gl, { vertex: baseVertex, fragment: splatShader }),
+            advection: new Program(gl, { vertex: baseVertex, fragment: advectionShader }),
+            divergence: new Program(gl, { vertex: baseVertex, fragment: divergenceShader }),
+            curl: new Program(gl, { vertex: baseVertex, fragment: curlShader }),
+            pressure: new Program(gl, { vertex: baseVertex, fragment: pressureShader }),
+            gradSubtract: new Program(gl, { vertex: baseVertex, fragment: gradSubtractShader }),
+            display: new Program(gl, { vertex: baseVertex, fragment: displayShader, transparent: true })
         };
 
         this.mesh = new Mesh(gl, { geometry: this.triangle });
@@ -231,9 +228,24 @@ export class SplashCursor {
         });
 
         this.lastTime = performance.now();
+        this.autoSplatTime = 0;
+        
         const animate = (t) => {
             const dt = Math.min((t - this.lastTime) / 1000, 0.016);
             this.lastTime = t;
+            this.autoSplatTime += dt;
+
+            // Auto-splat for floating effect
+            if (this.autoSplatTime > 0.5) {
+                this.autoSplatTime = 0;
+                const x = 0.2 + Math.random() * 0.6;
+                const y = 0.2 + Math.random() * 0.6;
+                const dx = (Math.random() - 0.5) * 50;
+                const dy = (Math.random() - 0.5) * 50;
+                const c = this.options.BRAND_COLOR;
+                this.splat(x, y, dx, dy, [c.r * 0.5, c.g * 0.5, c.b * 0.5]);
+            }
+
             this.render(dt);
             this.rafId = requestAnimationFrame(animate);
         };
@@ -262,8 +274,6 @@ export class SplashCursor {
         const width = this.container.clientWidth || window.innerWidth;
         const height = this.container.clientHeight || window.innerHeight;
         this.renderer.setSize(width, height);
-        this.gl.canvas.style.width = '100%';
-        this.gl.canvas.style.height = '100%';
     }
 
     render(dt) {
@@ -272,16 +282,17 @@ export class SplashCursor {
 
         if (this.mouse.moved) {
             this.mouse.moved = false;
-            const time = performance.now() * 0.001 * this.options.COLOR_UPDATE_SPEED;
+            const c = this.options.BRAND_COLOR;
+            // Use subtle variation of brand color instead of full colorful
             const color = [
-                Math.sin(time) * 0.5 + 0.5,
-                Math.sin(time * 1.2) * 0.5 + 0.5,
-                Math.sin(time * 1.4) * 0.5 + 0.5
+                c.r * (0.8 + Math.random() * 0.4),
+                c.g * (0.8 + Math.random() * 0.4),
+                c.b * (0.8 + Math.random() * 0.4)
             ];
             this.splat(this.mouse.x, this.mouse.y, this.mouse.dx * this.options.SPLAT_FORCE, this.mouse.dy * this.options.SPLAT_FORCE, color);
         }
 
-        // Advection
+        // Advection/Diffusion Solver steps (same as before)
         p.advection.uniforms = {
             uVelocity: { value: this.velocity.read.texture },
             uSource: { value: this.velocity.read.texture },
@@ -298,7 +309,6 @@ export class SplashCursor {
         this.apply(this.density.write, p.advection);
         this.density.swap();
 
-        // Curl/Divergence/Pressure
         p.curl.uniforms = { uVelocity: { value: this.velocity.read.texture }, texelSize: { value: [1/this.options.SIM_RESOLUTION, 1/this.options.SIM_RESOLUTION] } };
         this.apply(this.curl, p.curl);
 
@@ -319,7 +329,6 @@ export class SplashCursor {
         this.apply(this.velocity.write, p.gradSubtract);
         this.velocity.swap();
 
-        // Final Display
         gl.bindFramebuffer(gl.FRAMEBUFFER, null);
         gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
         p.display.uniforms = { uTexture: { value: this.density.read.texture } };
@@ -334,7 +343,7 @@ export class SplashCursor {
             aspectRatio: { value: this.gl.canvas.width / this.gl.canvas.height },
             point: { value: [x, y] },
             color: { value: [dx, dy, 0] },
-            radius: { value: this.options.SPLAT_RADIUS / 10.0 }
+            radius: { value: this.options.SPLAT_RADIUS / 100 }
         };
         this.apply(this.velocity.write, p.splat);
         this.velocity.swap();
