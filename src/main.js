@@ -3,7 +3,7 @@ import './border-glow.css'
 import { Orb } from './orb.js'
 import { Galaxy } from './galaxy.js'
 import { Prism } from './prism.js'
-import { SplashCursor } from './splash-cursor.js'
+import { Antigravity } from './antigravity.js'
 import { initBorderGlow } from './border-glow.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -214,20 +214,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize SplashCursor on about hero
-    const splashContainer = document.getElementById('hero-splash');
-    if (splashContainer) {
-        new SplashCursor(splashContainer, {
-            SIM_RESOLUTION: 128,
-            DYE_RESOLUTION: 1440,
-            DENSITY_DISSIPATION: 3.5,
-            VELOCITY_DISSIPATION: 2,
-            PRESSURE: 0.1,
-            CURL: 3,
-            SPLAT_RADIUS: 0.08,
-            SPLAT_FORCE: 6000,
-            COLOR_UPDATE_SPEED: 1,
-            BRAND_COLOR: { r: 0.2, g: 0.8, b: 1.0 } // Matches the Galaxy/Cyan theme
+    // Initialize Antigravity on about hero
+    const antiContainer = document.getElementById('hero-antigravity');
+    if (antiContainer) {
+        new Antigravity(antiContainer, {
+            count: 300,
+            magnetRadius: 10,
+            ringRadius: 10,
+            waveSpeed: 0.4,
+            waveAmplitude: 1,
+            particleSize: 2,
+            lerpSpeed: 0.1,
+            color: "#FF9FFC",
+            autoAnimate: false,
+            particleVariance: 1,
+            rotationSpeed: 0,
+            depthFactor: 1,
+            pulseSpeed: 3,
+            particleShape: "capsule",
+            fieldStrength: 10
         });
     }
 
