@@ -37,12 +37,11 @@
     </header>
 
     <main>
-        <section id="contact-hero" class="hero">
-            <div class="hero-visual">
-                <img src="/contact-hero.png" alt="" style="position: absolute; width: 100%; height: 100%; opacity: 0.1; filter: blur(50px); pointer-events: none;">
-                <canvas id="hero-galaxy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+        <section id="contact-hero" class="hero" style="overflow: visible;">
+            <div class="hero-visual" style="z-index: 1; opacity: 1; mask-image: none; -webkit-mask-image: none; filter: none;">
+                <div id="contact-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
             </div>
-            <div class="container hero-content">
+            <div class="container hero-content" style="z-index: 10; position: relative;">
                 <img src="/src/assets/hero-section.png" alt="Monarchy Branding" class="reveal" style="max-width: 320px; margin-bottom: 2rem; opacity: 0.8;">
                 <h1 class="reveal">Build your<br><span class="gradient-text">Engine.</span></h1>
                 <p class="reveal">Get in touch to build, scale, and grow together. Whether you are looking for services or training, we are here to help.</p>

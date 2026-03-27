@@ -216,24 +216,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Antigravity on about hero
     const antiContainer = document.getElementById('hero-antigravity');
+    const contactAnti = document.getElementById('contact-antigravity');
+    
+    const antiParams = {
+        count: 400,
+        magnetRadius: 6,
+        ringRadius: 12,
+        waveSpeed: 0.6,
+        waveAmplitude: 1.5,
+        particleSize: 0.1,
+        lerpSpeed: 0.08,
+        color: "#FFFFFF",
+        autoAnimate: true,
+        particleVariance: 1,
+        rotationSpeed: 0.2,
+        depthFactor: 1,
+        pulseSpeed: 3,
+        particleShape: "dot",
+        fieldStrength: 4
+    };
+
     if (antiContainer) {
-        new Antigravity(antiContainer, {
-            count: 400,
-            magnetRadius: 6,
-            ringRadius: 12,
-            waveSpeed: 0.6,
-            waveAmplitude: 1.5,
-            particleSize: 0.1,
-            lerpSpeed: 0.08,
-            color: "#FFFFFF",
-            autoAnimate: true,
-            particleVariance: 1,
-            rotationSpeed: 0.2,
-            depthFactor: 1,
-            pulseSpeed: 3,
-            particleShape: "dot",
-            fieldStrength: 4
-        });
+        new Antigravity(antiContainer, antiParams);
+    }
+    
+    if (contactAnti) {
+        new Antigravity(contactAnti, antiParams);
     }
 
     // Mobile Menu Toggle
