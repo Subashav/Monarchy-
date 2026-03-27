@@ -14,7 +14,7 @@ export class SplashCursor {
             SPLAT_FORCE: options.SPLAT_FORCE || 6000,
             COLOR_UPDATE_SPEED: options.COLOR_UPDATE_SPEED || 1.0,
             TRANSPARENT: options.TRANSPARENT !== undefined ? options.TRANSPARENT : true,
-            BRAND_COLOR: options.BRAND_COLOR || { r: 0.8, g: 0.6, b: 1.0 }, // Subashav/Monarchy- purple/blue tone
+            BRAND_COLOR: options.BRAND_COLOR || { r: 0.2, g: 0.8, b: 1.0 },
             ...options
         };
 
@@ -45,7 +45,6 @@ export class SplashCursor {
         this.resize();
         window.addEventListener('resize', () => this.resize());
 
-        // Shaders (same as before)
         const baseVertex = /* glsl */ `
             attribute vec2 position;
             attribute vec2 uv;
@@ -235,15 +234,18 @@ export class SplashCursor {
             this.lastTime = t;
             this.autoSplatTime += dt;
 
-            // Auto-splat for floating effect
-            if (this.autoSplatTime > 0.5) {
+            // Frequency of 3.3 Hz
+            if (this.autoSplatTime > 0.3) {
                 this.autoSplatTime = 0;
-                const x = 0.2 + Math.random() * 0.6;
-                const y = 0.2 + Math.random() * 0.6;
-                const dx = (Math.random() - 0.5) * 50;
-                const dy = (Math.random() - 0.5) * 50;
+                const x = Math.random();
+                const y = Math.random();
+                // Random force between 200 and 600
+                const force = 200 + Math.random() * 400;
+                const dx = (Math.random() - 0.5) * force;
+                const dy = (Math.random() - 0.5) * force;
                 const c = this.options.BRAND_COLOR;
-                this.splat(x, y, dx, dy, [c.r * 0.5, c.g * 0.5, c.b * 0.5]);
+                // Higher intensity for autonomous splat
+                this.splat(x, y, dx, dy, [c.r * 1.5, c.g * 1.5, c.b * 1.5]);
             }
 
             this.render(dt);
@@ -283,16 +285,10 @@ export class SplashCursor {
         if (this.mouse.moved) {
             this.mouse.moved = false;
             const c = this.options.BRAND_COLOR;
-            // Use subtle variation of brand color instead of full colorful
-            const color = [
-                c.r * (0.8 + Math.random() * 0.4),
-                c.g * (0.8 + Math.random() * 0.4),
-                c.b * (0.8 + Math.random() * 0.4)
-            ];
+            const color = [c.r, c.g, c.b];
             this.splat(this.mouse.x, this.mouse.y, this.mouse.dx * this.options.SPLAT_FORCE, this.mouse.dy * this.options.SPLAT_FORCE, color);
         }
 
-        // Advection/Diffusion Solver steps (same as before)
         p.advection.uniforms = {
             uVelocity: { value: this.velocity.read.texture },
             uSource: { value: this.velocity.read.texture },
