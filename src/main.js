@@ -219,20 +219,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (antiContainer) {
         new Antigravity(antiContainer, {
             count: 300,
-            magnetRadius: 10,
-            ringRadius: 10,
-            waveSpeed: 0.8,
-            waveAmplitude: 3,
-            particleSize: 3,
-            lerpSpeed: 0.1,
+            magnetRadius: 8,
+            ringRadius: 12,
+            waveSpeed: 0.6,
+            waveAmplitude: 2,
+            particleSize: 0.4,
+            lerpSpeed: 0.08,
             color: "#FF9FFC",
             autoAnimate: true,
             particleVariance: 1,
-            rotationSpeed: 0.5,
+            rotationSpeed: 0.2,
             depthFactor: 1,
             pulseSpeed: 3,
             particleShape: "capsule",
-            fieldStrength: 10
+            fieldStrength: 5
         });
     }
 

@@ -1,24 +1,23 @@
-import { Renderer, Program, Mesh, Vec2, Vec3, Color, Cylinder, Box, Geometry, Camera } from 'ogl';
+import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Box } from 'ogl';
 
 export class Antigravity {
     constructor(container, options = {}) {
         this.container = container;
         this.options = {
             count: options.count || 300,
-            magnetRadius: options.magnetRadius || 10,
-            ringRadius: options.ringRadius || 10,
-            waveSpeed: options.waveSpeed || 1.2,
-            waveAmplitude: options.waveAmplitude || 2.0,
-            particleSize: options.particleSize || 2.0,
-            lerpSpeed: options.lerpSpeed || 0.1,
+            magnetRadius: options.magnetRadius || 8.0,
+            ringRadius: options.ringRadius || 12.0,
+            waveSpeed: options.waveSpeed || 0.6,
+            waveAmplitude: options.waveAmplitude || 1.5,
+            particleSize: options.particleSize || 0.15,
+            lerpSpeed: options.lerpSpeed || 0.08,
             color: options.color || "#FF9FFC",
-            autoAnimate: options.autoAnimate !== undefined ? options.autoAnimate : false,
-            particleVariance: options.particleVariance || 1.0,
-            rotationSpeed: options.rotationSpeed || 1.5,
+            autoAnimate: options.autoAnimate !== undefined ? options.autoAnimate : true,
+            rotationSpeed: options.rotationSpeed || 0.2,
             depthFactor: options.depthFactor || 1.0,
-            pulseSpeed: options.pulseSpeed || 3.0,
+            pulseSpeed: options.pulseSpeed || 2.0,
             particleShape: options.particleShape || "capsule",
-            fieldStrength: options.fieldStrength || 10.0,
+            fieldStrength: options.fieldStrength || 5.0,
             ...options
         };
 
@@ -35,37 +34,25 @@ export class Antigravity {
 
         this.gl.clearColor(0, 0, 0, 0);
 
-        // Camera setup is essential for projectionMatrix and modelViewMatrix
-        this.camera = new Camera(this.gl, { fov: 45 });
-        this.camera.position.z = 30;
+        this.camera = new Camera(this.gl, { fov: 35 });
+        this.camera.position.z = 25;
 
-        // Geometry
-        let geo;
-        if (this.options.particleShape === "capsule") {
-            geo = new Cylinder(this.gl, {
-                radiusTop: 0.2,
-                radiusBottom: 0.2,
-                height: 0.8,
-                radialSegments: 8
-            });
-        } else {
-            geo = new Box(this.gl, {
-                width: 0.4,
-                height: 0.4,
-                depth: 0.4
-            });
-        }
+        // Use a simple small box for "capsule" look if requested, or just a small box for particles
+        const geo = new Box(this.gl, {
+            width: this.options.particleSize,
+            height: this.options.particleSize * (this.options.particleShape === 'capsule' ? 4 : 1),
+            depth: this.options.particleSize
+        });
 
         const count = this.options.count;
         const positions = new Float32Array(count * 3);
         const randoms = new Float32Array(count * 3);
 
         for (let i = 0; i < count; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const r = this.options.ringRadius * (0.2 + Math.random() * 0.8);
-            positions[i * 3 + 0] = Math.cos(angle) * r;
-            positions[i * 3 + 1] = Math.sin(angle) * r;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+            // Distribute in a balanced volume
+            positions[i * 3 + 0] = (Math.random() - 0.5) * 30.0;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 20.0;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10.0;
 
             randoms[i * 3 + 0] = Math.random();
             randoms[i * 3 + 1] = Math.random();
@@ -84,7 +71,7 @@ export class Antigravity {
             attribute vec3 random;
             attribute vec2 uv;
             varying vec2 vUv;
-            varying float vGlow;
+            varying float vOpacity;
 
             uniform mat4 modelMatrix;
             uniform mat4 viewMatrix;
@@ -96,37 +83,39 @@ export class Antigravity {
             uniform float uMagnetRadius;
             uniform float uFieldStrength;
             uniform float uPulseSpeed;
-            uniform float uRotationSpeed;
 
             void main() {
                 vUv = uv;
                 vec3 p = offset;
                 
-                // Autonomous movement (Wave)
-                p.z += sin(random.x * 10.0 + uTime * uWaveSpeed) * uWaveAmplitude;
-                p.y += cos(random.z * 5.0 + uTime * uWaveSpeed * 0.2) * uWaveAmplitude * 0.5;
-                
-                // Rotation effect
-                float angle = uTime * uRotationSpeed + random.y * 6.28;
-                float s = sin(angle);
-                float c = cos(angle);
-                mat2 rotMat = mat2(c, -s, s, c);
-                
-                // Interaction
-                vec2 mousePos = uMouse * 15.0; // Transform mouse to world space roughly
-                float d = distance(p.xy, mousePos);
-                vGlow = 0.0;
-                if (d < uMagnetRadius) {
-                    float force = (1.0 - d / uMagnetRadius) * uFieldStrength;
-                    p.xy += normalize(p.xy - mousePos) * force;
-                    vGlow = force * 0.5;
+                // Autonomous floating motion
+                p.y += sin(uTime * uWaveSpeed + random.x * 10.0) * uWaveAmplitude;
+                p.x += cos(uTime * uWaveSpeed * 0.5 + random.y * 10.0) * uWaveAmplitude * 0.3;
+                p.z += sin(uTime * uWaveSpeed * 0.7 + random.z * 10.0) * uWaveAmplitude * 0.5;
+
+                // Mouse Interaction (Magnetic Repulsion)
+                vec2 mousePos = uMouse * vec2(15.0, 10.0); // Normalize to world space scale
+                float dist = distance(p.xy, mousePos);
+                float interact = 0.0;
+                if (dist < uMagnetRadius) {
+                    float force = (1.0 - dist / uMagnetRadius) * uFieldStrength;
+                    vec2 dir = normalize(p.xy - mousePos);
+                    p.xy += dir * force;
+                    interact = force;
                 }
 
-                // Particle size pulse
-                float pulse = sin(uTime * uPulseSpeed + random.z * 6.28) * 0.5 + 0.5;
-                vec3 transformed = position * (1.0 + pulse * 0.5 + vGlow);
+                // Pulse effect
+                float pulse = sin(uTime * uPulseSpeed + random.x * 6.28) * 0.5 + 0.5;
+                vOpacity = 0.4 + pulse * 0.4 + (interact * 0.2);
 
-                // Final projection
+                vec3 transformed = position;
+                // Subtle rotation based on time
+                float ang = uTime * 0.2 + random.z * 6.28;
+                float sa = sin(ang);
+                float ca = cos(ang);
+                mat2 rot = mat2(ca, -sa, sa, ca);
+                transformed.xz = rot * transformed.xz;
+
                 gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(p + transformed, 1.0);
             }
         `;
@@ -134,16 +123,15 @@ export class Antigravity {
         const fragment = /* glsl */ `
             precision highp float;
             varying vec2 vUv;
-            varying float vGlow;
+            varying float vOpacity;
             uniform vec3 uColor;
 
             void main() {
-                float dist = distance(vUv, vec2(0.5));
-                float alpha = smoothstep(0.5, 0.4, dist);
-                if (alpha < 0.01) discard;
-                
-                vec3 finalColor = mix(uColor, vec3(1.0), vGlow * 0.3);
-                gl_FragColor = vec4(finalColor, alpha * (0.8 + vGlow));
+                // Soft circle edges
+                float d = distance(vUv, vec2(0.5));
+                float soft = smoothstep(0.5, 0.2, d);
+                if (soft < 0.1) discard;
+                gl_FragColor = vec4(uColor, vOpacity * soft);
             }
         `;
 
@@ -158,8 +146,7 @@ export class Antigravity {
                 uWaveAmplitude: { value: this.options.waveAmplitude },
                 uMagnetRadius: { value: this.options.magnetRadius },
                 uFieldStrength: { value: this.options.fieldStrength },
-                uPulseSpeed: { value: this.options.pulseSpeed },
-                uRotationSpeed: { value: this.options.rotationSpeed }
+                uPulseSpeed: { value: this.options.pulseSpeed }
             },
             transparent: true,
             depthTest: false
@@ -187,7 +174,7 @@ export class Antigravity {
     }
 
     update() {
-        this.time += 0.01;
+        this.time += 0.016;
         this.mouse.lerp(this.targetMouse, this.options.lerpSpeed);
 
         this.program.uniforms.uTime.value = this.time;
