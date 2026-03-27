@@ -214,9 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize Antigravity on about hero
+    // Initialize Antigravity on various hero sections
     const antiContainer = document.getElementById('hero-antigravity');
     const contactAnti = document.getElementById('contact-antigravity');
+    const trainingAnti = document.getElementById('training-antigravity');
     
     const antiParams = {
         count: 400,
@@ -236,13 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fieldStrength: 4
     };
 
-    if (antiContainer) {
-        new Antigravity(antiContainer, antiParams);
-    }
-    
-    if (contactAnti) {
-        new Antigravity(contactAnti, antiParams);
-    }
+    if (antiContainer) new Antigravity(antiContainer, antiParams);
+    if (contactAnti) new Antigravity(contactAnti, antiParams);
+    if (trainingAnti) new Antigravity(trainingAnti, antiParams);
 
     // Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
