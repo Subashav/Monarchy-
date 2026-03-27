@@ -774,48 +774,164 @@ footer {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 4rem;
-  }
-  
-  .footer-links {
-    flex-wrap: wrap;
-    gap: 3rem;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
+/* Mobile Responsiveness Improvements */
+
+/* Base container adjustment */
+@media (max-width: 1200px) {
+  .container-wide {
+    padding: 0 2rem !important;
   }
 }
 
-/* Animations */
-.reveal {
-  opacity: 1; /* Default to 1 for accessibility/no-js */
-  transform: none;
-}
-
-/* If using JS-driven reveals, we handle it in main.js or with an additional class */
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-/* Mobile Responsiveness */
 @media (max-width: 968px) {
-  .services-grid, .testimonial-grid, .why-grid {
-    grid-template-columns: 1fr;
+  section {
+    padding: 6rem 0;
   }
   
+  .hero {
+    height: auto;
+    min-height: 80vh;
+    padding: 120px 0 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  /* Navigation Mobile */
+  .nav-right {
+    gap: 1.5rem !important;
+  }
+
+  .nav-links {
+    display: none; /* Hide desktop nav */
+  }
+
+  /* Hamburger Toggle */
+  .mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1001;
+  }
+
+  /* Mobile Drawer */
+  .nav-links.mobile-active {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .nav-links.mobile-active a {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .nav-actions {
+    display: none; /* Hide desktop CTA btn on mobile, it will be in the menu later */
+  }
+  
+  /* Grids and Layouts */
+  .services-grid, .testimonial-grid, .why-grid, .footer-links {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .service-card {
+    grid-column: span 12 !important;
+    height: auto !important;
+    padding: 2.5rem !important;
+  }
+
   .process-timeline {
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
   }
   
   .process-timeline::before {
     display: none;
   }
+
+  .process-step {
+    padding: 2.5rem;
+  }
+
+  .stack-card {
+    height: auto !important;
+    padding: 3rem 2rem !important;
+    top: 10vh !important;
+  }
+
+  .cards-stack-container {
+      padding-bottom: 5rem;
+  }
+
+  /* Two column layouts */
+  .container > div[style*="display: grid"] {
+      grid-template-columns: 1fr !important;
+      gap: 3rem !important;
+  }
+
+  .container > div[style*="display: grid"] div[style*="height"] {
+      height: 300px !important;
+  }
+
+  /* Misc */
+  .marquee-card {
+    width: 300px;
+    padding: 1.5rem;
+  }
+
+  .section-header h2 {
+      font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animations Reveal */
+.reveal {
+  opacity: 1;
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
 }
