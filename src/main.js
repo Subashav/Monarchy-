@@ -214,38 +214,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize SplashCursor on about hero
-    const splashContainer = document.getElementById('hero-splash');
-    if (splashContainer) {
-        new SplashCursor(splashContainer, {
-            SIM_RESOLUTION: 128,
-            DYE_RESOLUTION: 1440,
-            DENSITY_DISSIPATION: 3.5,
-            VELOCITY_DISSIPATION: 2,
-            PRESSURE: 0.1,
-            CURL: 3,
-            SPLAT_RADIUS: 0.08,
-            SPLAT_FORCE: 6000,
-            COLOR_UPDATE_SPEED: 1,
-            BRAND_COLOR: { r: 1.0, g: 1.0, b: 1.0 } // Pure White for fluid
-        });
-    }
+    // Initialize Antigravity on various hero sections
+    const antiContainer = document.getElementById('hero-antigravity');
+    const contactAnti = document.getElementById('contact-antigravity');
+    const trainingAnti = document.getElementById('training-antigravity');
+    
+    const antiParams = {
+        count: 400,
+        magnetRadius: 6,
+        ringRadius: 12,
+        waveSpeed: 0.6,
+        waveAmplitude: 1.5,
+        particleSize: 0.1,
+        lerpSpeed: 0.08,
+        color: "#FFFFFF",
+        autoAnimate: true,
+        particleVariance: 1,
+        rotationSpeed: 0.2,
+        depthFactor: 1,
+        pulseSpeed: 3,
+        particleShape: "dot",
+        fieldStrength: 4
+    };
 
-    // Initialize Galaxy on Contact hero
-    const contactGalaxy = document.getElementById('hero-galaxy');
-    if (contactGalaxy) {
-        new Galaxy(contactGalaxy, {
-            starCount: 1500,
-            rotationSpeed: 0.0005, // Slow & cinematic
-            hueShift: 165
-        });
-    }
-
-    // Initialize Prism on Training hero
-    const trainingPrism = document.getElementById('hero-prism');
-    if (trainingPrism) {
-        new Prism(trainingPrism);
-    }
+    if (antiContainer) new Antigravity(antiContainer, antiParams);
+    if (contactAnti) new Antigravity(contactAnti, antiParams);
+    if (trainingAnti) new Antigravity(trainingAnti, antiParams);
 
     // Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
