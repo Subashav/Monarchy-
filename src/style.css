@@ -957,6 +957,19 @@ footer {
   }
 }
 
+/* Mobile Toggle - hidden on desktop */
+.mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+
 /* Mobile Responsiveness Improvements */
 
 /* Base container adjustment */
