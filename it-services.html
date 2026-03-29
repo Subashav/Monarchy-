@@ -7,15 +7,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/api/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
+<body style="background: #000; color: #fff;">
     <header id="header">
         <div class="container nav">
             <a href="/index.html" class="logo">
-                <i data-lucide="crown" style="color: var(--primary);"></i>
-                <span>MONARCHY</span>
+                <img src="/logo.png" alt="Monarchy Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
@@ -24,153 +23,74 @@
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="/contact.html" class="btn btn-primary">Book Consultation</a>
-            </div>
         </div>
     </header>
 
     <main>
         <section class="hero" style="min-height: 70vh;">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1rem;">Engineering Excellence</p>
-                    <h1>Production-Grade <br><span style="color: var(--primary);">IT Solutions.</span></h1>
-                    <p>We don't just write code; we architect systems that power business expansion. From custom ERPs to native apps and AI automation, we build for the long term.</p>
-                    <div class="hero-actions">
-                        <a href="/contact.html" class="btn btn-primary">Start Your Project</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <img src="/it-services.png" alt="IT Services" style="border-radius: 32px; box-shadow: var(--shadow-lg);">
+            <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
+            <div class="container hero-content">
+                <h1 class="reveal">Production-Grade <br><span class="gradient-text">IT Solutions.</span></h1>
+                <p class="reveal">We architect systems that power business expansion. From custom ERP/CRM to mobile apps and AI automation.</p>
+                <div class="hero-btns reveal" style="margin-top: 3rem;">
+                    <a href="/contact.html" class="btn btn-primary">Start Engineering</a>
                 </div>
             </div>
         </section>
 
-        <section id="service-deep-dive">
+        <section id="service-details" style="padding: 10rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Everything We Build</h2>
-                    <p>A comprehensive ecosystem of technical services for modern businesses.</p>
-                </div>
-                <div class="card-grid">
-                    <div class="card">
-                        <i data-lucide="monitor"></i>
-                        <h3>Web Development</h3>
-                        <ul class="service-list">
-                            <li>Frontend (React/Next.js)</li>
-                            <li>Backend & API Engineering</li>
-                            <li>Fullstack Management</li>
-                            <li>CMS & E-commerce</li>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Web Engineering</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• Frontend (Next.js/React)</li>
+                            <li>• Backend & API Development</li>
+                            <li>• Fullstack Scalable Systems</li>
+                            <li>• E-commerce & CMS</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="smartphone"></i>
-                        <h3>Mobile Apps</h3>
-                        <ul class="service-list">
-                            <li>Android App Development</li>
-                            <li>iOS App Development</li>
-                            <li>Cross-platform (Flutter/RN)</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Mobile Apps</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• Android Development</li>
+                            <li>• iOS Development</li>
+                            <li>• Cross-platform (Flutter/RN)</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="figma"></i>
-                        <h3>UI/UX Design</h3>
-                        <ul class="service-list">
-                            <li>UI/UX Research</li>
-                            <li>Interactive Prototypes</li>
-                            <li>Visual Interface Design</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Design & UX</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• UI/UX Research</li>
+                            <li>• Interactive Prototypes</li>
+                            <li>• Visual Interface Design</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="database"></i>
-                        <h3>Enterprise Tools</h3>
-                        <ul class="service-list">
-                            <li>Custom ERP Systems</li>
-                            <li>CRM Solutions</li>
-                            <li>HRM Platforms</li>
-                        </ul>
-                    </div>
-                    <div class="card" style="grid-column: span 1.5;">
-                        <i data-lucide="brain-circuit"></i>
-                        <h3>AI & Machine Learning</h3>
-                        <p style="margin-bottom: 2rem;">Harness the power of intelligence to automate your growth.</p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                            <ul class="service-list">
-                                <li>ML & Deep Learning (DL)</li>
-                                <li>Natural Language (NLP)</li>
-                            </ul>
-                            <ul class="service-list">
-                                <li>Smart AI Chatbot Systems</li>
-                                <li>Business Intelligence (BI)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <i data-lucide="cloud"></i>
-                        <h3>Managed Cloud</h3>
-                        <ul class="service-list">
-                            <li>Cloud Architecture</li>
-                            <li>24/7 Server Monitoring</li>
-                            <li>Scalability Management</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Automation & AI</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• ML & Deep Learning</li>
+                            <li>• Natural Language (NLP)</li>
+                            <li>• AI Chatbot Ecosystems</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="container" style="padding: 100px 0;">
-            <div class="cta-banner">
-                <h2>Build the Future of Your Business.</h2>
-                <p>Partner with an engineering team that understands the intersection of technology and scalable growth.</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                    <a href="/contact.html" class="btn" style="background: #fff; color: var(--primary);">Start New Project</a>
-                    <a href="/contact.html" class="btn" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4);">Technical Audit</a>
-                </div>
+        <!-- CTA -->
+        <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2>
+                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Your Project</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <a href="/index.html" class="logo">
-                     <i data-lucide="crown" style="color: var(--primary);"></i>
-                     <span>MONARCHY</span>
-                </a>
-                <p>Building technical foundations for next-generation market leaders.</p>
-            </div>
-            <div class="footer-links">
-                <h5>Navigation</h5>
-                <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/services.html">All Services</a></li>
-                    <li><a href="/contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h5>Services</h5>
-                <ul>
-                    <li><a href="/it-services.html">Software Engineering</a></li>
-                    <li><a href="/digital-marketing.html">Performance Marketing</a></li>
-                    <li><a href="/hr-services.html">HR & Recruiting</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h5>Social</h5>
-                <ul>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 MONARCHY — The Growth Company.</p>
-        </div>
+        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>

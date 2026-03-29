@@ -7,14 +7,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
+<body style="background: #000; color: #fff;">
     <header id="header">
         <div class="container nav">
             <a href="/index.html" class="logo">
-                <i data-lucide="crown" style="color: var(--primary);"></i>
-                <span>MONARCHY</span>
+                <img src="/logo.png" alt="Monarchy Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
@@ -23,109 +23,56 @@
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="/contact.html" class="btn btn-primary">Book Consultation</a>
-            </div>
         </div>
     </header>
 
     <main>
         <section class="hero" style="min-height: 70vh;">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1rem;">Future-Proof Your Career</p>
-                    <h1>Build Your <br><span style="color: var(--primary);">Next Chapter.</span></h1>
-                    <p>Stop learning in isolation. Our career training programs are built for real placement outcomes. Learn the tools, the tech, and the tactics that industry leaders actually use.</p>
-                    <div class="hero-actions">
-                        <a href="/contact.html" class="btn btn-primary">Apply Now</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <img src="/training-placement.png" alt="Career Training" style="border-radius: 32px; box-shadow: var(--shadow-lg);">
+            <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
+            <div class="container hero-content">
+                <h1 class="reveal">Next-Gen <br><span class="gradient-text">Career Training.</span></h1>
+                <p class="reveal">Build real-world skills through live projects and expert-led sessions. Guaranteed job placement support or full refund assistance.</p>
+                <div class="hero-btns reveal" style="margin-top: 3rem;">
+                    <a href="/contact.html" class="btn btn-primary">Apply Now</a>
                 </div>
             </div>
         </section>
 
-        <section id="training-mastery">
+        <section id="training-details" style="padding: 10rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Our Career Roadmap</h2>
-                    <p>A hands-on approach to professional development.</p>
-                </div>
-                <div class="card-grid">
-                    <div class="card">
-                        <i data-lucide="graduation-cap"></i>
-                        <h3>Practice with Real Projects</h3>
-                        <p style="color: var(--text-muted);">Build a strong portfolio to show employers. We focus on teaching you by letting you work on real tasks with modern tools.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <i data-lucide="graduation-cap" size="40"></i>
+                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Real Projects</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Build a portfolio to show employers. We focus on teaching by letting you work on real tasks with modern tools.</p>
                     </div>
-                    <div class="card">
-                        <i data-lucide="users"></i>
-                        <h3>Industry Experts</h3>
-                        <p style="color: var(--text-muted);">Get help directly from top professionals currently working in the field who know exactly what skills you need.</p>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <i data-lucide="users" size="40"></i>
+                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Industry Experts</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Get help from mentors currently working in the field who highlight only the most useful skills you need.</p>
                     </div>
-                    <div class="card">
-                        <i data-lucide="award"></i>
-                        <h3>Placement Support</h3>
-                        <p style="color: var(--text-muted);">We are confident in our training. We provide direct assistance to ensure you secure your dream role.</p>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <i data-lucide="award" size="40"></i>
+                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Placement Support</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">We provide direct interview coaching and career assistance to ensure you get hired or we offer full refund support.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="container" style="padding: 100px 0;">
-            <div class="cta-banner">
-                <h2>Build the Future of Your Career.</h2>
-                <p>Partner with an experts that understand the intersection of individuals and scalable job placement.</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                    <a href="/contact.html" class="btn" style="background: #fff; color: var(--primary);">Apply for Training</a>
-                    <a href="/contact.html" class="btn" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4);">Speak with an Expert</a>
-                </div>
+        <!-- CTA -->
+        <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Success?</span></h2>
+                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Training</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <a href="/index.html" class="logo">
-                     <i data-lucide="crown" style="color: var(--primary);"></i>
-                     <span>MONARCHY</span>
-                </a>
-                <p>Building technical foundations for next-generation market leaders.</p>
-            </div>
-            <div class="footer-links" style="grid-column: span 3;">
-                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;">
-                    <div>
-                        <h5>Navigation</h5>
-                        <ul>
-                            <li><a href="/index.html">Home</a></li>
-                            <li><a href="/services.html">All Services</a></li>
-                            <li><a href="/contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5>Services</h5>
-                        <ul>
-                            <li><a href="/training.html">Career Training</a></li>
-                            <li><a href="/it-services.html">IT Engineering</a></li>
-                            <li><a href="/hr-services.html">HR & Recruiting</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5>Social</h5>
-                        <ul>
-                            <li><a href="#">LinkedIn</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 MONARCHY — The Growth Company.</p>
-        </div>
+        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>

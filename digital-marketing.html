@@ -10,12 +10,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
+<body style="background: #000; color: #fff;">
     <header id="header">
         <div class="container nav">
             <a href="/index.html" class="logo">
-                <i data-lucide="crown" style="color: var(--primary);"></i>
-                <span>MONARCHY</span>
+                <img src="/logo.png" alt="Monarchy Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
@@ -24,135 +23,73 @@
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="/contact.html" class="btn btn-primary">Book Consultation</a>
-            </div>
         </div>
     </header>
 
     <main>
         <section class="hero" style="min-height: 70vh;">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1rem;">Performance Dominance</p>
-                    <h1>Marketing that <br><span style="color: var(--primary);">Actually Grows.</span></h1>
-                    <p>Stop wasting your ad spend on vague metrics. We build measurable performance marketing ecosystems that drive high-intent customers and scalable revenue.</p>
-                    <div class="hero-actions">
-                        <a href="/contact.html" class="btn btn-primary">Accelerate Growth</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <img src="/digital-marketing.png" alt="Digital Marketing" style="border-radius: 32px; box-shadow: var(--shadow-lg);">
+            <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
+            <div class="container hero-content">
+                <h1 class="reveal">Performance <br><span class="gradient-text">Marketing.</span></h1>
+                <p class="reveal">Measurable growth ecosystems that drive high-intent customers and scalable revenue.</p>
+                <div class="hero-btns reveal" style="margin-top: 3rem;">
+                    <a href="/contact.html" class="btn btn-primary">Start Campaign</a>
                 </div>
             </div>
         </section>
 
-        <section id="marketing-deep-dive">
+        <section id="marketing-details" style="padding: 10rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Reach More. Convert More.</h2>
-                    <p>A data-driven approach to visibility and customer acquisition.</p>
-                </div>
-                <div class="card-grid">
-                    <div class="card">
-                        <i data-lucide="search"></i>
-                        <h3>SEO & Rankings</h3>
-                        <ul class="service-list">
-                            <li>Technical SEO Audits</li>
-                            <li>On-Page & Off-Page Strategizing</li>
-                            <li>Keyword Market Dominance</li>
-                            <li>Content Ecosystem Creation</li>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">SEO & Organic</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• Technical SEO Audits</li>
+                            <li>• On-Page & Off-Page SEO</li>
+                            <li>• Keyword Market Research</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="share-2"></i>
-                        <h3>Social Media</h3>
-                        <ul class="service-list">
-                            <li>Social Media Marketing (SMM)</li>
-                            <li>Social Media Daily Handling</li>
-                            <li>Community Growth Programs</li>
-                            <li>Influencer Coordination</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Social Media</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• SMM Marketing</li>
+                            <li>• Daily Media Management</li>
+                            <li>• Growth Strategies</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="trending-up"></i>
-                        <h3>Ads & Performance</h3>
-                        <ul class="service-list">
-                            <li>PPC / Google Ads</li>
-                            <li>Performance Marketing ROI</li>
-                            <li>Meta & LinkedIn Ads</li>
-                            <li>Retargeting Funnels</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Ads & Paid Media</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• PPC / Google Ads</li>
+                            <li>• Performance Marketing</li>
+                            <li>• ROI Analytics & Tracking</li>
                         </ul>
                     </div>
-                    <div class="card">
-                        <i data-lucide="palette"></i>
-                        <h3>Creative & Ads</h3>
-                        <ul class="service-list">
-                            <li>Professional Content Creation</li>
-                            <li>Graphic & Brand Design</li>
-                            <li>Video Ad Production</li>
-                            <li>Copywriting Strategies</li>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="margin-bottom: 1.5rem;">Creative Content</h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
+                            <li>• Professional Copywriting</li>
+                            <li>• Graphic & Brand Design</li>
+                            <li>• Video Production Strategies</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="container" style="padding: 100px 0;">
-            <div class="cta-banner">
-                <h2>Build the Future of Your Branding.</h2>
-                <p>Partner with an creative team that understands the intersection of branding and performance-driven results.</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                    <a href="/contact.html" class="btn" style="background: #fff; color: var(--primary);">Start Campaign Now</a>
-                    <a href="/contact.html" class="btn" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4);">Consultation</a>
-                </div>
+        <!-- CTA -->
+        <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Growth?</span></h2>
+                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Your Campaign</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <a href="/index.html" class="logo">
-                     <i data-lucide="crown" style="color: var(--primary);"></i>
-                     <span>MONARCHY</span>
-                </a>
-                <p>Building technical foundations for next-generation market leaders.</p>
-            </div>
-            <div class="footer-links" style="grid-column: span 3;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;">
-                    <div>
-                        <h5>Navigation</h5>
-                        <ul>
-                            <li><a href="/index.html">Home</a></li>
-                            <li><a href="/services.html">All Services</a></li>
-                            <li><a href="/contact.html">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5>Services</h5>
-                        <ul>
-                            <li><a href="/it-services.html">IT Engineering</a></li>
-                            <li><a href="/digital-marketing.html">Marketing Ecosystems</a></li>
-                            <li><a href="/hr-services.html">HR & Recruiting</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5>Social</h5>
-                        <ul>
-                            <li><a href="#">LinkedIn</a></li>
-                            <li><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 MONARCHY — The Growth Company.</p>
-        </div>
+        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>

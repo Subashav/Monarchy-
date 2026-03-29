@@ -3,30 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monarchy – The Growth Company | HR, IT & Marketing</title>
-    <meta name="description" content="Monarchy is your end-to-end business growth partner. We scale startups through expert HR services, premium IT solutions, and performance-driven digital marketing.">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>MONARCHY | We Help Businesses Hire, Build, and Grow</title>
+    <meta name="description" content="From talent acquisition to digital growth, Monarchy provides end-to-end solutions to scale your business through expert HR, IT, and Marketing services.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
+<body style="background: #000; color: #fff;">
     <header id="header">
-        <div class="container nav">
+        <div class="container-wide nav">
             <a href="/index.html" class="logo">
-                <i data-lucide="crown" style="color: var(--primary);"></i>
-                <span>MONARCHY</span>
+                <img src="/logo.png" alt="Monarchy Logo">
             </a>
-            <ul class="nav-links">
-                <li><a href="/index.html" class="active">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="/contact.html" class="btn btn-primary">Book Consultation</a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="active">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item">
+                                <i data-lucide="layers"></i>
+                                <div class="dropdown-content">
+                                    <h5>IT Services</h5>
+                                    <p>Engineering and Enterprise Solutions</p>
+                                </div>
+                            </a>
+                            <a href="/digital-marketing.html" class="dropdown-item">
+                                <i data-lucide="megaphone"></i>
+                                <div class="dropdown-content">
+                                    <h5>Digital Marketing</h5>
+                                    <p>Performance & Media Growth</p>
+                                </div>
+                            </a>
+                            <a href="/hr-services.html" class="dropdown-item">
+                                <i data-lucide="users"></i>
+                                <div class="dropdown-content">
+                                    <h5>HR Solutions</h5>
+                                    <p>Talent Acquisition & Staffing</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/contact.html" class="btn btn-primary">Book Free Consultation</a>
+                </div>
+                <div class="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -34,345 +66,272 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <h1>We Help Businesses <br><span style="color: var(--primary);">Hire, Build, and Grow.</span></h1>
-                    <p>From strategic talent acquisition to custom software and digital growth, Monarchy provides the end-to-end solutions you need to scale your business effectively.</p>
-                    <div class="hero-actions">
-                        <a href="/contact.html" class="btn btn-primary">Get Started <i data-lucide="arrow-right"></i></a>
-                        <a href="/contact.html" class="btn btn-outline">Book Free Consultation</a>
-                    </div>
-                    <div style="margin-top: 3rem; display: flex; align-items: center; gap: 2rem;">
-                         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
-                             <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i> 100% Placement Support
-                         </div>
-                         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
-                             <i data-lucide="check-circle" size="16" style="color: var(--primary);"></i> Data-Driven Growth
-                         </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="visual-blob">
-                        <div style="background: #fff; padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-lg); width: 80%;">
-                             <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-                                 <div style="width: 48px; height: 48px; border-radius: 50%; background: #f1f5f9;"></div>
-                                 <div style="flex: 1;">
-                                     <div style="height: 10px; width: 60%; background: #f1f5f9; border-radius: 5px; margin-bottom: 8px;"></div>
-                                     <div style="height: 10px; width: 30%; background: #f1f5f9; border-radius: 5px;"></div>
-                                 </div>
-                             </div>
-                             <div style="height: 120px; background: linear-gradient(to bottom, #f8fafc, #fff); border-radius: 12px; border: 2px dashed #e2e8f0; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
-                                 Growth Chart Metrics
-                             </div>
-                        </div>
-                    </div>
+            <div class="hero-visual">
+                <div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+            </div>
+            <div class="container hero-content">
+                <img src="/src/assets/hero-section.png" alt="Monarchy Branding" class="reveal" style="max-width: 320px; opacity: 0.8;">
+                <h1 class="reveal" style="font-size: 3.5rem; line-height: 1.1;">We Help Businesses<br><span class="gradient-text">Hire, Build, and Grow.</span></h1>
+                <p class="reveal" style="max-width: 600px; margin-left: auto; margin-right: auto;">From talent acquisition to digital growth, Monarchy provides end-to-end solutions to scale your business.</p>
+                <div class="hero-btns reveal" style="display: flex; gap: 1rem; justify-content: center; margin-top: 3rem;">
+                    <a href="/contact.html" class="btn btn-primary">Get Started</a>
+                    <a href="/contact.html" class="btn btn-outline" style="background: rgba(255,255,255,0.05);">Book Free Consultation</a>
                 </div>
             </div>
         </section>
 
-        <!-- Stats Banner -->
-        <section style="padding: 0; margin-top: -60px; position: relative; z-index: 10;">
+        <!-- Stats Section (Trust) -->
+        <section id="trust-stats" style="padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
             <div class="container">
-                <div class="stats glass">
-                    <div class="stat-item">
-                        <h4>100+</h4>
-                        <p>Candidates Placed</p>
+                <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 3rem;">
+                    <div class="reveal">
+                        <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 0.5rem;">100+</h2>
+                        <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Candidates Placed</p>
                     </div>
-                    <div class="stat-item">
-                        <h4>20+</h4>
-                        <p>Active Clients</p>
+                    <div class="reveal">
+                        <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 0.5rem;">20+</h2>
+                        <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Clients Served</p>
                     </div>
-                    <div class="stat-item">
-                        <h4>95%</h4>
-                        <p>Retention Rate</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>24/7</h4>
-                        <p>Expert Support</p>
+                    <div class="reveal">
+                        <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 0.5rem;">95%</h2>
+                        <p style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Client Retention</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Problem Section -->
-        <section id="problems">
+        <section id="problems" style="padding: 10rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Scaling is hard. <br><span class="gradient-text" style="background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">We make it simple.</span></h2>
-                    <p>Stop struggling with fragmented services. We solve the core bottlenecks that prevent startups from reaching their full potential.</p>
+                <div class="section-header reveal" style="margin-bottom: 6rem; text-align: center;">
+                    <h2 style="font-size: 2.5rem;">The Growth <span class="gradient-text">Roadblocks.</span></h2>
+                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Every growing business faces these core challenges. We provide the expertise to break through them.</p>
                 </div>
-                <div class="card-grid">
-                    <div class="card">
-                        <i data-lucide="user-minus"></i>
+                <div class="services-grid">
+                    <div class="service-card glass reveal glow-card">
+                        <i data-lucide="user-minus" size="40"></i>
                         <h3>Difficulty in Hiring</h3>
-                        <p>Finding high-quality talent that fits your culture is slow and expensive. We build your dream team in record time.</p>
+                        <p style="line-height: 1.6;">Finding the right talent that fits your business goals is slow and expensive. We eliminate the guesswork with our vetted hiring channel.</p>
                     </div>
-                    <div class="card">
-                        <i data-lucide="globe"></i>
+                    <div class="service-card glass reveal glow-card">
+                        <i data-lucide="globe" size="40"></i>
                         <h3>Lack of Digital Presence</h3>
-                        <p>In a digital-first world, a weak online presence means lost revenue. We build the tech that powers your brand.</p>
+                        <p style="line-height: 1.6;">In a digital-first economy, a weak online presence means lost revenue. We build the modern infrastructure your brand deserves.</p>
                     </div>
-                    <div class="card">
-                        <i data-lucide="trending-down"></i>
+                    <div class="service-card glass reveal glow-card">
+                        <i data-lucide="trending-down" size="40"></i>
                         <h3>Slow Business Growth</h3>
-                        <p>Without a scalable marketing engine, growth is unpredictable. We engineer performance-driven dominance.</p>
+                        <p style="line-height: 1.6;">Scaling without a proven marketing engine leads to stagnation. We engineer the systems that drive sustainable expansion.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Solution Section -->
-        <section id="solutions" style="background: var(--bg-subtle);">
+        <section id="solutions" style="background: rgba(255,255,255,0.01); padding: 12rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>The Monarchy Solution</h2>
-                    <p>A unified growth ecosystem designed for modern startups and growing businesses.</p>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div>
-                         <img src="/services-hero.png" alt="Solution visualization" style="border-radius: 32px; box-shadow: var(--shadow-lg); opacity: 0.9;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="reveal" style="border-radius: 32px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); height: 450px;">
+                        <img src="/services-hero.png" alt="Smart Growth Solutions" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; display: block;">
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                         <div style="display: flex; gap: 1.5rem;">
-                             <div style="flex-shrink: 0; width: 48px; height: 48px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: var(--shadow);">
-                                 <i data-lucide="zap"></i>
-                             </div>
-                             <div>
-                                 <h4>Smart Hiring Pipeline</h4>
-                                 <p style="color: var(--text-muted); margin-top: 0.5rem;">Automated screening and deep vetting to ensure you only meet the top 1% of talent.</p>
-                             </div>
-                         </div>
-                         <div style="display: flex; gap: 1.5rem;">
-                             <div style="flex-shrink: 0; width: 48px; height: 48px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: var(--shadow);">
-                                 <i data-lucide="code-2"></i>
-                             </div>
-                             <div>
-                                 <h4>Tech-Enabled Implementation</h4>
-                                 <p style="color: var(--text-muted); margin-top: 0.5rem;">Custom software and automation scripts that remove operational friction.</p>
-                             </div>
-                         </div>
-                         <div style="display: flex; gap: 1.5rem;">
-                             <div style="flex-shrink: 0; width: 48px; height: 48px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: var(--shadow);">
-                                 <i data-lucide="bar-chart-3"></i>
-                             </div>
-                             <div>
-                                 <h4>Performance-Driven Results</h4>
-                                 <p style="color: var(--text-muted); margin-top: 0.5rem;">We don't just "market"—we track metrics and deliver cold, hard revenue growth.</p>
-                             </div>
-                         </div>
+                    <div class="reveal">
+                        <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Solving Growth <span class="gradient-text">at Scale.</span></h2>
+                        <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                            <div style="display: flex; gap: 1.5rem;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 12px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--text-primary);"><i data-lucide="zap"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Smart Hiring Pipeline</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Automated discovery and screening to ensure only the top 1% of talent reaches your team.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 12px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--text-primary);"><i data-lucide="code"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Tech-Enabled Engineering</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Custom software solutions specifically designed to remove operational friction and improve efficiency.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem;">
+                                <div style="width: 3rem; height: 3rem; border-radius: 12px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--text-primary);"><i data-lucide="bar-chart"></i></div>
+                                <div>
+                                    <h4 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Performance-Driven Marketing</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem;">ROI-focused campaigns that turn visibility into measurable revenue and brand loyalty.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services">
+        <!-- Services Section (Clear & Specific) -->
+        <section id="services-grid" style="padding: 10rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Everything You Need to Scale</h2>
-                    <p>Comprehensive growth services under one roof.</p>
+                <div class="section-header reveal" style="margin-bottom: 6rem; text-align: center;">
+                    <h2 style="font-size: 2.8rem;">Our Growth <span class="gradient-text">Engine.</span></h2>
+                    <p style="color: var(--text-secondary); font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Integrated services designed to support every stage of your business journey.</p>
                 </div>
-                <div class="card-grid">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;">
                     <!-- HR Services -->
-                    <div class="card">
-                        <i data-lucide="users"></i>
-                        <h3>HR & Recruiting</h3>
-                        <p>Build an elite workforce with our specialized hiring model.</p>
-                        <ul class="service-list">
-                            <li>Candidate Sourcing & Screening</li>
-                            <li>Interview Coordination</li>
-                            <li>Placement Support</li>
-                            <li>Hiring Strategy Consulting</li>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 32px;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+                            <i data-lucide="users" size="32" style="color: #fff;"></i>
+                            <h3 style="font-size: 1.8rem;">HR Services</h3>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Build your workforce with confidence.</p>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2.2; font-size: 1rem;">
+                            <li>• Candidate Sourcing & Screening</li>
+                            <li>• Interview Coordination</li>
+                            <li>• Direct Placement Support</li>
+                            <li>• Statutory & Legal Compliance</li>
                         </ul>
+                        <a href="/hr-services.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
                     </div>
                     <!-- IT Services -->
-                    <div class="card">
-                        <i data-lucide="cpu"></i>
-                        <h3>IT & Software</h3>
-                        <p>Custom technology designed for infinite scalability.</p>
-                        <ul class="service-list">
-                            <li>Fullstack Web Development</li>
-                            <li>Custom Software Solutions</li>
-                            <li>UI/UX Interface Design</li>
-                            <li>Infrastructure Maintenance</li>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 32px;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+                            <i data-lucide="monitor" size="32" style="color: #fff;"></i>
+                            <h3 style="font-size: 1.8rem;">IT Solutions</h3>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Modern tech for modern businesses.</p>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2.2; font-size: 1rem;">
+                            <li>• Web & Application Development</li>
+                            <li>• Custom Software Engineering</li>
+                            <li>• Cloud Infrastructure & Hosting</li>
+                            <li>• Maintenance & 24/7 Support</li>
                         </ul>
+                        <a href="/it-services.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
                     </div>
                     <!-- Marketing -->
-                    <div class="card">
-                        <i data-lucide="megaphone"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Turn your brand into a customer acquisition engine.</p>
-                        <ul class="service-list">
-                            <li>Performance Paid Ads (PPC)</li>
-                            <li>Social Media Ecosystems</li>
-                            <li>Search Engine Dominance (SEO)</li>
-                            <li>Branding & Content Strategy</li>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 32px;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+                            <i data-lucide="megaphone" size="32" style="color: #fff;"></i>
+                            <h3 style="font-size: 1.8rem;">Digital Marketing</h3>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Turn reach into revenue.</p>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2.2; font-size: 1rem;">
+                            <li>• Social Media Management (SMM)</li>
+                            <li>• Paid Ads & Lead Generation (PPC)</li>
+                            <li>• Branding & Content Strategy</li>
+                            <li>• SEO & Performance Analytics</li>
                         </ul>
+                        <a href="/digital-marketing.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works -->
-        <section id="how-it-works" style="background: var(--bg-subtle);">
+        <section id="how-it-works" style="background: rgba(255,255,255,0.015); padding: 12rem 0;">
             <div class="container">
-                <div class="section-header">
-                    <h2>Our Growth Roadmap</h2>
-                    <p>Our simple 3-step process to taking your company to the next level.</p>
+                <div class="section-header reveal" style="margin-bottom: 6rem; text-align: center;">
+                    <h2 style="font-size: 2.8rem;">How It <span class="gradient-text">Works.</span></h2>
+                    <p style="color: var(--text-secondary); font-size: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;">Our proven framework for driving business success and career transformation.</p>
                 </div>
-                <div class="steps-grid">
-                    <div class="step">
-                        <div class="step-num">1</div>
-                        <h3>Understanding</h3>
-                        <p style="margin-top: 1rem; color: var(--text-muted);">We dive deep into your business metrics and identifying your primary scaling bottlenecks.</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
+                    <div class="reveal" style="text-align: center;">
+                        <div style="width: 4rem; height: 4rem; border-radius: 50%; background: #fff; color: #000; font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 0 30px rgba(255,255,255,0.3);">1</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Assess</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Step 1: We dive deep to understand your specific needs, challenges, and long-term goals.</p>
                     </div>
-                    <div class="step">
-                        <div class="step-num">2</div>
-                        <h3>Execution</h3>
-                        <p style="margin-top: 1rem; color: var(--text-muted);">Our specialized teams deploy the hiring, tech, or marketing strategy tailored to your needs.</p>
+                    <div class="reveal" style="text-align: center;">
+                        <div style="width: 4rem; height: 4rem; border-radius: 50%; background: #fff; color: #000; font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 0 30px rgba(255,255,255,0.3);">2</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Execute</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Step 2: We launch the coordinated strategy—be it Hiring, Technology engineering, or Marketing sprints.</p>
                     </div>
-                    <div class="step">
-                        <div class="step-num">3</div>
-                        <h3>Scaling</h3>
-                        <p style="margin-top: 1rem; color: var(--text-muted);">We deliver measurable growth results and refine the strategy for continuous expansion.</p>
+                    <div class="reveal" style="text-align: center;">
+                        <div style="width: 4rem; height: 4rem; border-radius: 50%; background: #fff; color: #000; font-weight: 800; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 0 30px rgba(255,255,255,0.3);">3</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Deliver</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Step 3: We deliver measurable growth results, scalable systems, and continuous optimization.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- USP Section -->
-        <section>
+        <!-- Unique Selling Proposition -->
+        <section id="usp" style="padding: 10rem 0;">
             <div class="container">
-                <div class="card" style="background: var(--bg-subtle); display: flex; gap: 4rem; align-items: center; border: none; padding: 4rem;">
-                     <div style="flex: 1;">
-                         <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Why Partner With Us?</h2>
-                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                             <div>
-                                 <h5 style="color: var(--primary); margin-bottom: 0.5rem;">Placement Support</h5>
-                                 <p style="font-size: 0.9rem; color: var(--text-muted);">We don't just find people; we ensure they stay and perform for the long term.</p>
-                             </div>
-                             <div>
-                                 <h5 style="color: var(--primary); margin-bottom: 0.5rem;">Refund Model</h5>
-                                 <p style="font-size: 0.9rem; color: var(--text-muted);">We are so confident in our hiring and training that we offer a placement refund guarantee.</p>
-                             </div>
-                             <div>
-                                 <h5 style="color: var(--primary); margin-bottom: 0.5rem;">End-to-End Synergy</h5>
-                                 <p style="font-size: 0.9rem; color: var(--text-muted);">Experience the power of tech, talent, and marketing working in total alignment.</p>
-                             </div>
-                             <div>
-                                 <h5 style="color: var(--primary); margin-bottom: 0.5rem;">Investor Ready</h5>
-                                 <p style="font-size: 0.9rem; color: var(--text-muted);">Our solutions are engineered to make your company look and perform like a billion-dollar startup.</p>
-                             </div>
-                         </div>
-                     </div>
-                     <div style="flex: 0.8; background: #fff; padding: 2.5rem; border-radius: 24px; box-shadow: var(--shadow);">
-                         <i data-lucide="award" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
-                         <p style="font-style: italic; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">"Monarchy transformed our hiring process from a nightmare into a streamlined growth machine. We've scaled our engineering team by 400% in six months."</p>
-                         <h5 style="margin-top: 1.5rem;">— Sarah Jenkins, CEO of ScalePath</h5>
-                     </div>
+                <div class="glass reveal glow-card" style="padding: 5rem; border-radius: 40px; display: flex; align-items: center; gap: 5rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">The Monarchy <span class="gradient-text">Assurance.</span></h2>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 2rem;">
+                            <li style="display: flex; gap: 1.5rem; align-items: start;">
+                                <i data-lucide="shield-check" style="color: #fff; flex-shrink: 0;"></i>
+                                <span style="font-size: 1.1rem; color: var(--text-secondary);"><strong>End-to-End Growth Partnership:</strong> We handle everything from the first hire to the last line of code.</span>
+                            </li>
+                            <li style="display: flex; gap: 1.5rem; align-items: start;">
+                                <i data-lucide="award" style="color: #fff; flex-shrink: 0;"></i>
+                                <span style="font-size: 1.1rem; color: var(--text-secondary);"><strong>Placement & Training:</strong> Our comprehensive placement support ensures job readiness or a refund guarantee.</span>
+                            </li>
+                            <li style="display: flex; gap: 1.5rem; align-items: start;">
+                                <i data-lucide="repeat" style="color: #fff; flex-shrink: 0;"></i>
+                                <span style="font-size: 1.1rem; color: var(--text-secondary);"><strong>Performance Guarantee:</strong> We don't just "offer services"; we deliver measurable business outcomes.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="flex: 0.8; min-width: 300px; text-align: center;">
+                        <img src="/about-team.png" alt="Growth Team" style="border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2rem;">
+                        <h4 style="font-style: italic; opacity: 0.8; font-weight: 500;">"This company understands my problem and can help me grow."</h4>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="container" style="padding: 100px 0;">
-            <div class="cta-banner">
-                <h2>Ready to Scale Your Business?</h2>
-                <p>Join the growing list of startups that trust Monarchy to power their hiring, technology, and growth strategies.</p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center;">
-                    <a href="/contact.html" class="btn" style="background: #fff; color: var(--primary);">Start Growing Now <i data-lucide="zap"></i></a>
-                    <a href="/contact.html" class="btn" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4);">Speak with an Expert</a>
+        <!-- Final CTA -->
+        <section id="cta" style="padding: 12rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <h2 style="font-size: 3.2rem; line-height: 1.15; font-weight: 900;">Ready to Scale <br><span class="gradient-text">Your Business?</span></h2>
+                <p style="color: var(--text-secondary); margin-top: 2rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Join 20+ clients who have accelerated their journey through Monarchy's growth engine.</p>
+                <div style="margin-top: 4rem;">
+                    <a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4rem; border-radius: 99px; font-size: 1.1rem; font-weight: 700;">Start Growing Now</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-info">
+        <div class="container footer-content">
+            <div class="footer-brand">
                 <a href="/index.html" class="logo">
-                    <i data-lucide="crown" style="color: var(--primary);"></i>
-                    <span>MONARCHY</span>
+                    <img src="/logo.png" alt="Monarchy Logo">
                 </a>
-                <p>Building the technical and human foundations for the next generation of industry leaders.</p>
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <a href="#" style="color: var(--text-muted);"><i data-lucide="linkedin"></i></a>
-                    <a href="#" style="color: var(--text-muted);"><i data-lucide="twitter"></i></a>
-                    <a href="#" style="color: var(--text-muted);"><i data-lucide="instagram"></i></a>
+                <p>Monarchy – The Growth Company. Transforming potential into success through HR, IT, and Marketing excellence.</p>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com/company/monarchy" target="_blank" title="LinkedIn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" width="18" height="18" style="filter: invert(1);"></a>
+                    <a href="#" target="_blank" title="Instagram"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" width="18" height="18" style="filter: invert(1);"></a>
                 </div>
             </div>
             <div class="footer-links">
-                <h5>Services</h5>
-                <ul>
-                    <li><a href="/hr-services.html">HR & Talent Acquisiton</a></li>
-                    <li><a href="/it-services.html">Software Engineering</a></li>
-                    <li><a href="/digital-marketing.html">Performance Marketing</a></li>
-                    <li><a href="/training.html">Career Training</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h5>Company</h5>
-                <ul>
-                    <li><a href="/about.html">Our Mission</a></li>
-                    <li><a href="/about.html">Contact Us</a></li>
-                    <li><a href="/contact.html">Support</a></li>
-                    <li><a href="/contact.html">Consultation</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h5>Legal</h5>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
+                <div class="link-group">
+                    <h4>SOLUTIONS</h4>
+                    <ul>
+                        <li><a href="/it-services.html">IT Services</a></li>
+                        <li><a href="/digital-marketing.html">Digital Marketing</a></li>
+                        <li><a href="/hr-services.html">HR Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>COMPANY</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/training.html">Training</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>UTILITIES</h4>
+                    <ul>
+                        <li><a href="mailto:contact@monarchy.company">Email Us</a></li>
+                        <li><a href="/training.html">Placement Policy</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 MONARCHY — The Growth Company. All rights reserved.</p>
-            <p>Made for Expansion.</p>
+            <div class="footer-copyright">&copy; 2026 MONARCHY – THE GROWTH COMPANY. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 
-    <script>
-        // Initialize Lucide
-        lucide.createIcons();
-
-        // Reveal animations
-        document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-            
-            gsap.from(".hero-content > *", {
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
-
-            gsap.from(".hero-visual", {
-                scale: 0.9,
-                opacity: 0,
-                duration: 1.5,
-                delay: 0.5,
-                ease: "power3.out"
-            });
-
-            // Scroll animations for sections
-            gsap.utils.toArray('section').forEach(section => {
-                gsap.from(section.querySelectorAll('.card, .section-header'), {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 1,
-                    stagger: 0.2,
-                    ease: "power3.out"
-                });
-            });
-        });
-    </script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
