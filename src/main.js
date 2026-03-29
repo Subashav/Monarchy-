@@ -251,15 +251,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-active');
-            const icon = mobileToggle.querySelector('i');
+            const icon = mobileToggle.querySelector('.lucide');
             if (navLinks.classList.contains('mobile-active')) {
-                icon.setAttribute('data-lucide', 'x');
+                if (icon) icon.setAttribute('data-lucide', 'x');
                 document.body.style.overflow = 'hidden'; // Prevent scroll
             } else {
-                icon.setAttribute('data-lucide', 'menu');
+                if (icon) icon.setAttribute('data-lucide', 'menu');
                 document.body.style.overflow = ''; // Restore scroll
             }
-            window.lucide.createIcons();
+            if (window.lucide) window.lucide.createIcons();
         });
 
         // Close menu on link click

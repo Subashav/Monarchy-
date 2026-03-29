@@ -30,6 +30,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -1068,12 +1074,21 @@ footer {
     display: none !important;
   }
 
-  /* === INLINE STYLE 2-COL GRID OVERRIDES (targeted by section ID) === */
   #about-preview > .container > div[style],
   #training-preview > .container > div[style],
   #mission-vision > .container > div[style],
   #contact-info > .container > div[style],
-  #placement-section > .container > div[style] {
+  #placement-section > .container > div[style],
+  #training-paths > .container > div[style],
+  #readiness > div[style],
+  #readiness div[style*="grid"],
+  #service-details .container > div[style],
+  #service-details div[style*="grid"],
+  #detailed-services .container > div[style],
+  #detailed-services div[style*="grid"],
+  .service-text div[style*="grid"],
+  div[style*="display: grid; grid-template-columns: 1fr 1fr"],
+  div[style*="display: grid; grid-template-columns: 1fr 1.5fr"] {
     display: flex !important;
     flex-direction: column !important;
     gap: 2rem !important;
@@ -1229,6 +1244,26 @@ footer {
     font-size: 2rem !important;
   }
 
+  .hero h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero p {
+    font-size: 0.95rem !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Improve form elements on mobile */
+  form {
+    padding: 0 !important;
+    gap: 1rem !important;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important; /* Prevent iOS zoom on focus */
+  }
+
   /* === FOOTER === */
   .footer-content {
     display: flex !important;
@@ -1344,4 +1379,131 @@ footer {
 .reveal-hidden {
   opacity: 0;
   transform: translateY(30px);
+}
+
+/* === STACKING SERVICES EFFECT === */
+.stacking-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10vh;
+}
+
+.stack-card {
+  position: sticky;
+  top: 120px;
+  min-height: auto;
+  margin-bottom: 10rem;
+  padding: 4rem !important;
+  border-radius: 40px !important;
+  background: rgba(25, 25, 25, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Specific card offsets for stacking visual */
+.stacking-container .stack-card:nth-child(2) { top: 140px; }
+.stacking-container .stack-card:nth-child(3) { top: 160px; }
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.service-reverse {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.service-img-wrapper {
+  width: 100%;
+  height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.service-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
+}
+
+.stack-card:hover .service-img-wrapper img {
+  opacity: 1;
+}
+
+/* GRANULAR SERVICES LIST */
+.granular-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gran-group h4 {
+  color: #fff;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.gran-group h4 i {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5px;
+}
+
+.gran-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.gran-group li {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 14px;
+}
+
+.gran-group li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+@media (max-width: 991px) {
+  .service-row, .service-reverse {
+    grid-template-columns: 1fr !important;
+    gap: 3rem;
+  }
+  
+  .stack-card {
+    padding: 2rem !important;
+    position: relative !important;
+    top: 0 !important;
+    margin-bottom: 2rem !important;
+    border-radius: 24px !important;
+  }
 }
