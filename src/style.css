@@ -830,6 +830,7 @@ footer {
 }
 
 .footer-socials a {
+  color: #fff;
   opacity: 0.5;
   transition: var(--transition);
   display: flex;
