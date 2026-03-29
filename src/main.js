@@ -102,29 +102,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Testimonial Hover Interaction
-        // Testimonial & Glow Card Hover Interaction (Pop up)
-        document.querySelectorAll('.testimonial-card, .glow-card, .service-card, .why-item').forEach(card => {
+        // Global Card Hover Interactions (Pop up & Highlight)
+        const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
+        document.querySelectorAll(cardsToAnimate).forEach(card => {
             card.addEventListener('mouseenter', () => {
                 window.gsap.to(card, {
-                    y: -15,
-                    scale: 1.03,
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05)',
-                    borderColor: 'rgba(255, 255, 255, 0.25)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                    duration: 0.5,
-                    ease: 'power3.out'
+                    y: -20,
+                    scale: 1.04,
+                    zIndex: 100,
+                    boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.08)',
+                    borderColor: 'rgba(255, 255, 255, 0.4)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    duration: 0.6,
+                    ease: 'expo.out'
                 });
             });
             card.addEventListener('mouseleave', () => {
                 window.gsap.to(card, {
                     y: 0,
                     scale: 1,
+                    zIndex: 1,
                     boxShadow: 'none',
                     borderColor: 'rgba(255, 255, 255, 0.08)',
                     backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    duration: 0.5,
-                    ease: 'power3.out'
+                    duration: 0.6,
+                    ease: 'expo.out'
                 });
             });
         });
