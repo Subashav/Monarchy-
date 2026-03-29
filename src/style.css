@@ -911,6 +911,51 @@ footer {
   opacity: 1;
 }
 
+/* ===== STORYTELLING GRID MOBILE OVERRIDES ===== */
+
+/* Tablet: Stack 2-col grids at 1024px */
+@media (max-width: 1024px) {
+  .story-block,
+  #origin-story > .container > .reveal,
+  #contact-details > .container > div,
+  #why-monarchy > .container > .reveal,
+  #training-preview > .container > .reveal,
+  #training-process .reveal[style*="grid-template-columns"],
+  #it-services-detail .reveal,
+  #marketing-services-detail .reveal,
+  #hr-services-detail .reveal,
+  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 6rem"],
+  div[style*="grid-template-columns: 1fr 1.2fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+  
+  /* Reset order for alternating layouts */
+  .story-block > div[style*="order"],
+  #it-services-detail div[style*="order"],
+  #marketing-services-detail div[style*="order"],
+  #hr-services-detail div[style*="order"],
+  #training-process div[style*="order"] {
+    order: 0 !important;
+  }
+  
+  /* Stats grids: 4-col -> 2-col */
+  div[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* 3-col grids -> 1-col on tablet */
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Process 4-col grid */
+  .process-timeline[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 /* Mobile Responsiveness Improvements */
 
 /* Base container adjustment */
@@ -1146,8 +1191,55 @@ footer {
   }
 
   /* service detail containers gap override */
-  div[style*="flex-direction: column"][style*="gap: 8rem"] {
-    gap: 3rem !important;
+  div[style*="flex-direction: column"][style*="gap: 8rem"],
+  div[style*="flex-direction: column"][style*="gap: 10rem"] {
+    gap: 4rem !important;
+  }
+
+  /* Stats grids: 4-col and 3-col stack */
+  div[style*="grid-template-columns: repeat(4, 1fr)"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Training comparison and 2-col grids within glass cards */
+  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 4rem"],
+  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1.5rem"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Process timeline 4-col */
+  .process-timeline[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Large section headings */
+  h2[style*="font-size: 3rem"],
+  h2[style*="font-size: 3.2rem"],
+  h2[style*="font-size: 2.8rem"] {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h3[style*="font-size: 2.5rem"],
+  h3[style*="font-size: 2.2rem"],
+  h3[style*="font-size: 2rem"] {
+    font-size: 1.6rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Large gap sections */
+  .story-block,
+  #three-pillars .story-block {
+    margin-bottom: 4rem !important;
+  }
+
+  /* Reduce section padding */
+  section[style*="padding: 10rem"],
+  section[style*="padding: 12rem"],
+  section[style*="padding: 8rem"] {
+    padding: 5rem 0 !important;
   }
 
   /* === WHY CHOOSE MONARCHY === */

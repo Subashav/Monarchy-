@@ -3,89 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Marketing | MONARCHY</title>
+    <title>Digital Marketing | MONARCHY - Performance Growth Engine</title>
+    <meta name="description" content="SEO, paid advertising, social media, brand design, and content strategy. Monarchy's marketing division turns visibility into revenue with data-driven growth campaigns.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        .premium-container { padding: 4rem 0; }
-        .service-bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(550px, 1fr)); gap: 3rem; }
-        .premium-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px; padding: 2.5rem; display: flex; gap: 2.5rem; align-items: center; transition: var(--transition); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); }
-        .premium-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); }
-        .card-image-box { width: 220px; height: 220px; border-radius: 24px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-image-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .premium-card:hover .card-image-box img { transform: scale(1.1); opacity: 1; }
-        .card-info { flex: 1; }
-        .card-info h3 { font-size: 1.8rem; margin-bottom: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
-        .card-info ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-        .card-info ul li { color: var(--text-secondary); font-size: 1rem; display: flex; align-items: center; gap: 0.8rem; }
-        @media (max-width: 1100px) { .service-bento-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 600px) { .premium-card { flex-direction: column; align-items: flex-start; padding: 2rem; } .card-image-box { width: 100%; height: 200px; } }
-    </style>
 </head>
 <body style="background: #000; color: #fff;">
-    <header id="header"><div class="container nav"><a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/services.html">Services</a></li><li><a href="/training.html">Training</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></header>
+    <header id="header">
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="active dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering & Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <section class="hero" style="min-height: 50vh;">
+        <!-- HERO -->
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; opacity: 0.5; margin-bottom: 1.5rem;">Performance Marketing</p>
                 <h1 class="reveal" style="font-size: 4rem; font-weight: 900;">Growth <br><span class="gradient-text">Ecosystems.</span></h1>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">We don't just run ads. We engineer the entire visibility pipeline that makes strangers discover you, trust you, and pay you, on repeat, at scale.</p>
             </div>
         </section>
-        <section class="premium-container">
+
+        <!-- ===================== THE PHILOSOPHY ===================== -->
+        <section id="marketing-philosophy" style="padding: 8rem 0;">
             <div class="container">
-                <div class="service-bento-grid">
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SEO"></div>
-                        <div class="card-info">
-                            <h3>SEO Mastery</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Technical SEO Audits</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Keyword Market Analysis</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Organic Growth Roadmap</li>
-                            </ul>
+                <div class="reveal" style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 6rem;">
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">Marketing That <span class="gradient-text">Pays for Itself.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.1rem;">The problem with most marketing is that it's built on vanity metrics. Impressions, likes, followers. None of that pays rent. Our marketing division is obsessively focused on one thing: turning your marketing spend into measurable revenue. Every campaign we run is tracked from first impression to final sale, so you always know exactly what's working and exactly what to scale.</p>
+                </div>
+
+                <!-- Key Performance Promise -->
+                <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 4rem;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">3.2x</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Average ROAS across managed campaigns</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">60%</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Average reduction in cost-per-lead</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">10M+</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Total impressions generated for clients</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">340%</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Average organic traffic growth in 6 months</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SERVICE DEEP DIVES ===================== -->
+        <section id="marketing-services-detail" style="padding: 0 0 10rem 0;">
+            <div class="container" style="display: flex; flex-direction: column; gap: 10rem;">
+
+                <!-- SEO & Organic -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Growth Channel</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">SEO & Organic <span class="gradient-text">Domination.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">SEO is the compound interest of digital marketing. Every piece of content you rank, every backlink you earn, and every technical optimization you make builds on itself month after month. Our SEO practice starts with deep technical audits: crawl analysis, site speed optimization, schema markup, internal linking architecture, and Core Web Vitals. We fix the foundation before building the content strategy.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Then we build a content engine: keyword research mapped to buyer intent, content calendars aligned with your sales cycle, blog posts, landing pages, and pillar content designed to capture traffic at every stage of the funnel. The result is organic traffic that grows every month without increasing your ad spend.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Technical SEO Audits</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Keyword Research</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Content Strategy</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Link Building</span>
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" alt="Social Media"></div>
-                        <div class="card-info">
-                            <h3>Social Ecosystems</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> SMM Campaign Cycles</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Community Handeling</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Performance Media</li>
-                            </ul>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SEO Strategy" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Paid Ads"></div>
-                        <div class="card-info">
-                            <h3>PPC & Visibility</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Google Ads Specialists</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> ROI Tracking & Analytics</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> High-performance Funnels</li>
-                            </ul>
+                </div>
+
+                <!-- Paid Advertising -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="PPC Advertising" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Creative Content"></div>
-                        <div class="card-info">
-                            <h3>Creative Content</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Corporate Brand Design</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Video Ad Production</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Strategic Copywriting</li>
-                            </ul>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Growth Channel</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">PPC & Paid <span class="gradient-text">Visibility.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">When you need results now, paid advertising is the fastest lever. We manage Google Search, Display, Shopping, and YouTube campaigns alongside Meta (Facebook/Instagram), LinkedIn, and programmatic channels. But we don't just throw money at impressions. Every campaign is structured around your actual cost-per-acquisition targets with clear attribution from first click to close.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">We design complete funnels: awareness campaigns that introduce cold audiences to your brand, retargeting sequences that bring warm visitors back, and conversion campaigns that drive action. Landing pages, ad creative, and copy are all handled in-house because we've learned that the best results come when strategy and execution live under one roof.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Google Ads</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Meta Ads</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Full-funnel Strategy</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">ROI Attribution</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Growth Channel</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Social Media <span class="gradient-text">Ecosystems.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Social media is where trust is built at scale. We manage your entire social presence across Instagram, LinkedIn, Facebook, Twitter, and emerging platforms. Our approach goes beyond just posting content. We build a complete social ecosystem: content calendars, community engagement strategies, influencer partnerships, and performance tracking that connects social activity to actual business outcomes.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our in-house content team produces professional graphics, reels, stories, carousels, and long-form thought leadership pieces. We maintain consistent brand voice, respond to comments and DMs on your behalf, and run monthly performance reviews to continuously refine what's working. Your social presence becomes a living, breathing extension of your brand.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Content Creation</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Community Management</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Influencer Strategy</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Performance Reviews</span>
+                        </div>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" alt="Social Media" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand & Creative -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Brand Design" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Growth Channel</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Brand & Creative <span class="gradient-text">Design.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Your brand is the first thing people judge before they ever interact with your product. We build complete brand identities from the ground up: logo systems, typography, color palettes, brand guidelines, and visual languages that position you as the premium choice in your category. Our design philosophy is that premium aesthetics command premium pricing.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Beyond identity, we produce all the creative assets your marketing needs: ad creatives, video production, pitch decks, email templates, packaging design, and print materials. Everything stays visually consistent because it's all designed by the same team that built your brand. This consistency builds recognition, and recognition builds trust.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Brand Identity</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Video Production</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Ad Creatives</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Strategic Copywriting</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);"><div class="container text-center reveal"><h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2><a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.25rem 4rem; border-radius: 99px;">Start Campaign Now</a></div></section>
+
+        <!-- CTA -->
+        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Start Growing</p>
+                <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1.5rem;">Ready to Turn Visibility into <span class="gradient-text">Revenue?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8;">Let's audit your current marketing stack and identify the three highest-leverage growth opportunities in the next 30 days.</p>
+                <a href="/contact.html" class="btn btn-primary" style="padding: 1.25rem 4rem; border-radius: 99px; font-weight: 700;">Start Campaign Now</a>
+            </div>
+        </section>
     </main>
     <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>

@@ -11,77 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        .home-service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
-            gap: 3rem;
-            padding-top: 4rem;
-        }
-        .bento-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 2.5rem;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            transition: var(--transition);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .bento-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
-        .bento-image-box {
-            width: 200px;
-            height: 200px;
-            border-radius: 24px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .bento-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .bento-card:hover .bento-image-box img {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-        .bento-content { flex: 1; }
-        .bento-content h3 {
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-        .bento-content ul {
-            list-style: none;
-            display: grid;
-            gap: 0.7rem;
-            margin-bottom: 1.5rem;
-        }
-        .bento-content ul li {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-        @media (max-width: 1100px) {
-            .home-service-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 600px) {
-            .bento-card { flex-direction: column; align-items: flex-start; padding: 2rem; }
-            .bento-image-box { width: 100%; height: 200px; }
-        }
-    </style>
 </head>
 <body style="background: #000; color: #fff;">
     <header id="header">
@@ -108,61 +37,316 @@
     </header>
 
     <main>
+        <!-- ===================== HERO ===================== -->
         <section class="hero">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <img src="/src/assets/hero-section.png" alt="Monarchy Branding" class="reveal" style="max-width: 320px; opacity: 0.8; margin-bottom: 2rem;">
                 <h1 class="reveal" style="font-size: 4rem; line-height: 1.1; font-weight: 900;">Hire, Build, and <br><span class="gradient-text">Grow Effortlessly.</span></h1>
+                <p class="reveal" style="color: var(--text-secondary); max-width: 620px; margin: 1.5rem auto 2.5rem; line-height: 1.8; font-size: 1.05rem;">Most companies juggle multiple vendors for hiring, software, and marketing. Monarchy unifies all three under one growth ecosystem so you can focus on what matters: building your empire.</p>
+                <div class="reveal" style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="/services.html" class="btn btn-primary" style="padding: 1rem 3rem; border-radius: 99px; font-weight: 700;">Explore Our Ecosystem</a>
+                    <a href="/contact.html" class="btn btn-outline" style="padding: 1rem 3rem; border-radius: 99px; font-weight: 700;">Free Strategy Call</a>
+                </div>
             </div>
         </section>
 
-        <section id="core-services" style="padding: 10rem 0;">
+        <!-- ===================== THE PROBLEM WE SOLVE ===================== -->
+        <section id="problem-statement" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">The Growth Bottleneck</p>
+                    <h2 style="font-size: 3rem; font-weight: 900; line-height: 1.15; margin-bottom: 2.5rem;">Scaling a business is <span class="gradient-text">brutally hard</span> when everything is disconnected.</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 4rem;">
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.1; font-weight: 900;">01</div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Hiring Takes Months</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">You spend weeks posting job listings, screening resumes, and conducting interviews only to hire wrong-fit candidates who leave within months. The cost of a bad hire runs to 30% of their annual salary. Your team stays understaffed while competitors run ahead.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.1; font-weight: 900;">02</div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Tech Debt Piles Up</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Your website is outdated, your app crashes under load, and you're stuck with legacy systems that nobody wants to maintain. Meanwhile, your digital presence looks like it was built in 2015. Customers leave before they even engage with your product.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1.5rem; opacity: 0.1; font-weight: 900;">03</div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Marketing Burns Cash</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">You're spending thousands on ads with no clear ROI. Your social media is inconsistent, your SEO is non-existent, and your brand messaging doesn't convert. Agencies charge premium rates but deliver reports full of vanity metrics that don't move revenue.</p>
+                    </div>
+                </div>
+                <div class="reveal" style="text-align: center; margin-top: 5rem;">
+                    <p style="color: var(--text-secondary); font-size: 1.15rem; max-width: 700px; margin: 0 auto; line-height: 1.8;">That's why we built Monarchy. <strong style="color: #fff;">One integrated partner</strong> that handles your people, your technology, and your market presence, all synchronized for compounding growth.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== THREE PILLARS ===================== -->
+        <section id="three-pillars" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 6rem;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">The Growth Ecosystem</p>
+                    <h2 style="font-size: 3.2rem; font-weight: 900;">Three Pillars. <span class="gradient-text">One Vision.</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 650px; margin: 1.5rem auto 0; line-height: 1.8;">Every thriving business needs three engines running in sync: the right people, the right technology, and the right visibility. At Monarchy, we don't just provide these services. We orchestrate them into a single, unified growth machine.</p>
+                </div>
+
+                <!-- PILLAR 1: HR -->
+                <div class="story-block reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-bottom: 10rem;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Pillar One</p>
+                        <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">We Find the <span class="gradient-text">People</span> Who Build Empires.</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Hiring isn't just filling a seat. It's placing the right human being in the right position at the right time. Our HR division operates like a precision instrument: we source candidates from deep talent pools, run multi-stage screening that goes beyond resumes, and deliver people who stay, grow, and lead within your organization.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2.5rem; font-size: 1.05rem;">From startup founders looking for their first five hires to enterprises needing 200-person recruitment drives, we handle end-to-end talent acquisition, payroll compliance, legal paperwork, and placement guarantees. You focus on building. We handle the rest.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Talent Sourcing</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Multi-stage Vetting</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Payroll & Compliance</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Placement Guarantees</span>
+                        </div>
+                        <a href="/hr-services.html" class="btn btn-primary" style="font-size: 0.9rem;">Explore HR Solutions <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i></a>
+                    </div>
+                    <div class="glass glow-card" style="padding: 3rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 280px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1573161158521-798aa609d0bd?auto=format&fit=crop&q=80&w=800" alt="HR Solutions" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">500+</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Placements completed across industries</p>
+                            </div>
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">92%</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Candidate retention rate after 12 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PILLAR 2: IT -->
+                <div class="story-block reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-bottom: 10rem;">
+                    <div class="glass glow-card" style="padding: 3rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 280px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="IT Solutions" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">50+</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Products shipped to production</p>
+                            </div>
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">99.9%</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Uptime across hosted solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Pillar Two</p>
+                        <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">We Build the <span class="gradient-text">Technology</span> That Powers Growth.</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Your website is your storefront. Your app is your delivery system. Your CRM is your memory. We engineer all of it. Our development teams build high-performance web platforms using Next.js and React, native Android and iOS applications, custom enterprise ERP and CRM systems, and AI-powered automation that eliminates manual bottlenecks.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2.5rem; font-size: 1.05rem;">We don't just write code. We architect solutions that scale from 100 users to 100,000 users without breaking. Every project ships with documentation, testing, and a dedicated support window because we believe great software is software that actually works in the real world.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Web Development</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Mobile Apps</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">AI & Automation</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Enterprise ERP/CRM</span>
+                        </div>
+                        <a href="/it-services.html" class="btn btn-primary" style="font-size: 0.9rem;">Explore IT Solutions <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- PILLAR 3: Marketing -->
+                <div class="story-block reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Pillar Three</p>
+                        <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">We Drive the <span class="gradient-text">Visibility</span> That Fills Pipelines.</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">A great product with no visibility is a secret. Our marketing division makes sure the world knows your name. We run full-spectrum digital growth programs covering SEO strategy that compounds organic traffic month over month, precision-targeted Google and Meta ad campaigns that turn cold audiences into paying customers, and social media ecosystems that build community and trust.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2.5rem; font-size: 1.05rem;">But we go beyond just running campaigns. We design your brand identity, create high-converting landing pages, produce video content for ads, and build content strategies that position you as the authority in your space. Every rupee spent is tracked to real revenue, not vanity metrics.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">SEO & Organic</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">PPC & Lead Gen</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Brand & Creative</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Social Media</span>
+                        </div>
+                        <a href="/digital-marketing.html" class="btn btn-primary" style="font-size: 0.9rem;">Explore Growth Engine <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i></a>
+                    </div>
+                    <div class="glass glow-card" style="padding: 3rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 280px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fce?auto=format&fit=crop&q=80&w=800" alt="Digital Marketing" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">3.2x</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Average ROAS for our managed campaigns</p>
+                            </div>
+                            <div style="padding: 1.5rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; background: rgba(255,255,255,0.02);">
+                                <div style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem;">10M+</div>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Impressions generated across channels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== HOW WE WORK (Methodology) ===================== -->
+        <section id="methodology" style="padding: 10rem 0; background: radial-gradient(ellipse at top center, rgba(255,255,255,0.03) 0%, transparent 50%);">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 6rem;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Our Process</p>
+                    <h2 style="font-size: 3rem; font-weight: 900;">How We Turn Chaos <br>Into <span class="gradient-text">Compounding Growth.</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 650px; margin: 1.5rem auto 0; line-height: 1.8;">We don't randomly execute tasks. Every engagement follows a battle-tested methodology that maps your goals to measurable outcomes. Here's exactly how it works when you partner with Monarchy.</p>
+                </div>
+                <div class="process-timeline" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: left;">
+                        <div style="width: 3rem; height: 3rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 2rem;">1</div>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Deep Discovery</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">We start with an intensive strategy session to understand your business model, growth targets, current bottlenecks, and competitive landscape. No two businesses are the same, and we never apply cookie-cutter solutions.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: left;">
+                        <div style="width: 3rem; height: 3rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 2rem;">2</div>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Custom Blueprint</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Based on discovery, we build a comprehensive growth blueprint. This includes hiring roadmaps, technology architecture plans, marketing channel strategies, and clear milestone timelines with accountability at each stage.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: left;">
+                        <div style="width: 3rem; height: 3rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 2rem;">3</div>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Precision Execution</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Our specialized teams execute across all three pillars simultaneously. Developers build while recruiters source and marketers launch. Weekly sprints, transparent reporting, and direct Slack access keep you in the loop at all times.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: left;">
+                        <div style="width: 3rem; height: 3rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 2rem;">4</div>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 800;">Scale & Optimize</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Growth isn't a one-time event. We continuously optimize your hiring pipeline, refine your tech stack, and scale marketing spend based on real performance data. Monthly strategy reviews ensure we're always moving the needle forward.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== WHY MONARCHY ===================== -->
+        <section id="why-monarchy" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">The Monarchy Advantage</p>
+                        <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">Why Businesses Choose <span class="gradient-text">Us Over Agencies.</span></h2>
+                        <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem; margin-bottom: 2rem;">Agencies give you a team. We give you a synchronized growth engine. The difference is that when your marketing generates leads, your HR team is already sourcing the people to handle the workload, and your tech is ready to serve the demand. Everything compounds.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem;">We operate as an extension of your founding team with full transparency, direct communication channels, and shared accountability for outcomes, not outputs.</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="glass glow-card" style="padding: 2rem; border-radius: 20px;">
+                            <i data-lucide="puzzle" size="28" style="opacity: 0.6; margin-bottom: 1.25rem; display: block;"></i>
+                            <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 700;">Integrated Model</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7;">HR, IT, and Marketing work as one synchronized unit. No silos, no miscommunication, no duplicate work.</p>
+                        </div>
+                        <div class="glass glow-card" style="padding: 2rem; border-radius: 20px;">
+                            <i data-lucide="target" size="28" style="opacity: 0.6; margin-bottom: 1.25rem; display: block;"></i>
+                            <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 700;">Revenue-First Metrics</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7;">We track real business outcomes: revenue generated, positions filled, and products shipped. Not impressions and likes.</p>
+                        </div>
+                        <div class="glass glow-card" style="padding: 2rem; border-radius: 20px;">
+                            <i data-lucide="shield-check" size="28" style="opacity: 0.6; margin-bottom: 1.25rem; display: block;"></i>
+                            <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 700;">Founder-Grade Access</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7;">Direct Slack channels, weekly calls with leadership, and full project transparency. You're never talking to an account manager.</p>
+                        </div>
+                        <div class="glass glow-card" style="padding: 2rem; border-radius: 20px;">
+                            <i data-lucide="trending-up" size="28" style="opacity: 0.6; margin-bottom: 1.25rem; display: block;"></i>
+                            <h4 style="font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 700;">Compounding Returns</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7;">Our integrated model means every improvement in one area accelerates the other two. Growth compounds, not adds.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TRAINING PREVIEW ===================== -->
+        <section id="training-preview" style="padding: 10rem 0; background: radial-gradient(ellipse at bottom center, rgba(255,255,255,0.03) 0%, transparent 50%);">
+            <div class="container">
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 3rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 300px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Training Programs" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Career Engineering</p>
+                        <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">We Don't Just Hire Talent. <span class="gradient-text">We Create It.</span></h2>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our training division transforms freshers and career-switchers into industry-ready professionals through real-world projects, one-on-one mentorship from working professionals, and a direct pipeline to placement within our client network.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2.5rem; font-size: 1.05rem;">This isn't a coding bootcamp. It's a career engineering program designed to build professionals who can contribute from Day 1. Every trainee works on actual deliverables, receives personalized feedback, and graduates with a portfolio that speaks for itself.</p>
+                        <a href="/training.html" class="btn btn-primary" style="font-size: 0.9rem;">Explore Training Programs <i data-lucide="arrow-right" style="width: 16px; height: 16px; margin-left: 0.5rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== TESTIMONIALS ===================== -->
+        <section id="testimonials" style="padding: 10rem 0;">
             <div class="container">
                 <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
-                    <h2 style="font-size: 3.2rem; font-weight: 900;">Integrated <span class="gradient-text">Powerhouse.</span></h2>
-                    <p style="color: var(--text-secondary); max-width: 600px; margin: 1.5rem auto 0;">The only growth ecosystem that synchronizes your talent, tech, and market visibility.</p>
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Client Stories</p>
+                    <h2 style="font-size: 2.8rem; font-weight: 900;">Trusted by Teams <span class="gradient-text">That Ship.</span></h2>
                 </div>
-                <div class="home-service-grid">
-                    <!-- IT -->
-                    <div class="bento-card reveal glow-card">
-                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="IT"></div>
-                        <div class="bento-content">
-                            <h3>IT Solutions</h3>
-                            <ul><li>• Modern SaaS</li><li>• Mobile Ecosystems</li><li>• AI Integration</li></ul>
-                            <a href="/it-services.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
-                        </div>
+            </div>
+            <div class="marquee">
+                <div class="marquee-track">
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Monarchy rebuilt our entire web platform and simultaneously ran our first paid campaign. Within 3 months, traffic was up 340% and we had 8 new hires through their HR pipeline. The integrated model is game-changing."</p>
+                        <div class="marquee-author"><span class="marquee-name">Arjun Mehta</span><span class="marquee-role">Founder, TechScale Labs</span></div>
                     </div>
-                    <!-- HR -->
-                    <div class="bento-card reveal glow-card">
-                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1573161158521-798aa609d0bd?auto=format&fit=crop&q=80&w=800" alt="HR"></div>
-                        <div class="bento-content">
-                            <h3>HR Solutions</h3>
-                            <ul><li>• Candidate Vetting</li><li>• Talent Sourcing</li><li>• Full Compliance</li></ul>
-                            <a href="/hr-services.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
-                        </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"We burned through two agencies before finding Monarchy. The difference is that they actually care about revenue, not just outputs. Our cost-per-lead dropped 60% in the first quarter and they sourced three senior developers we couldn't find on our own."</p>
+                        <div class="marquee-author"><span class="marquee-name">Priya Sundaram</span><span class="marquee-role">COO, NexaVentures</span></div>
                     </div>
-                    <!-- Marketing -->
-                    <div class="bento-card reveal glow-card">
-                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fce?auto=format&fit=crop&q=80&w=800" alt="Marketing"></div>
-                        <div class="bento-content">
-                            <h3>Digital Growth</h3>
-                            <ul><li>• PPC Lead Gen</li><li>• SEO Strategy</li><li>• Brand Design</li></ul>
-                            <a href="/digital-marketing.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
-                        </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Their training program turned four freshers into contributing team members within weeks. The quality of talent they produce through their career engineering program is significantly above what we see from traditional recruitment channels."</p>
+                        <div class="marquee-author"><span class="marquee-name">Vikram Joshi</span><span class="marquee-role">CTO, CloudMatrix</span></div>
+                    </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Having one partner handle our hiring, our app development, and our marketing sounds risky on paper. In practice, it's the best operational decision we've made. Everything moves faster when there are no communication gaps between teams."</p>
+                        <div class="marquee-author"><span class="marquee-name">Sneha Kapoor</span><span class="marquee-role">Founder, UrbanPulse</span></div>
+                    </div>
+                    <!-- Duplicate for seamless scrolling -->
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Monarchy rebuilt our entire web platform and simultaneously ran our first paid campaign. Within 3 months, traffic was up 340% and we had 8 new hires through their HR pipeline. The integrated model is game-changing."</p>
+                        <div class="marquee-author"><span class="marquee-name">Arjun Mehta</span><span class="marquee-role">Founder, TechScale Labs</span></div>
+                    </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"We burned through two agencies before finding Monarchy. The difference is that they actually care about revenue, not just outputs. Our cost-per-lead dropped 60% in the first quarter and they sourced three senior developers we couldn't find on our own."</p>
+                        <div class="marquee-author"><span class="marquee-name">Priya Sundaram</span><span class="marquee-role">COO, NexaVentures</span></div>
+                    </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Their training program turned four freshers into contributing team members within weeks. The quality of talent they produce through their career engineering program is significantly above what we see from traditional recruitment channels."</p>
+                        <div class="marquee-author"><span class="marquee-name">Vikram Joshi</span><span class="marquee-role">CTO, CloudMatrix</span></div>
+                    </div>
+                    <div class="marquee-card">
+                        <p class="marquee-text">"Having one partner handle our hiring, our app development, and our marketing sounds risky on paper. In practice, it's the best operational decision we've made. Everything moves faster when there are no communication gaps between teams."</p>
+                        <div class="marquee-author"><span class="marquee-name">Sneha Kapoor</span><span class="marquee-role">Founder, UrbanPulse</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Final CTA -->
+        <!-- ===================== FINAL CTA ===================== -->
         <section id="cta" style="padding: 12rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
             <div class="container text-center reveal">
-                <h2 style="font-size: 3.2rem; font-weight: 900;">Scale Your <span class="gradient-text">Empire Today.</span></h2>
-                <div style="margin-top: 4rem;"><a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4.5rem; border-radius: 99px; font-weight: 700;">Join the Monarchy</a></div>
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Start Your Growth Journey</p>
+                <h2 style="font-size: 3.2rem; font-weight: 900; margin-bottom: 1.5rem;">Stop Scaling in <span class="gradient-text">Fragments.</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8; font-size: 1.05rem;">Schedule a free 30-minute strategy call with our growth team. We'll audit your current setup, identify the biggest leverage points, and show you exactly how Monarchy can accelerate your next phase of growth.</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4.5rem; border-radius: 99px; font-weight: 700;">Book Free Strategy Call</a>
+                    <a href="/services.html" class="btn btn-outline" style="padding: 1.2rem 4.5rem; border-radius: 99px; font-weight: 700;">View All Services</a>
+                </div>
             </div>
         </section>
     </main>
-    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+                <p>The integrated growth engine for ambitious businesses. HR, IT, and Marketing synchronized under one roof.</p>
+            </div>
+            <div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div>
+        </div>
+    </footer>
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>

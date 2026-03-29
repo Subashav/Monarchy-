@@ -3,89 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Solutions | MONARCHY</title>
+    <title>HR Solutions | MONARCHY - Talent Acquisition & Workforce Engineering</title>
+    <meta name="description" content="End-to-end HR solutions: talent sourcing, multi-stage screening, payroll compliance, and placement guarantees. We find the people who build empires.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        .premium-container { padding: 4rem 0; }
-        .service-bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(550px, 1fr)); gap: 3rem; }
-        .premium-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 32px; padding: 2.5rem; display: flex; gap: 2.5rem; align-items: center; transition: var(--transition); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); }
-        .premium-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); }
-        .card-image-box { width: 220px; height: 220px; border-radius: 24px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-image-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .premium-card:hover .card-image-box img { transform: scale(1.1); opacity: 1; }
-        .card-info { flex: 1; }
-        .card-info h3 { font-size: 1.8rem; margin-bottom: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
-        .card-info ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-        .card-info ul li { color: var(--text-secondary); font-size: 1rem; display: flex; align-items: center; gap: 0.8rem; }
-        @media (max-width: 1100px) { .service-bento-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 600px) { .premium-card { flex-direction: column; align-items: flex-start; padding: 2rem; } .card-image-box { width: 100%; height: 200px; } }
-    </style>
 </head>
 <body style="background: #000; color: #fff;">
-    <header id="header"><div class="container nav"><a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/services.html">Services</a></li><li><a href="/training.html">Training</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></header>
+    <header id="header">
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="active dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering & Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <section class="hero" style="min-height: 50vh;">
+        <!-- HERO -->
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; opacity: 0.5; margin-bottom: 1.5rem;">Workforce Engineering</p>
                 <h1 class="reveal" style="font-size: 4rem; font-weight: 900;">Human <br><span class="gradient-text">Capital.</span></h1>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">The right people at the right time change everything. We operate a precision talent engine that sources, screens, and places candidates who stay, grow, and lead.</p>
             </div>
         </section>
-        <section class="premium-container">
+
+        <!-- ===================== THE PHILOSOPHY ===================== -->
+        <section id="hr-philosophy" style="padding: 8rem 0;">
             <div class="container">
-                <div class="service-bento-grid">
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Recruiting"></div>
-                        <div class="card-info">
-                            <h3>Recruiting</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Sourcing Specialists</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Vetting Lifecycles</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Placement Support</li>
-                            </ul>
+                <div class="reveal" style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 6rem;">
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">Hiring Shouldn't Be a <span class="gradient-text">Bottleneck.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.1rem;">A bad hire costs you 30% of that employee's annual salary. A vacant position costs you even more in lost productivity, team burnout, and missed market opportunities. Our HR division exists to eliminate both problems. We've built a multi-stage screening process that goes far beyond resume matching, evaluating candidates for technical skill, cultural fit, long-term growth potential, and temperament alignment. The result is placements that stick.</p>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 4rem;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">500+</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Successful placements completed</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">92%</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">12-month retention rate</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">14 days</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Average time to first shortlist</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">25+</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Industries served across India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SERVICE DEEP DIVES ===================== -->
+        <section id="hr-services-detail" style="padding: 0 0 10rem 0;">
+            <div class="container" style="display: flex; flex-direction: column; gap: 10rem;">
+
+                <!-- Recruitment -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Service</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">End-to-End <span class="gradient-text">Recruitment.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">From junior associates to C-suite executives, our recruitment process covers the entire hiring lifecycle. We start by deeply understanding your business: not just the job description, but the team dynamics, the growth trajectory, and the cultural DNA that makes your organization unique. This context is what separates a resume match from a true fit.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our sourcing network spans job boards, professional communities, educational institutions, and our own proprietary talent pool built over years of successful placements. Every candidate goes through at least three screening stages: skills assessment, behavioral interview, and a culture alignment evaluation. You receive a shortlist of pre-vetted candidates within 14 days, complete with detailed candidate profiles and our recommendation rationale.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Deep Sourcing</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Multi-stage Screening</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Culture Fit Assessment</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Placement Guarantees</span>
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800" alt="Compliance"></div>
-                        <div class="card-info">
-                            <h3>Operations</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Payroll Processing</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Legal & Tax Support</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Compliance Audits</li>
-                            </ul>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" alt="Recruitment" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Consulting"></div>
-                        <div class="card-info">
-                            <h3>Consulting</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> HR Strategy Blueprint</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Talent Pipeline Architecture</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Cultural Design</li>
-                            </ul>
+                </div>
+
+                <!-- Payroll & Compliance -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800" alt="Payroll and Compliance" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
                     </div>
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Readiness"></div>
-                        <div class="card-info">
-                            <h3>Readiness</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Candidate Readiness</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Direct Select Mastery</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Legal Paperwork</li>
-                            </ul>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Service</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Payroll & Statutory <span class="gradient-text">Compliance.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Payroll errors and compliance violations are the silent killers of growing companies. One missed PF contribution, one misclassified contractor, or one late tax filing can trigger audits, fines, and legal exposure that derails your growth. We handle all of it so you never have to think about it.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our payroll operations team manages salary processing, tax deductions (TDS), Provident Fund, ESI, Professional Tax, and all statutory filings. We handle employee onboarding documentation, exit formalities, full and final settlement calculations, and annual compliance audits. Every process is documented, auditable, and executed on time, every month, without exception.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Salary Processing</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">PF & ESI Management</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Tax Compliance</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Legal Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR Consulting -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Service</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Strategic HR <span class="gradient-text">Consulting.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Great companies aren't built by hiring in isolation. They're built by designing the organizational architecture that attracts, retains, and develops the best talent in the market. Our consulting practice works with founders and HR leaders to build the systems, policies, and cultural frameworks that turn your company into a talent magnet.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">We help you define your employer value proposition, design compensation structures that compete in the market, build performance management frameworks, create succession planning pipelines, and develop employee engagement programs that reduce attrition. Whether you're a 10-person startup building your first HR playbook or a 500-person company restructuring for the next growth phase, we deliver blueprints that work.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Org Design</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Compensation Strategy</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Performance Frameworks</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Culture Architecture</span>
+                        </div>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="HR Consulting" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campus & Volume Hiring -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Volume Hiring" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Service</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Volume & Campus <span class="gradient-text">Hiring.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">When you need to staff up fast, for a new project launch, seasonal demand, or rapid expansion, our volume hiring engine scales to match. We've run campus drives across multiple colleges simultaneously, managed walk-in interview events for hundreds of candidates, and staffed entire departments from zero to full strength within weeks.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our volume hiring process doesn't sacrifice quality for speed. We pre-screen candidates using standardized assessment frameworks, conduct batch interviews with consistent evaluation criteria, and deliver ranked shortlists with clear hiring recommendations. Our training division also feeds directly into this pipeline: candidates who complete our career engineering programs are interview-ready and pre-assessed.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Campus Drives</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Walk-in Events</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Batch Assessments</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Training Pipeline</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);"><div class="container text-center reveal"><h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2><a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.25rem 4rem; border-radius: 99px;">Hire Now</a></div></section>
+
+        <!-- CTA -->
+        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Start Hiring</p>
+                <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1.5rem;">Ready to Build Your <span class="gradient-text">Dream Team?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8;">Share your hiring requirements and we'll have a curated shortlist of pre-vetted candidates ready within 14 business days.</p>
+                <a href="/contact.html" class="btn btn-primary" style="padding: 1.25rem 4rem; border-radius: 99px; font-weight: 700;">Hire with Monarchy</a>
+            </div>
+        </section>
     </main>
     <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>

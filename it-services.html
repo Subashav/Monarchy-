@@ -3,177 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Services | MONARCHY</title>
+    <title>IT Services | MONARCHY - Software Engineering & Digital Infrastructure</title>
+    <meta name="description" content="From web platforms and mobile apps to AI automation and enterprise systems, Monarchy's IT division builds the digital infrastructure that powers growth.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        .premium-container { padding: 4rem 0; }
-        .service-bento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
-            gap: 3rem;
-        }
-        .premium-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 2.5rem;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            transition: var(--transition);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .premium-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
-        .card-image-box {
-            width: 220px;
-            height: 220px;
-            border-radius: 24px;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .premium-card:hover .card-image-box img {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-        .card-info { flex: 1; }
-        .card-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-        .card-info ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        .card-info ul li {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .card-info ul li i {
-            color: #fff;
-            opacity: 0.5;
-        }
-        @media (max-width: 1100px) {
-            .service-bento-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 600px) {
-            .premium-card { flex-direction: column; align-items: flex-start; padding: 2rem; }
-            .card-image-box { width: 100%; height: 200px; }
-        }
-    </style>
 </head>
 <body style="background: #000; color: #fff;">
     <header id="header">
-        <div class="container nav">
+        <div class="container-wide nav">
             <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="active dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering & Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" style="min-height: 50vh;">
+        <!-- HERO -->
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; opacity: 0.5; margin-bottom: 1.5rem;">Infrastructure Engineering</p>
                 <h1 class="reveal" style="font-size: 4rem; font-weight: 900;">Technical <br><span class="gradient-text">Mastery.</span></h1>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">We don't build websites. We build the digital nervous system that makes your business think, scale, and compete in a world that moves at the speed of code.</p>
             </div>
         </section>
 
-        <section id="it-main-grid" class="premium-container">
+        <!-- ===================== THE PHILOSOPHY ===================== -->
+        <section id="it-philosophy" style="padding: 8rem 0;">
             <div class="container">
-                <div class="service-bento-grid">
-                    <!-- Web Engineering -->
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="Web Engineering">
-                        </div>
-                        <div class="card-info">
-                            <h3>Web Tech</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Next.js (Frontend)</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Node.js (Backend)</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Scalable API Design</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Mobile Apps -->
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box">
-                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile Apps">
-                        </div>
-                        <div class="card-info">
-                            <h3>Mobile Apps</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Android & iOS Native</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Multi-platform Builds</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Cloud Synchronization</li>
-                            </ul>
+                <div class="reveal" style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 6rem;">
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">Software Should Be a <span class="gradient-text">Growth Multiplier.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.1rem;">Most development agencies write code. We architect growth infrastructure. The difference is that every system we build is designed from day one to handle 10x your current load, integrate with the rest of your business operations, and generate measurable ROI. We think like founders, not freelancers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SERVICE DEEP DIVES ===================== -->
+        <section id="it-services-detail" style="padding: 0 0 10rem 0;">
+            <div class="container" style="display: flex; flex-direction: column; gap: 10rem;">
+
+                <!-- Web Engineering -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Capability</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Full-Stack Web <span class="gradient-text">Engineering.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Your web platform is your most important business asset. It's where customers discover you, evaluate you, and decide to trust you. We build high-performance web applications using Next.js and React on the frontend, with Node.js backend architectures that handle everything from simple landing pages to complex SaaS dashboards with real-time data streams.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Every build comes with responsive design across all devices, server-side rendering for SEO performance, analytics integration for conversion tracking, and a deployment pipeline that pushes updates without downtime. We also handle domain configuration, SSL, CDN setup, and hosting optimization so you never have to think about infrastructure.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Next.js / React</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Node.js APIs</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">SSR & SEO</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">CI/CD Pipelines</span>
                         </div>
                     </div>
-                    <!-- UI/UX -->
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box">
-                            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" alt="UI/UX Design">
-                        </div>
-                        <div class="card-info">
-                            <h3>Design & UX</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> UX Research Lifecycle</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Interface Prototypes</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> System Architecture</li>
-                            </ul>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="Web Engineering" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
                     </div>
-                    <!-- AI -->
-                    <div class="premium-card reveal glow-card">
-                        <div class="card-image-box">
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI & ML">
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile Apps" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
                         </div>
-                        <div class="card-info">
-                            <h3>AI & Machine</h3>
-                            <ul>
-                                <li><i data-lucide="arrow-right" size="16"></i> Custom LLM Pipelines</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> ML Deep Learning</li>
-                                <li><i data-lucide="arrow-right" size="16"></i> Agent Development</li>
-                            </ul>
+                    </div>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Capability</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Native Mobile <span class="gradient-text">Applications.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Mobile is where your users actually live. We build native Android and iOS applications as well as cross-platform solutions using React Native and Flutter that deliver smooth, hardware-optimized experiences. From consumer-facing apps to internal operations tools, we build mobile products that people actually want to use.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Every mobile build includes push notification systems, cloud synchronization, offline capability where needed, analytics tracking, and crash reporting. We handle the full lifecycle from ideation through app store submission and ongoing maintenance cycles. Your app stays updated, performs reliably, and scales with your user base.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Android / iOS</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">React Native</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Cloud Sync</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">App Store Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Capability</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">Design & User <span class="gradient-text">Experience.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Beautiful interfaces win trust. Intuitive flows drive retention. Our design practice starts with deep user research: understanding who your users are, what they're trying to accomplish, and where friction exists in their journey. We translate those insights into wireframes, high-fidelity prototypes, and production-ready design systems.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">We design with conversion in mind. Every color choice, layout decision, and interaction pattern is deliberate, backed by data and best practices from designing dozens of products across industries. The result is interfaces that don't just look premium but actually perform, reducing drop-off rates, increasing time-on-site, and driving the actions that matter to your business.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">UX Research</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Hi-Fi Prototyping</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Design Systems</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Conversion Design</span>
+                        </div>
+                    </div>
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800" alt="UI/UX Design" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Machine Learning -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;">
+                    <div class="glass glow-card" style="padding: 2.5rem; border-radius: 32px; order: 1;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 350px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI & ML" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                    <div style="order: 2;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Core Capability</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem;">AI & Machine <span class="gradient-text">Intelligence.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">AI isn't a buzzword at Monarchy; it's a tool we deploy to solve real business problems. We build custom LLM pipelines for content generation and customer support automation, machine learning models for prediction and classification, and intelligent agent systems that handle repetitive workflows so your team can focus on what requires human judgment.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">Our AI implementations are always practical, not theoretical. We integrate directly into your existing systems: connecting to your CRM, your support stack, your data pipelines. Every AI project ships with monitoring dashboards, human-in-the-loop safeguards, and clear documentation so your team understands and trusts the system.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Custom LLM Pipelines</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">ML Models</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Agent Systems</span>
+                            <span style="padding: 0.5rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; font-size: 0.8rem; color: var(--text-secondary);">Process Automation</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);"><div class="container text-center reveal"><h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2><a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.25rem 4rem; border-radius: 99px;">Start Engineering Now</a></div></section>
+        <!-- ===================== OUR TECH STANDARDS ===================== -->
+        <section id="tech-standards" style="padding: 10rem 0; background: radial-gradient(ellipse at top center, rgba(255,255,255,0.03) 0%, transparent 50%);">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 5rem;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Engineering Standards</p>
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">How We Build <span class="gradient-text">Differently.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem;">We follow engineering practices borrowed from the best product companies in the world. Here's what comes standard with every Monarchy build.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px;">
+                        <i data-lucide="git-branch" size="28" style="opacity: 0.5; margin-bottom: 1.5rem; display: block;"></i>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Version-Controlled Everything</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Every project lives in Git with proper branching strategies, code review workflows, and automated CI/CD pipelines. Nothing goes to production without peer review and automated tests.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px;">
+                        <i data-lucide="file-text" size="28" style="opacity: 0.5; margin-bottom: 1.5rem; display: block;"></i>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Full Documentation</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Every system ships with comprehensive documentation: architecture diagrams, API reference docs, deployment guides, and onboarding materials so your team or future developers can extend the work without dependency on us.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px;">
+                        <i data-lucide="shield" size="28" style="opacity: 0.5; margin-bottom: 1.5rem; display: block;"></i>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">90-Day Support Window</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Every project includes a 90-day post-launch support period. Bug fixes, performance optimizations, and minor feature adjustments are handled at no additional cost. We stand behind our work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Start Building</p>
+                <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1.5rem;">Ready for <span class="gradient-text">Technical Dominance?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8;">Tell us about your project. We'll scope it, plan it, and deliver a fixed-price proposal within 48 hours.</p>
+                <a href="/contact.html" class="btn btn-primary" style="padding: 1.25rem 4rem; border-radius: 99px; font-weight: 700;">Start Engineering Now</a>
+            </div>
+        </section>
     </main>
     <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>

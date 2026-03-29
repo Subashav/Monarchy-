@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | MONARCHY</title>
+    <title>About Us | MONARCHY - The Growth Company</title>
+    <meta name="description" content="Monarchy is the integrated growth engine for ambitious businesses. We synchronize IT, HR, and Marketing under one roof to deliver compounding results.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -12,39 +13,122 @@
 </head>
 <body style="background: #000; color: #fff;">
     <header id="header">
-        <div class="container nav">
-            <a href="/index.html" class="logo">
-                <img src="/logo.png" alt="Monarchy Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html" class="active">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering & Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html" class="active">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" style="min-height: 50vh;">
+        <!-- HERO -->
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <h1 class="reveal">The <br><span class="gradient-text">Growth Company.</span></h1>
-                <p class="reveal">Driven by ambition. Engineered for success. We bridge the gap between technology and human potential.</p>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">We're not an agency. We're not a consultancy. We're the integrated growth engine that ambitious businesses partner with when they're done growing in fragments.</p>
             </div>
         </section>
 
-        <section id="about-details" style="padding: 10rem 0;">
+        <!-- ===================== THE ORIGIN STORY ===================== -->
+        <section id="origin-story" style="padding: 10rem 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div class="reveal">
-                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Our <span class="gradient-text">Mission.</span></h2>
-                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">To accelerate business growth by synchronizing technical innovation with human talent. We are dedicated to providing enterprise-grade IT, Marketing, and HR solutions to help brand-owners scale.</p>
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-bottom: 8rem;">
+                    <div>
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Our Story</p>
+                        <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">Born from a <span class="gradient-text">Simple Frustration.</span></h2>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">Monarchy started because we saw the same pattern over and over: growing businesses struggling to coordinate three critical functions. They'd hire one agency for their website, another for marketing, a third for recruitment, and then spend more time managing vendor communications than actually building their business.</p>
+                        <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem;">The timelines never aligned. The marketing team launched campaigns before the website was ready. The HR team hired salespeople before marketing had generated any leads. Every department was optimizing independently, but the company as a whole was stalling. We built Monarchy to solve that exact problem: one team, one strategy, synchronized execution across all three growth pillars.</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 3rem; border-radius: 32px;">
+                        <div style="border-radius: 20px; overflow: hidden; height: 380px; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Monarchy Team" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 8rem;">
+                    <div class="glass glow-card" style="padding: 3.5rem; border-radius: 28px;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Our Mission</p>
+                        <h3 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 1.5rem;">Accelerate Business Growth Through <span class="gradient-text">Synchronized Excellence.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1rem;">We exist to eliminate the coordination overhead that slows growing businesses. By bringing IT, HR, and Marketing under one roof with shared objectives and unified strategy, we enable our clients to move faster, spend more efficiently, and compound their growth month over month instead of starting from scratch with every initiative.</p>
+                    </div>
+                    <div class="glass glow-card" style="padding: 3.5rem; border-radius: 28px;">
+                        <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Our Vision</p>
+                        <h3 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 1.5rem;">Become the Default Growth Partner for <span class="gradient-text">Ambitious Companies.</span></h3>
+                        <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1rem;">We want to build a world where the phrase "growth partner" means something real. Not a vendor you manage, but a team that operates as an extension of your company. Our vision is to be the first call every ambitious founder makes when they're ready to scale: one conversation that puts three powerful engines in motion simultaneously.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== WHAT WE BELIEVE ===================== -->
+        <section id="beliefs" style="padding: 10rem 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 50%);">
+            <div class="container">
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 5rem;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Our Principles</p>
+                    <h2 style="font-size: 2.8rem; font-weight: 900;">What We <span class="gradient-text">Stand For.</span></h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;">
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem; font-weight: 800;">Outcomes Over Outputs</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">We don't measure success by deliverables shipped or hours logged. We measure success by the business outcomes our clients achieve: revenue generated, positions filled, products launched, and market share captured. If the numbers don't move, we haven't done our job.</p>
                     </div>
                     <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1rem;">The Monarchy Advantage</h3>
-                        <p style="color: var(--text-secondary);">End-to-end partnership model. Metric-first growth strategies. Direct placement accountability.</p>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem; font-weight: 800;">Radical Transparency</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">No hidden fees, no inflated timelines, no vanity metrics. Every client gets full visibility into our work: shared project boards, weekly progress reports, and direct access to the people doing the work. We believe trust is built through transparency, not sales presentations.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem; font-weight: 800;">Long-term Partnership</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">We're not interested in one-off projects. We partner with companies for the long haul because real growth is compounding. The longer we work together, the deeper our understanding of your business, the smarter our strategies, and the faster your results. Our average client relationship lasts over 18 months.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1.25rem; font-weight: 800;">Build to Empower</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Everything we build is designed to make you more independent, not more dependent. Full documentation, knowledge transfer, and training are standard. Our goal is to build your internal capability while driving immediate results. When you outgrow our help, we've succeeded.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== THE MONARCHY ADVANTAGE ===================== -->
+        <section id="advantage" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="reveal" style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 5rem;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Why Work With Us</p>
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">The Monarchy <span class="gradient-text">Difference.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.1rem;">When you partner with Monarchy, you're not hiring three agencies. You're plugging into a single, high-performance growth engine that has already solved the coordination problem most companies never figure out.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;">1</div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">One Strategy Room</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">IT, Marketing, and HR all share the same war room. Decisions are made with complete context, timelines are synchronized, and resources are allocated dynamically based on what matters most right now.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;">2</div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Founder-Grade Access</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">You talk directly to the people doing the work, not account managers or project coordinators. Direct Slack channels, weekly calls, and complete project transparency are standard for every engagement.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 24px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;">3</div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Compounding Returns</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">Each improvement in one area automatically accelerates the other two. Better tech improves conversions. Better marketing generates demand. Better hiring handles growth. The result is exponential, not linear.</p>
                     </div>
                 </div>
             </div>
@@ -53,8 +137,13 @@
         <!-- CTA -->
         <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
             <div class="container text-center reveal">
-                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2>
-                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">View Services</a>
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Join Us</p>
+                <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1.5rem;">Ready for <span class="gradient-text">Real Growth?</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8;">We take on a limited number of partners each quarter to ensure every client gets the depth of attention they deserve. Let's talk about whether we're the right fit.</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4rem; border-radius: 99px; font-weight: 700;">Book Strategy Call</a>
+                    <a href="/services.html" class="btn btn-outline" style="padding: 1.2rem 4rem; border-radius: 99px; font-weight: 700;">View Services</a>
+                </div>
             </div>
         </section>
     </main>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | MONARCHY</title>
+    <title>Contact Us | MONARCHY - Start Your Growth Journey</title>
+    <meta name="description" content="Book a free strategy call with Monarchy. We'll audit your current setup, identify growth opportunities, and show you exactly how we can accelerate your next phase.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -12,57 +13,119 @@
 </head>
 <body style="background: #000; color: #fff;">
     <header id="header">
-        <div class="container nav">
-            <a href="/index.html" class="logo">
-                <img src="/logo.png" alt="Monarchy Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html" class="active">Contact</a></li>
-            </ul>
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering & Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+            </div>
         </div>
     </header>
 
     <main>
+        <!-- HERO -->
         <section class="hero" style="min-height: 50vh;">
             <div class="hero-visual"><div id="contact-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <h1 class="reveal">Let's <br><span class="gradient-text">Connect.</span></h1>
-                <p class="reveal">Ready to scale or start your career journey? Speak with our growth strategists today.</p>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">Whether you're scaling your team, launching a product, or breaking into new markets, the first step is a conversation. No pitch deck, no pressure, just a genuine strategy discussion about where you are and where you want to go.</p>
             </div>
         </section>
 
+        <!-- ===================== CONTACT SECTION ===================== -->
         <section id="contact-details" style="padding: 10rem 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;">
+                    <!-- Left: What to expect -->
                     <div class="reveal">
-                        <h2 style="font-size: 2.2rem; margin-bottom: 2rem;">Work with <span class="gradient-text">Monarchy.</span></h2>
-                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 2rem;">
-                            <li style="display: flex; gap: 1rem; align-items: center;">
-                                <i data-lucide="mail" size="24"></i>
-                                <span style="font-size: 1.1rem; color: var(--text-secondary);">contact@monarchy.company</span>
-                            </li>
-                            <li style="display: flex; gap: 1rem; align-items: center;">
-                                <i data-lucide="map-pin" size="24"></i>
-                                <span style="font-size: 1.1rem; color: var(--text-secondary);">Global Growth Hubs</span>
-                            </li>
-                        </ul>
+                        <h2 style="font-size: 2.2rem; margin-bottom: 2rem; font-weight: 900;">What Happens When <span class="gradient-text">You Reach Out.</span></h2>
+                        <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 3rem; font-size: 1.05rem;">When you submit an inquiry, you'll hear from a senior strategist within 24 hours, not a sales rep. We'll schedule a 30-minute discovery call to understand your business, your growth targets, and your current bottlenecks. From there, we'll put together a custom proposal outlining exactly what we'd do, what it costs, and what results you can expect.</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 2.5rem; margin-bottom: 3rem;">
+                            <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                                <div style="width: 2.5rem; height: 2.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="clock" size="16" style="opacity: 0.7;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; font-weight: 700;">Response Time: Under 24 Hours</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">Every inquiry gets a personal response from a senior team member within one business day. No automated replies, no chatbots.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                                <div style="width: 2.5rem; height: 2.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="video" size="16" style="opacity: 0.7;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; font-weight: 700;">Free 30-Minute Strategy Call</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">We'll audit your current setup, identify the three highest-leverage opportunities, and outline how the Monarchy model maps to your specific situation.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                                <div style="width: 2.5rem; height: 2.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i data-lucide="file-text" size="16" style="opacity: 0.7;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin-bottom: 0.4rem; font-weight: 700;">Custom Proposal in 48 Hours</h4>
+                                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">After our call, you'll receive a detailed growth blueprint with scope, timeline, pricing, and expected outcomes. Clear, transparent, and actionable.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <i data-lucide="mail" size="20" style="opacity: 0.5;"></i>
+                                <span style="font-size: 1rem; color: var(--text-secondary);">contact@monarchy.company</span>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <i data-lucide="map-pin" size="20" style="opacity: 0.5;"></i>
+                                <span style="font-size: 1rem; color: var(--text-secondary);">Operating across India with global client partnerships</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 2rem;">Book Free Consultation</h3>
+
+                    <!-- Right: Form -->
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 28px;">
+                        <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Book Your Free Strategy Call</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2.5rem; line-height: 1.6;">Fill in the details below and we'll be in touch within 24 hours to schedule your call.</p>
                         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                 <label style="font-size: 0.9rem; opacity: 0.6;">Name</label>
-                                 <input type="text" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 12px; color: #fff;">
+                                 <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Full Name</label>
+                                 <input type="text" placeholder="Your name" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                 <label style="font-size: 0.9rem; opacity: 0.6;">Work Email</label>
-                                 <input type="email" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 12px; color: #fff;">
+                                 <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Work Email</label>
+                                 <input type="email" placeholder="you@company.com" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                              </div>
-                             <button class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Send Inquiry</button>
+                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                 <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">What do you need help with?</label>
+                                 <select style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; appearance: none;">
+                                     <option value="">Select a service</option>
+                                     <option value="it">IT & Software Engineering</option>
+                                     <option value="marketing">Digital Marketing & Growth</option>
+                                     <option value="hr">HR & Talent Solutions</option>
+                                     <option value="training">Career Training Program</option>
+                                     <option value="full">Full Growth Ecosystem</option>
+                                 </select>
+                             </div>
+                             <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                 <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Tell us briefly about your project</label>
+                                 <textarea rows="4" placeholder="What are you building? What challenges are you facing?" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; resize: vertical; font-family: inherit; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+                             </div>
+                             <button class="btn btn-primary" style="margin-top: 1rem; justify-content: center; padding: 1rem; border-radius: 12px; font-weight: 700;">Send Inquiry</button>
+                             <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; opacity: 0.5; margin-top: 0.5rem;">We respect your privacy. No spam, no data sharing.</p>
                         </div>
                     </div>
                 </div>
