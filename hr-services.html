@@ -6,90 +6,90 @@
     <title>HR Solutions | MONARCHY</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/api/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .service-details-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; padding: 4rem 0; }
+        .expanded-card { display: grid; grid-template-columns: 1fr 1fr; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 32px; overflow: hidden; min-height: 450px; }
+        .expanded-card-content { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+        .expanded-card-visual { position: relative; overflow: hidden; background: #111; }
+        .expanded-card-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: var(--transition); }
+        .expanded-card:hover .expanded-card-visual img { transform: scale(1.05); opacity: 0.9; }
+        .expanded-card h3 { font-size: 2.2rem; margin-bottom: 2rem; font-weight: 800; }
+        .expanded-card ul { list-style: none; display: grid; gap: 1.2rem; }
+        .expanded-card ul li { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 1.1rem; }
+        @media (max-width: 968px) { .expanded-card { grid-template-columns: 1fr; } .expanded-card-visual { height: 300px; } .expanded-card-content { padding: 3rem; } }
+    </style>
 </head>
 <body style="background: #000; color: #fff;">
-    <header id="header">
-        <div class="container nav">
-            <a href="/index.html" class="logo">
-                <img src="/logo.png" alt="Monarchy Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
+    <header id="header"><div class="container nav"><a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/services.html">Services</a></li><li><a href="/training.html">Training</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></header>
     <main>
-        <section class="hero" style="min-height: 70vh;">
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
-                <h1 class="reveal">Unified <br><span class="gradient-text">HR & Payroll.</span></h1>
-                <p class="reveal">Identify top talent, coordinate interview workflows, and manage full candidate placement cycles without the administrative friction.</p>
-                <div class="hero-btns reveal" style="margin-top: 3rem;">
-                    <a href="/contact.html" class="btn btn-primary">Scale Your Team</a>
-                </div>
+                <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; opacity: 0.6; margin-bottom: 1rem;">Workforce Synergy</p>
+                <h1 class="reveal" style="font-size: 4rem;">Human <br><span class="gradient-text">Capital.</span></h1>
+                <p class="reveal">Syncing the best talent with your founders' vision to build high-performance teams faster.</p>
             </div>
         </section>
-
-        <section id="hr-details" style="padding: 10rem 0;">
+        <section style="padding: 6rem 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Recruiting</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Executive Search & Vetting</li>
-                            <li>• Staffing & Manpower Solutions</li>
-                            <li>• Direct Placement Support</li>
-                        </ul>
+                <div class="service-details-grid">
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-content">
+                            <h3>Recruiting</h3>
+                            <ul>
+                                <li><i data-lucide="users" size="20"></i> Candidate Sourcing Specialists</li>
+                                <li><i data-lucide="users" size="20"></i> Technical Vetting Workflows</li>
+                                <li><i data-lucide="users" size="20"></i> Interview Lifecycle Coordination</li>
+                                <li><i data-lucide="users" size="20"></i> Seamless Talent Onboarding</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1000" alt="Recruiting"></div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Operations</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Payroll Processing</li>
-                            <li>• Statutory Compliance (Legal)</li>
-                            <li>• Tax Filings & Audits</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000" alt="Compliance"></div>
+                        <div class="expanded-card-content">
+                            <h3>Operations</h3>
+                            <ul>
+                                <li><i data-lucide="briefcase" size="20"></i> Comprehensive Payroll Processing</li>
+                                <li><i data-lucide="briefcase" size="20"></i> Statutory Legal Compliance</li>
+                                <li><i data-lucide="briefcase" size="20"></i> Tax Filing Representation</li>
+                                <li><i data-lucide="briefcase" size="20"></i> Employee Policy Governance</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Consulting</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Talent Strategy Consulting</li>
-                            <li>• Retention Programs</li>
-                            <li>• Employee Mentorship Systems</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-content">
+                            <h3>Consulting</h3>
+                            <ul>
+                                <li><i data-lucide="target" size="20"></i> HR Strategy Blueprinting</li>
+                                <li><i data-lucide="target" size="20"></i> Direct Placement Consulting</li>
+                                <li><i data-lucide="target" size="20"></i> Retention Architecture</li>
+                                <li><i data-lucide="target" size="20"></i> Leadership Talent Pipeline</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Consulting"></div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Statutory Ops</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Statutory Paperwork</li>
-                            <li>• Full-Lifecycle Compliance</li>
-                            <li>• Direct Placement Assistance</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="Support"></div>
+                        <div class="expanded-card-content">
+                            <h3>Placement & Support</h3>
+                            <ul>
+                                <li><i data-lucide="check-circle" size="20"></i> Statutory Legal Paperwork</li>
+                                <li><i data-lucide="check-circle" size="20"></i> Candidate Readiness Vetting</li>
+                                <li><i data-lucide="check-circle" size="20"></i> Managed Direct Placement</li>
+                                <li><i data-lucide="check-circle" size="20"></i> Full-lifecycle Legal Ops</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- CTA -->
-        <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
-            <div class="container text-center reveal">
-                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Expansion?</span></h2>
-                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Recruiting</a>
-            </div>
-        </section>
+        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);"><div class="container text-center reveal"><h2 style="font-size: 2.8rem;">Hire the Next <span class="gradient-text">Generation Leaders.</span></h2><a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.2rem 4rem; border-radius: 99px;">Scale Workforce Now</a></div></section>
     </main>
-
-    <footer>
-        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
-    </footer>
-
+    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>

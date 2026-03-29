@@ -9,13 +9,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .training-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            padding: 4rem 0;
+        }
+        .training-card {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: 500px;
+        }
+        .training-card-content {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .training-card-visual {
+            position: relative;
+            background: #111;
+        }
+        .training-card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        .training-card:hover .training-card-visual img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        @media (max-width: 968px) {
+            .training-card { grid-template-columns: 1fr; min-height: auto; }
+            .training-card-visual { height: 350px; }
+            .training-card-content { padding: 3rem; }
+        }
+    </style>
 </head>
 <body style="background: #000; color: #fff;">
     <header id="header">
         <div class="container nav">
-            <a href="/index.html" class="logo">
-                <img src="/logo.png" alt="Monarchy Logo">
-            </a>
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/services.html">Services</a></li>
@@ -30,49 +71,62 @@
         <section class="hero" style="min-height: 70vh;">
             <div class="hero-visual"><div id="training-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
-                <h1 class="reveal">Next-Gen <br><span class="gradient-text">Career Training.</span></h1>
-                <p class="reveal">Build real-world skills through live projects and expert-led sessions. Guaranteed job placement support or full refund assistance.</p>
+                <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; opacity: 0.6; margin-bottom: 1rem;">Future-Proof Your Career</p>
+                <h1 class="reveal" style="font-size: 4rem;">Build Your <br><span class="gradient-text">Next Chapter.</span></h1>
+                <p class="reveal">Stop learning in isolation. Our career training programs are built for real placement outcomes. Learn the tools, the tech, and the tactics that industry leaders actually use.</p>
                 <div class="hero-btns reveal" style="margin-top: 3rem;">
-                    <a href="/contact.html" class="btn btn-primary">Apply Now</a>
+                    <a href="/contact.html" class="btn btn-primary" style="padding: 1rem 3rem; border-radius: 99px;">Apply for Training</a>
                 </div>
             </div>
         </section>
 
-        <section id="training-details" style="padding: 10rem 0;">
+        <section id="training-mastery" style="padding: 8rem 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <i data-lucide="graduation-cap" size="40"></i>
-                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Real Projects</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">Build a portfolio to show employers. We focus on teaching by letting you work on real tasks with modern tools.</p>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 6rem;">
+                    <h2 style="font-size: 3rem;">Our Training <span class="gradient-text">Ecosystem.</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 1.5rem auto 0;">Everything you need to go from a beginner to a high-performing professional associate.</p>
+                </div>
+                <div class="training-grid">
+                    <!-- Real Projects -->
+                    <div class="training-card reveal glow-card">
+                        <div class="training-card-content">
+                            <i data-lucide="graduation-cap" size="40" style="margin-bottom: 2rem;"></i>
+                            <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Practice with Real Projects</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">Build a strong portfolio to show employers. We focus on teaching you by letting you work on real tasks with modern tools. No textbook theory—just real-world deliverables.</p>
+                        </div>
+                        <div class="training-card-visual"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" alt="Training"></div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <i data-lucide="users" size="40"></i>
-                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Industry Experts</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">Get help from mentors currently working in the field who highlight only the most useful skills you need.</p>
+                    <!-- Industry Experts -->
+                    <div class="training-card reveal glow-card">
+                        <div class="training-card-visual"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Experts"></div>
+                        <div class="training-card-content">
+                            <i data-lucide="users" size="40" style="margin-bottom: 2rem;"></i>
+                            <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Industry Mentors</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">Get help directly from top professionals currently working in the field who know exactly what skills you need. Private 1-on-1 sessions to fine-tune your technical and soft skills.</p>
+                        </div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <i data-lucide="award" size="40"></i>
-                        <h3 style="margin-bottom: 1.5rem; margin-top: 1rem;">Placement Support</h3>
-                        <p style="color: var(--text-secondary); line-height: 1.6;">We provide direct interview coaching and career assistance to ensure you get hired or we offer full refund support.</p>
+                    <!-- Placement Support -->
+                    <div class="training-card reveal glow-card">
+                        <div class="training-card-content">
+                            <i data-lucide="award" size="40" style="margin-bottom: 2rem;"></i>
+                            <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Placement Assistance</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">We are confident in our training. We provide direct assistance to ensure you secure your dream role. Includes resume building, portfolio optimization, and mock interview cycles.</p>
+                        </div>
+                        <div class="training-card-visual"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1000" alt="Placement"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
+        <!-- Final CTA -->
         <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
             <div class="container text-center reveal">
-                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Success?</span></h2>
-                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Training</a>
+                <h2 style="font-size: 2.8rem;">Start Your <span class="gradient-text">Success Story.</span></h2>
+                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.2rem 4rem; border-radius: 99px;">Apply Now</a>
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
-    </footer>
-
+    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>

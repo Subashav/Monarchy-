@@ -7,89 +7,89 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/api/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .service-details-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; padding: 4rem 0; }
+        .expanded-card { display: grid; grid-template-columns: 1fr 1fr; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 32px; overflow: hidden; min-height: 450px; }
+        .expanded-card-content { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+        .expanded-card-visual { position: relative; overflow: hidden; background: #111; }
+        .expanded-card-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: var(--transition); }
+        .expanded-card:hover .expanded-card-visual img { transform: scale(1.05); opacity: 0.9; }
+        .expanded-card h3 { font-size: 2.2rem; margin-bottom: 2rem; font-weight: 800; }
+        .expanded-card ul { list-style: none; display: grid; gap: 1.2rem; }
+        .expanded-card ul li { display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 1.1rem; }
+        @media (max-width: 968px) { .expanded-card { grid-template-columns: 1fr; } .expanded-card-visual { height: 300px; } .expanded-card-content { padding: 3rem; } }
+    </style>
 </head>
 <body style="background: #000; color: #fff;">
-    <header id="header">
-        <div class="container nav">
-            <a href="/index.html" class="logo">
-                <img src="/logo.png" alt="Monarchy Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/services.html">Services</a></li>
-                <li><a href="/training.html">Training</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
+    <header id="header"><div class="container nav"><a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a><ul class="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/services.html">Services</a></li><li><a href="/training.html">Training</a></li><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li></ul></div></header>
     <main>
-        <section class="hero" style="min-height: 70vh;">
+        <section class="hero" style="min-height: 60vh;">
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
-                <h1 class="reveal">Performance <br><span class="gradient-text">Marketing.</span></h1>
-                <p class="reveal">Measurable growth ecosystems that drive high-intent customers and scalable revenue.</p>
-                <div class="hero-btns reveal" style="margin-top: 3rem;">
-                    <a href="/contact.html" class="btn btn-primary">Start Campaign</a>
-                </div>
+                <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.85rem; opacity: 0.6; margin-bottom: 1rem;">Performance Dominance</p>
+                <h1 class="reveal" style="font-size: 4rem;">Marketing <br><span class="gradient-text">Ecosystems.</span></h1>
+                <p class="reveal">Building the visibility and data funnels that fuel non-linear business growth.</p>
             </div>
         </section>
-
-        <section id="marketing-details" style="padding: 10rem 0;">
+        <section style="padding: 6rem 0;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">SEO & Organic</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Technical SEO Audits</li>
-                            <li>• On-Page & Off-Page SEO</li>
-                            <li>• Keyword Market Research</li>
-                        </ul>
+                <div class="service-details-grid">
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-content">
+                            <h3>SEO & Organic</h3>
+                            <ul>
+                                <li><i data-lucide="trending-up" size="20"></i> Technical SEO Governance</li>
+                                <li><i data-lucide="trending-up" size="20"></i> Semantic Content Optimization</li>
+                                <li><i data-lucide="trending-up" size="20"></i> Market Dominance Analysis</li>
+                                <li><i data-lucide="trending-up" size="20"></i> Full Technical Health Audits</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="SEO"></div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Social Media</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• SMM Marketing</li>
-                            <li>• Daily Media Management</li>
-                            <li>• Growth Strategies</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000" alt="Social Media"></div>
+                        <div class="expanded-card-content">
+                            <h3>Social Ecosystems</h3>
+                            <ul>
+                                <li><i data-lucide="share-2" size="20"></i> Cross-platform SMM Marketing</li>
+                                <li><i data-lucide="share-2" size="20"></i> Daily Community Management</li>
+                                <li><i data-lucide="share-2" size="20"></i> Multi-channel Growth Cycles</li>
+                                <li><i data-lucide="share-2" size="20"></i> Performance Media Handeling</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Ads & Paid Media</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• PPC / Google Ads</li>
-                            <li>• Performance Marketing</li>
-                            <li>• ROI Analytics & Tracking</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-content">
+                            <h3>Ads & Paid Performance</h3>
+                            <ul>
+                                <li><i data-lucide="zap" size="20"></i> PPC / Google Ads Specialists</li>
+                                <li><i data-lucide="zap" size="20"></i> Meta & LinkedIn Funnels</li>
+                                <li><i data-lucide="zap" size="20"></i> Lead Generation Management</li>
+                                <li><i data-lucide="zap" size="20"></i> Revenue-focused ROI Tracking</li>
+                            </ul>
+                        </div>
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000" alt="Performance"></div>
                     </div>
-                    <div class="glass reveal glow-card" style="padding: 3rem; border-radius: 24px;">
-                        <h3 style="margin-bottom: 1.5rem;">Creative Content</h3>
-                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2; font-size: 0.95rem;">
-                            <li>• Professional Copywriting</li>
-                            <li>• Graphic & Brand Design</li>
-                            <li>• Video Production Strategies</li>
-                        </ul>
+                    <div class="expanded-card reveal glow-card">
+                        <div class="expanded-card-visual"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000" alt="Creative"></div>
+                        <div class="expanded-card-content">
+                            <h3>Creative Infrastructure</h3>
+                            <ul>
+                                <li><i data-lucide="palette" size="20"></i> Corporate Branding & Design</li>
+                                <li><i data-lucide="palette" size="20"></i> Video Ad Production Engines</li>
+                                <li><i data-lucide="palette" size="20"></i> Strategic ROI-driven Copywriting</li>
+                                <li><i data-lucide="palette" size="20"></i> Graphic Ecosystem Design</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- CTA -->
-        <section id="cta" style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
-            <div class="container text-center reveal">
-                <h2 style="font-size: 2.8rem;">Ready for <span class="gradient-text">Growth?</span></h2>
-                <a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem;">Start Your Campaign</a>
-            </div>
-        </section>
+        <section style="padding: 10rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);"><div class="container text-center reveal"><h2 style="font-size: 2.8rem;">Accelerate Your <span class="gradient-text">Brand Visibility.</span></h2><a href="/contact.html" class="btn btn-primary" style="margin-top: 3rem; padding: 1.2rem 4rem; border-radius: 99px;">Start Campaign Now</a></div></section>
     </main>
-
-    <footer>
-        <div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div>
-    </footer>
-
+    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>
