@@ -12,60 +12,74 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="/src/style.css">
     <style>
-        .service-expansive-grid {
+        .home-service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 3rem;
             padding-top: 4rem;
         }
-        .v-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+        .bento-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 32px;
-            overflow: hidden;
+            padding: 2.5rem;
             display: flex;
-            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
             transition: var(--transition);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
-        .v-card-visual {
-            height: 240px;
-            background: #111;
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .bento-image-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
             overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .v-card-visual img {
+        .bento-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
-            transition: var(--transition);
+            opacity: 0.8;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .v-card:hover .v-card-visual img {
-            opacity: 0.9;
-            transform: scale(1.05);
+        .bento-card:hover .bento-image-box img {
+            transform: scale(1.1);
+            opacity: 1;
         }
-        .v-card-content {
-            padding: 3rem;
-            flex-grow: 1;
-        }
-        .v-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+        .bento-content { flex: 1; }
+        .bento-content h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
             font-weight: 800;
         }
-        .v-card ul {
+        .bento-content ul {
             list-style: none;
             display: grid;
-            gap: 1rem;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
         }
-        .v-card ul li {
+        .bento-content ul li {
             color: var(--text-secondary);
             font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
-        @media (max-width: 768px) {
-            .service-expansive-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1100px) {
+            .home-service-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .bento-card { flex-direction: column; align-items: flex-start; padding: 2rem; }
+            .bento-image-box { width: 100%; height: 200px; }
         }
     </style>
 </head>
@@ -98,62 +112,42 @@
             <div class="hero-visual"><div id="hero-orb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
             <div class="container hero-content">
                 <img src="/src/assets/hero-section.png" alt="Monarchy Branding" class="reveal" style="max-width: 320px; opacity: 0.8; margin-bottom: 2rem;">
-                <h1 class="reveal" style="font-size: 3.5rem; line-height: 1.1;">We Help Businesses<br><span class="gradient-text">Hire, Build, and Grow.</span></h1>
-                <p class="reveal" style="max-width: 600px; margin: 1.5rem auto 0;">From talent acquisition to digital growth, Monarchy provides end-to-end solutions to scale your business.</p>
-                <div class="hero-btns reveal" style="display: flex; gap: 1rem; justify-content: center; margin-top: 3.5rem;">
-                    <a href="/contact.html" class="btn btn-primary">Get Started</a>
-                    <a href="/contact.html" class="btn btn-outline" style="background: rgba(255,255,255,0.05);">Book Consultation</a>
-                </div>
+                <h1 class="reveal" style="font-size: 4rem; line-height: 1.1; font-weight: 900;">Hire, Build, and <br><span class="gradient-text">Grow Effortlessly.</span></h1>
             </div>
         </section>
 
-        <section id="services-grid" style="padding: 10rem 0;">
+        <section id="core-services" style="padding: 10rem 0;">
             <div class="container">
                 <div class="section-header reveal" style="text-align: center; margin-bottom: 4rem;">
-                    <h2 style="font-size: 3rem;">Integrated <span class="gradient-text">Growth Engine.</span></h2>
-                    <p style="color: var(--text-secondary); max-width: 600px; margin: 1.5rem auto 0;">Total alignment across your hiring, engineering, and marketing ecosystems.</p>
+                    <h2 style="font-size: 3.2rem; font-weight: 900;">Integrated <span class="gradient-text">Powerhouse.</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 1.5rem auto 0;">The only growth ecosystem that synchronizes your talent, tech, and market visibility.</p>
                 </div>
-                <div class="service-expansive-grid">
+                <div class="home-service-grid">
                     <!-- IT -->
-                    <div class="v-card reveal glow-card">
-                        <div class="v-card-visual"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="IT Engineering"></div>
-                        <div class="v-card-content">
+                    <div class="bento-card reveal glow-card">
+                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="IT"></div>
+                        <div class="bento-content">
                             <h3>IT Solutions</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Architecting modern digital infrastructure that scales with you.</p>
-                            <ul>
-                                <li>• Websites & SaaS Engineering</li>
-                                <li>• Mobile App Ecosystems</li>
-                                <li>• AI & ML Integrations</li>
-                            </ul>
-                            <a href="/it-services.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
+                            <ul><li>• Modern SaaS</li><li>• Mobile Ecosystems</li><li>• AI Integration</li></ul>
+                            <a href="/it-services.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
                         </div>
                     </div>
                     <!-- HR -->
-                    <div class="v-card reveal glow-card">
-                        <div class="v-card-visual"><img src="https://images.unsplash.com/photo-1573161158521-798aa609d0bd?auto=format&fit=crop&q=80&w=1000" alt="HR Recruiting"></div>
-                        <div class="v-card-content">
-                            <h3>HR & Recruiting</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">The human capital bridge for founders ready to scale their headcount.</p>
-                            <ul>
-                                <li>• Candidate Vetting Lifecycle</li>
-                                <li>• Executive Talent Sourcing</li>
-                                <li>• Statutory & Legal Compliance</li>
-                            </ul>
-                            <a href="/hr-services.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
+                    <div class="bento-card reveal glow-card">
+                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1573161158521-798aa609d0bd?auto=format&fit=crop&q=80&w=800" alt="HR"></div>
+                        <div class="bento-content">
+                            <h3>HR Solutions</h3>
+                            <ul><li>• Candidate Vetting</li><li>• Talent Sourcing</li><li>• Full Compliance</li></ul>
+                            <a href="/hr-services.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
                         </div>
                     </div>
                     <!-- Marketing -->
-                    <div class="v-card reveal glow-card">
-                        <div class="v-card-visual"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fce?auto=format&fit=crop&q=80&w=1000" alt="Marketing"></div>
-                        <div class="v-card-content">
+                    <div class="bento-card reveal glow-card">
+                        <div class="bento-image-box"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fce?auto=format&fit=crop&q=80&w=800" alt="Marketing"></div>
+                        <div class="bento-content">
                             <h3>Digital Growth</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Scaling visibility through ROI-driven performance marketing.</p>
-                            <ul>
-                                <li>• PPC & Lead Generation</li>
-                                <li>• SEO & Market Dominance</li>
-                                <li>• Strategic Content Ecosystems</li>
-                            </ul>
-                            <a href="/digital-marketing.html" class="btn btn-primary" style="margin-top: 2.5rem; width: 100%; justify-content: center;">Learn More</a>
+                            <ul><li>• PPC Lead Gen</li><li>• SEO Strategy</li><li>• Brand Design</li></ul>
+                            <a href="/digital-marketing.html" class="btn btn-primary" style="font-size: 0.8rem; width: 100%; justify-content: center;">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -163,12 +157,12 @@
         <!-- Final CTA -->
         <section id="cta" style="padding: 12rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
             <div class="container text-center reveal">
-                <h2 style="font-size: 3.2rem; font-weight: 900;">Ready for <span class="gradient-text">Massive Expansion?</span></h2>
-                <div style="margin-top: 4rem;"><a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4rem; border-radius: 99px; font-weight: 700;">Start Growing Now</a></div>
+                <h2 style="font-size: 3.2rem; font-weight: 900;">Scale Your <span class="gradient-text">Empire Today.</span></h2>
+                <div style="margin-top: 4rem;"><a href="/contact.html" class="btn btn-primary" style="padding: 1.2rem 4.5rem; border-radius: 99px; font-weight: 700;">Join the Monarchy</a></div>
             </div>
         </section>
     </main>
-    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY – THE GROWTH COMPANY. ALL RIGHTS RESERVED.</div></div></footer>
+    <footer><div class="container footer-content"><div class="footer-copyright">&copy; 2026 MONARCHY. ALL RIGHTS RESERVED.</div></div></footer>
     <script type="module" src="/src/main.js"></script>
 </body>
 </html>
