@@ -129,25 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Stacking Methodology Animation (Desktop Only)
+        // Stacking Methodology Animation
         const stackCards = window.gsap.utils.toArray('.stack-card');
-        if (stackCards.length > 0 && window.innerWidth > 968) {
+        if (stackCards.length > 0) {
             stackCards.forEach((card, index) => {
-                // When this card hits the top, it scales down and fades slightly to create space for the next one
                 if (index < stackCards.length - 1) {
                     window.gsap.to(card, {
                         scrollTrigger: {
-                            trigger: stackCards[index + 1], // Trigger when the NEXT card starts coming in
-                            start: "top bottom",
-                            end: "top 120px",
-                            scrub: 0.5,
+                            trigger: stackCards[index + 1],
+                            start: "top 90%", // Start scaling sooner
+                            end: "top 120px", // Complete when it hits the stack top
+                            scrub: 1, // More lag for smoother visibility
                             invalidateOnRefresh: true,
                         },
-                        scale: 0.9,
-                        opacity: 0.8,
-                        y: -20,
-                        filter: "brightness(0.5) blur(1px)",
-                        ease: "none"
+                        scale: 0.85, // More aggressive scale for visibility
+                        opacity: 0.6, // Fades more to draw focus to the new top card
+                        y: -50, // More upward movement
+                        filter: "brightness(0.3) blur(2px)",
+                        ease: "power2.inOut"
                     });
                 }
             });
