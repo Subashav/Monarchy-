@@ -427,6 +427,15 @@ header.scrolled {
 .hero-content {
   max-width: 900px;
   z-index: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.hero-content img {
+  display: block !important;
+  margin: 0 auto 2rem !important;
 }
 
 .hero h1 {
