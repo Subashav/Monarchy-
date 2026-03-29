@@ -133,20 +133,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const stackCards = window.gsap.utils.toArray('.stack-card');
         if (stackCards.length > 0 && window.innerWidth > 968) {
             stackCards.forEach((card, index) => {
-                if (index === stackCards.length - 1) return;
-                
-                window.gsap.to(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 15vh",
-                        end: "bottom 15vh",
-                        scrub: true,
-                        invalidateOnRefresh: true,
-                    },
-                    scale: 0.95,
-                    opacity: 0.5,
-                    filter: "brightness(0.3) blur(2px)",
-                });
+                // When this card hits the top, it scales down and fades slightly to create space for the next one
+                if (index < stackCards.length - 1) {
+                    window.gsap.to(card, {
+                        scrollTrigger: {
+                            trigger: stackCards[index + 1], // Trigger when the NEXT card starts coming in
+                            start: "top bottom",
+                            end: "top 120px",
+                            scrub: 0.5,
+                            invalidateOnRefresh: true,
+                        },
+                        scale: 0.9,
+                        opacity: 0.8,
+                        y: -20,
+                        filter: "brightness(0.5) blur(1px)",
+                        ease: "none"
+                    });
+                }
             });
         }
 
