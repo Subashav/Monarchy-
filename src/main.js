@@ -5,6 +5,7 @@ import { Galaxy } from './galaxy.js'
 import { Prism } from './prism.js'
 import { Antigravity } from './antigravity.js'
 import { initBorderGlow } from './border-glow.js'
+import { initLegalModals } from './legal.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize BorderGlow on elements with .glow-card class
@@ -287,4 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Legal Modals
+    initLegalModals();
 });
