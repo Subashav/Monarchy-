@@ -13,6 +13,7 @@ export default defineConfig({
         training: resolve(__dirname, 'training.html'),
         about: resolve(__dirname, 'about.html'),
         contact: resolve(__dirname, 'contact.html'),
+        careers: resolve(__dirname, 'careers.html'),
       },
     },
   },
