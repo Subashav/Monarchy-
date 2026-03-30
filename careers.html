@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | MONARCHY - Join the Growth Engine</title>
+    <meta name="description" content="Join Monarchy and help build the future of integrated growth. We are looking for ambitious engineers, marketers, and HR specialists to join our remote-first team.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body style="background: #000; color: #fff;">
+    <header id="header">
+        <div class="container-wide nav">
+            <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 4rem;">
+                <ul class="nav-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/services.html" class="dropdown-toggle">Services <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="/it-services.html" class="dropdown-item"><i data-lucide="layers"></i><div class="dropdown-content"><h5>IT Services</h5><p>Engineering and Enterprise Solutions</p></div></a>
+                            <a href="/digital-marketing.html" class="dropdown-item"><i data-lucide="megaphone"></i><div class="dropdown-content"><h5>Digital Marketing</h5><p>Performance & Media Growth</p></div></a>
+                            <a href="/hr-services.html" class="dropdown-item"><i data-lucide="users"></i><div class="dropdown-content"><h5>HR Solutions</h5><p>Talent Acquisition & Staffing</p></div></a>
+                        </div>
+                    </li>
+                    <li><a href="/training.html">Training</a></li>
+                    <li><a href="/careers.html" class="active">Careers</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions"><a href="/contact.html" class="btn btn-primary">Book Consultation</a></div>
+                <button class="mobile-toggle" aria-label="Toggle Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" style="min-height: 80vh;">
+            <div class="hero-visual">
+                <img src="/careers_hero_visual_1774848331060.png" alt="Monarchy Careers" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4;">
+                <canvas id="hero-galaxy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.6;"></canvas>
+            </div>
+            <div class="container hero-content">
+                <p class="reveal" style="text-transform: uppercase; letter-spacing: 0.4em; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2rem;">Work with the best</p>
+                <h1 class="reveal">Built by<br><span class="gradient-text">Exceptional People.</span></h1>
+                <p class="reveal" style="max-width: 620px; margin: 0 auto 3rem; line-height: 1.8;">Monarchy is more than a workplace. It's a high-performance ecosystem where engineering, marketing, and human intelligence converge. We're looking for individuals who don't just want a job, but want to own their growth.</p>
+                <a href="#positions" class="btn btn-primary reveal" style="padding: 1.2rem 3rem; border-radius: 99px;">View Openings</a>
+            </div>
+        </section>
+
+        <!-- CULTURE & PERKS -->
+        <section id="culture" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin: 0 auto 6rem; text-align: center;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">The Monarchy Life</p>
+                    <h2 style="font-size: 3rem; font-weight: 900; margin-bottom: 2rem;">Why you'll love <span class="gradient-text">Working Here.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem;">We've stripped away the corporate bureaucracy to create an environment focused on execution, creativity, and results. At Monarchy, your impact is visible from day one.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;">
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="monitor" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Remote-First Culture</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Work from anywhere. We value deep work and autonomy over office seat time. Our asynchronous workflows ensure you stay focused on what matters.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="trending-up" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Exponential Growth</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">We invest heavily in your skills. From internal training programs to external certifications, we ensure you stay at the bleeding edge of your field.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="award" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Impact & Ownership</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">No cogs in machines. You'll own projects end-to-end, work directly with stakeholders, and see the immediate results of your engineering or strategy.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="coffee" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Flexible Hours</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Manage your own time. As long as the results are delivered and the team is aligned, we respect your personal schedule and work-life harmony.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="zap" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Top-Tier Tech Stack</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Use the best tools for the job. We don't compromise on technology, providing you with the hardware and software needed to perform at your best.</p>
+                    </div>
+                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 24px;">
+                        <i data-lucide="users" size="32" style="opacity: 0.5; margin-bottom: 2rem; display: block;"></i>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 1.2rem;">Elite Community</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">Join a team of high-performers. Collaboration across IT, Marketing, and HR creates a unique environment of shared intelligence and growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPEN POSITIONS -->
+        <section id="positions" style="padding: 10rem 0; background: rgba(255,255,255,0.01);">
+            <div class="container">
+                <div class="reveal" style="margin-bottom: 5rem;">
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem;">Open <span class="gradient-text">Positions.</span></h2>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">Find your place in the engine.</p>
+                </div>
+
+                <div class="jobs-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Job 1 -->
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; gap: 3rem; align-items: center;">
+                            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                                <i data-lucide="code-2" style="opacity: 0.7;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Senior Next.js Engineer</h4>
+                                <div style="display: flex; gap: 1.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin" size="14"></i> Remote (India)</span>
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="clock" size="14"></i> Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/contact.html?ref=sr-nextjs" class="btn btn-outline" style="border-radius: 99px;">Apply Now</a>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; gap: 3rem; align-items: center;">
+                            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                                <i data-lucide="megaphone" style="opacity: 0.7;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Growth Marketing Lead</h4>
+                                <div style="display: flex; gap: 1.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin" size="14"></i> Remote (Global)</span>
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="clock" size="14"></i> Full-time</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/contact.html?ref=growth-lead" class="btn btn-outline" style="border-radius: 99px;">Apply Now</a>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="glass reveal glow-card" style="padding: 2.5rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; gap: 3rem; align-items: center;">
+                            <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                                <i data-lucide="users" style="opacity: 0.7;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Technical Talent Scout</h4>
+                                <div style="display: flex; gap: 1.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin" size="14"></i> Remote (India)</span>
+                                    <span style="display: flex; align-items: center; gap: 0.4rem;"><i data-lucide="clock" size="14"></i> Contract</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/contact.html?ref=talent-scout" class="btn btn-outline" style="border-radius: 99px;">Apply Now</a>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top: 4rem; text-align: center;">
+                     <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Don't see a fit? We're always looking for exceptional talent.</p>
+                     <a href="mailto:careers@monarchy.company" style="color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; font-weight: 600;">Send us your portfolio <i data-lucide="arrow-right" size="16" style="vertical-align: middle; margin-left: 0.5rem;"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section id="hiring-process" style="padding: 10rem 0;">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin: 0 auto 6rem; text-align: center;">
+                    <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.5rem;">The Roadmap</p>
+                    <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem;">Our Hiring <span class="gradient-text">Journey.</span></h2>
+                    <p style="color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem;">We value your time as much as ours. Our process is streamlined, transparent, and designed to find a mutual fit within 14 days.</p>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-item reveal">
+                        <div class="step-circle">01</div>
+                        <div>
+                            <h3>Application Review</h3>
+                            <p>We review every application. No bots, no automated filters. We look for proof of execution, curiosity, and alignment with our mission.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="step-circle">02</div>
+                        <div>
+                            <h3>Cultural Sync</h3>
+                            <p>A 30-minute introductory call to understand your ambitions and shared values. We care more about who you are than where you worked.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="step-circle">03</div>
+                        <div>
+                            <h3>Execution Challenge</h3>
+                            <p>A real-world task related to your role. We want to see how you think, solve problems, and document your process under pressure.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="step-circle">04</div>
+                        <div>
+                            <h3>Final Strategy</h3>
+                            <p>Meet the leadership team to discuss your role's impact and our long-term roadmap. If it's a fit, you'll receive an offer within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section id="cta" style="padding: 12rem 0; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);">
+            <div class="container text-center reveal">
+                <p style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 2rem;">Ready to Join?</p>
+                <h2 style="font-size: 3.2rem; font-weight: 900; margin-bottom: 1.5rem;">Start Your <span class="gradient-text">New Chapter.</span></h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.8; font-size: 1.05rem;">We're building the future of growth. If you're ready to leave your mark, we're ready for you.</p>
+                <a href="#positions" class="btn btn-primary" style="padding: 1.2rem 4rem; border-radius: 99px; font-weight: 700;">View Openings</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container-wide">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div class="footer-brand" style="flex: 1; max-width: 350px;">
+                    <a href="/index.html" class="logo"><img src="/logo.png" alt="Monarchy Logo"></a>
+                    <p>The integrated growth engine for ambitious businesses. We synchronize IT, HR, and Marketing under one roof so you can scale without friction.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/company/monarchy" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="https://www.instagram.com/monarchy" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                        <a href="https://twitter.com/monarchy" target="_blank" rel="noopener" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+                        <a href="mailto:contact@monarchy.company" aria-label="Email"><i data-lucide="mail" size="18"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links" style="display: flex; gap: 6rem; flex: 2; justify-content: center;">
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/services.html">Our Services</a></li>
+                            <li><a href="/training.html">Career Training</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/it-services.html">IT & Software Engineering</a></li>
+                            <li><a href="/digital-marketing.html">Digital Marketing</a></li>
+                            <li><a href="/hr-services.html">HR & Talent Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Get in Touch</h4>
+                        <ul>
+                            <li><i data-lucide="mail" size="14"></i><a href="mailto:contact@monarchy.company">contact@monarchy.company</a></li>
+                            <li><i data-lucide="map-pin" size="14"></i><span style="color: #fff; font-size: 0.85rem; opacity: 0.6;">India (Remote-first)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Google Map Integration -->
+                <div style="width: 380px; height: 180px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); flex: 1; max-width: 380px; margin-left: 2rem;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497699.9973874144!2d77.3507357!3d12.9141417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfad3685100e2!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1711718000000!5m2!1sen!2sin" 
+                        width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(150%) brightness(0.8);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 MONARCHY. All rights reserved.</span>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+    <!-- Floating Contact Actions -->
+    <div class="floating-actions">
+        <a href="https://wa.me/yournumber" class="float-btn btn-whatsapp" target="_blank" aria-label="WhatsApp Support">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+        <div class="float-btn btn-chatbot" id="chatbot-trigger" aria-label="AI Chatbot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l4-4V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v10z"></path></svg>
+        </div>
+    </div>
+</body>
+</html>
