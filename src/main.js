@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveParticlesOnHover: true,
             particleHoverFactor: 0.5,
             alphaParticles: true,
-            particleBaseSize: 30, // Small and light
+            particleBaseSize: 60, // Increased size
             sizeRandomness: 0.8,
             cameraDistance: 25,
             disableRotation: false
