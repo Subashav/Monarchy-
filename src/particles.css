@@ -1,0 +1,22 @@
+.particles-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.6;
+    transition: opacity 1s ease;
+}
+
+.particles-background.hidden {
+    opacity: 0;
+}
+
+/* Ensure particles are visible but subtle */
+.particles-background canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

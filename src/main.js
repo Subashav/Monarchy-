@@ -6,6 +6,8 @@ import { Prism } from './prism.js'
 import { Antigravity } from './antigravity.js'
 import { initBorderGlow } from './border-glow.js'
 import { initLegalModals } from './legal.js'
+import { Particles } from './particles.js'
+import './particles.css'
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize BorderGlow on elements with .glow-card class
@@ -291,4 +293,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Legal Modals
     initLegalModals();
+
+    // Initialize Global Subtle Particles Background
+    const initGlobalParticles = () => {
+        const particleContainer = document.createElement('div');
+        particleContainer.id = 'global-particles';
+        particleContainer.className = 'particles-background';
+        document.body.appendChild(particleContainer);
+
+        const particles = new Particles(particleContainer, {
+            particleCount: 150,
+            particleSpread: 18,
+            speed: 0.08,
+            particleColors: ["#ffffff"],
+            moveParticlesOnHover: true,
+            particleHoverFactor: 0.5,
+            alphaParticles: true,
+            particleBaseSize: 30, // Small and light
+            sizeRandomness: 0.8,
+            cameraDistance: 25,
+            disableRotation: false
+        });
+
+        // "Except hero section" - Hide particles when hero is in view
+        const heroSections = document.querySelectorAll('.hero, .services-hero, .training-hero');
+        if (heroSections.length > 0 && window.IntersectionObserver) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        particleContainer.classList.add('hidden');
+                    } else {
+                        particleContainer.classList.remove('hidden');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            heroSections.forEach(hero => observer.observe(hero));
+        }
+    };
+    initGlobalParticles();
 });
