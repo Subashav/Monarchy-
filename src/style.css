@@ -60,17 +60,20 @@ body.loading {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 6rem 0;
-  overflow: hidden;
+  justify-content: flex-end;
+  padding: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
 }
 
 .robot-hand-container {
   position: relative;
-  width: 400px;
+  width: 220px;
   height: auto;
-  z-index: 1;
-  filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.08));
+  z-index: 2;
+  margin-right: 8%;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.06));
 }
 
 .robot-hand-img {
@@ -80,17 +83,16 @@ body.loading {
 }
 
 @media (max-width: 1024px) {
-  .robot-hand-section {
-    padding: 4rem 0;
-  }
   .robot-hand-container {
-    width: 260px;
+    width: 160px;
+    margin-right: 5%;
   }
 }
 
 @media (max-width: 640px) {
   .robot-hand-container {
-    width: 180px;
+    width: 100px;
+    margin-right: 3%;
   }
 }
 
