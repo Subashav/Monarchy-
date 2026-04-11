@@ -3,7 +3,6 @@ import './border-glow.css'
 import { Orb } from './orb.js'
 import { Galaxy } from './galaxy.js'
 import { Prism } from './prism.js'
-import { SplashCursor } from './splash-cursor.js'
 import { Antigravity } from './antigravity.js'
 import { initBorderGlow } from './border-glow.js'
 import { initLegalModals } from './legal.js'
@@ -462,28 +461,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initGlobalParticles();
-
-    // 10. Initialize SplashCursor (Interactive Fluid Overlay)
-    const splashContainer = document.createElement('div');
-    splashContainer.id = 'splash-cursor-container';
-    splashContainer.style.position = 'fixed';
-    splashContainer.style.top = '0';
-    splashContainer.style.left = '0';
-    splashContainer.style.width = '100vw';
-    splashContainer.style.height = '100vh';
-    splashContainer.style.pointerEvents = 'none';
-    splashContainer.style.zIndex = '9999';
-    document.body.appendChild(splashContainer);
-
-    new SplashCursor(splashContainer, {
-        SIM_RESOLUTION: 128,
-        DYE_RESOLUTION: 1024,
-        DENSITY_DISSIPATION: 3.5,
-        VELOCITY_DISSIPATION: 2.0,
-        PRESSURE: 0.8,
-        CURL: 30,
-        SPLAT_RADIUS: 0.25,
-        SPLAT_FORCE: 6000,
-        BRAND_COLOR: { r: 1.0, g: 1.0, b: 1.0 } // White splats for monochrome theme
-    });
 });
