@@ -6,6 +6,7 @@
 export class Jarvis {
     constructor() {
         this.isOpen = false;
+        this.lastAction = null; // Track the bot's last question/action
         this.messages = [
             { id: 1, type: 'bot', text: 'Hello, I am JARVIS. Your AI Growth Assistant for MONARCHY.' },
             { id: 2, type: 'bot', text: 'How can I help you scale your business today? You can ask about our IT, Marketing, or HR solutions.' }
@@ -213,38 +214,51 @@ export class Jarvis {
     }
 
     getBotResponse(query) {
-        const q = query.toLowerCase();
+        const q = query.toLowerCase().trim();
         
+        // Handle affirmative responses if we just asked a question
+        if (this.lastAction === 'offer_call' && (q === 'yes' || q === 'yep' || q === 'sure' || q.includes('okay') || q.includes('please'))) {
+            this.lastAction = null;
+            return `Excellent! You can book your free strategy call directly on our contact page: <a href="/contact.html" style="color: #00d2ff; text-decoration: underline;">Book Now</a>. Or shall I provide our phone number again?`;
+        }
+
         if (q.includes('what') && (q.includes('monarchy') || q.includes('this site') || q.includes('you do'))) {
-            return `${this.knowledge.brand} is your integrated growth partner. Our mission is to help you ${this.knowledge.tagline}.`;
+            this.lastAction = null;
+            return `${this.knowledge.brand} is your integrated growth partner. Our mission is to help you ${this.knowledge.tagline}. We handle IT, HR, and Marketing under one roof.`;
         }
         if (q.includes('phone') || q.includes('number') || q.includes('call') || q.includes('mobile')) {
-            return `You can reach ${this.knowledge.brand} directly at ${this.knowledge.phone}. Would you like me to show you our contact page?`;
+            this.lastAction = 'offer_call';
+            return `You can reach ${this.knowledge.brand} directly at ${this.knowledge.phone}. Would you like to schedule a formal strategy call?`;
         }
         if (q.includes('email') || q.includes('mail') || q.includes('contact')) {
-            return `You can email us at ${this.knowledge.email} or call ${this.knowledge.phone}. We are always happy to help!`;
+            this.lastAction = 'offer_call';
+            return `You can email us at ${this.knowledge.email} or call ${this.knowledge.phone}. Should I help you book a consultation?`;
         }
         if (q.includes('it') || q.includes('software') || q.includes('web') || q.includes('app')) {
-            return `Our IT division builds high-performance web platforms, mobile apps, and custom enterprise solutions. We specialize in Next.js, React, and native app development.`;
+            this.lastAction = 'offer_call';
+            return `Our IT division builds high-performance platforms, mobile apps, and custom enterprise solutions. Would you like to discuss a technical project with us?`;
         }
         if (q.includes('hr') || q.includes('hiring') || q.includes('recruit') || q.includes('talent')) {
-            return `We provide end-to-end HR solutions, talent sourcing, and recruitment process outsourcing. We have placed over 500+ professionals across various industries.`;
+            this.lastAction = 'offer_call';
+            return `We provide end-to-end HR and recruitment solutions, having placed 500+ professionals. Do you need help with hiring talent?`;
         }
         if (q.includes('mark') || q.includes('ads') || q.includes('seo') || q.includes('growth')) {
-            return `Our marketing engine drives visibility through SEO, PPC, and brand strategy. We focus on ROAS and pipeline growth, not just vanity metrics.`;
+            this.lastAction = 'offer_call';
+            return `Our marketing engine drives visibility through SEO, PPC, and brand strategy. Would you like a free audit of your current marketing?`;
         }
         if (q.includes('training') || q.includes('career') || q.includes('fresher')) {
-            return `${this.knowledge.brand}'s training program transforms freshers into industry-ready professionals through real-world mentorship.`;
+            return `${this.knowledge.brand}'s training program transforms freshers into industry-ready professionals. You can find more details on our <a href="/training.html" style="color: #00d2ff; text-decoration: underline;">Training Page</a>.`;
         }
         if (q.includes('services') || q.includes('offer') || q.includes('do you do')) {
             const services = this.knowledge.services.length > 0 ? this.knowledge.services.join(', ') : 'IT, HR, and Digital Marketing';
-            return `We offer a full-spectrum growth ecosystem: ${services}. Each pillar is synchronized for maximum business impact.`;
+            return `We offer: ${services}. Each is synchronized for maximum impact. Which one are you interested in?`;
         }
         if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
             return "Hello! I am JARVIS. How can I assist you with your business growth engines today?";
         }
         
-        return "I'd love to provide more details about that. Would you like to schedule a free strategy call with our experts?";
+        this.lastAction = 'offer_call';
+        return "I'd love to provide more details about that. Would you like to schedule a free 30-minute strategy call with our growth experts?";
     }
 }
 
