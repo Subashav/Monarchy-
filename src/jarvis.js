@@ -68,7 +68,7 @@ export class Jarvis {
         jarvisEl.className = 'jarvis-instance'; // Rename container to instance to avoid confusion
         jarvisEl.innerHTML = `
             <div class="jarvis-trigger" id="jarvisTrigger">
-                <img src="/jarvis-avatar.png" class="bot-icon-img" alt="JARVIS">
+                <i data-lucide="message-square" class="bot-icon"></i>
                 <i data-lucide="x" class="close-icon"></i>
             </div>
             
