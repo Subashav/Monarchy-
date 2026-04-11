@@ -55,64 +55,78 @@ body.loading {
   opacity: 0;
 }
 
-/* Three Pillars Hero — Framer-style split layout */
+/* Three Pillars Hero — Exact Framer Motion replica */
 .pillars-hero {
   position: relative;
-  padding: 6rem 0 0;
+  background: #000;
+  color: #fff;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
+  padding: 5rem 0 0;
 }
 
-.pillars-hero-inner {
+.pillars-hero-grid {
   position: relative;
-  min-height: 65vh;
-  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
-  overflow: hidden;
+  z-index: 10;
 }
 
 .pillars-hero-text {
-  width: 50%;
-  padding: 0 4rem 0 8%;
-  position: relative;
-  z-index: 2;
+  z-index: 10;
 }
 
-.pillars-hero .robot-hand-img {
+.pillars-hero-card {
+  z-index: 10;
+}
+
+/* Robot hand — BACKGROUND ELEMENT (z-0) */
+.robot-hand-bg {
   position: absolute;
-  right: 0;
+  right: -80px;
   top: 50%;
   transform: translateY(-50%);
-  width: 55%;
-  max-width: 650px;
-  z-index: 1;
+  width: 600px;
+  max-width: none;
+  opacity: 0.8;
+  z-index: 0;
   pointer-events: none;
-  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.04));
+  filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.03));
 }
 
 @media (max-width: 1024px) {
-  .pillars-hero-inner {
-    min-height: 50vh;
-    flex-direction: column;
+  .pillars-hero-grid {
+    grid-template-columns: 1fr;
     text-align: center;
   }
   .pillars-hero-text {
-    width: 100%;
-    padding: 2rem 5%;
+    padding: 0 5%;
   }
-  .pillars-hero .robot-hand-img {
-    position: relative;
-    top: auto;
-    transform: none;
-    width: 60%;
-    max-width: 350px;
-    margin: 2rem auto 0;
+  .pillars-hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .robot-hand-bg {
+    width: 350px;
+    right: -60px;
+    opacity: 0.3;
   }
 }
 
 @media (max-width: 640px) {
-  .pillars-hero .robot-hand-img {
-    width: 70%;
-    max-width: 250px;
+  .robot-hand-bg {
+    width: 250px;
+    right: -40px;
+    opacity: 0.2;
   }
 }
 

@@ -196,32 +196,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Robot Hand Framer-level Animation ---
+        // --- Robot Hand: Exact Framer Motion replica ---
         const robotHand = document.getElementById('robotHand');
         if (robotHand) {
-            // 1. Slide in from right edge (scroll-scrubbed)
+            // x: useTransform(scrollYProgress, [0, 1], [400, 0])
             window.gsap.fromTo(robotHand, 
-                { x: 300, opacity: 0 },
+                { x: 400, opacity: 0, scale: 0.85 },
                 {
                     scrollTrigger: {
                         trigger: '#three-pillars',
-                        start: 'top 90%',
-                        end: 'top 30%',
-                        scrub: 1,
+                        start: 'start 80%',
+                        end: 'end 20%',
+                        scrub: true,
                     },
                     x: 0,
-                    opacity: 1,
+                    opacity: 0.8,
+                    scale: 1,
                     ease: 'none'
                 }
             );
 
-            // 2. Floating idle after entrance
+            // animate={{ y: [0, -15, 0] }} with 4s infinite
             window.gsap.to(robotHand, {
-                y: '-=20',
+                y: '-=15',
                 duration: 4,
                 repeat: -1,
                 yoyo: true,
-                ease: "power1.inOut"
+                ease: "sine.inOut"
             });
         }
 
