@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Hero Content Reveal - Enhanced Timing
-        window.gsap.to('.hero .reveal', {
-            opacity: 1,
-            y: 0,
+        // Hero Content Reveal - Enhanced Timing (Safe From Animation)
+        window.gsap.from('.hero .reveal', {
+            opacity: 0,
+            y: 30,
             stagger: 0.1,
             duration: 0.8,
             ease: 'expo.out',
@@ -139,17 +139,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('section').forEach(section => {
             const elements = section.querySelectorAll('.reveal');
             if (elements.length > 0) {
-                window.gsap.fromTo(elements, 
-                    { opacity: 0, y: 50, scale: 0.95, rotationX: -10 },
+                window.gsap.from(elements, 
                     {
                         scrollTrigger: {
                             trigger: section,
                             start: 'top 85%',
                         },
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        rotationX: 0,
+                        opacity: 0,
+                        y: 50,
+                        scale: 0.95,
+                        rotationX: -10,
                         stagger: 0.1,
                         duration: 1,
                         ease: 'expo.out'
