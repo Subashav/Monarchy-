@@ -174,7 +174,7 @@ export class Jarvis {
         const container = document.getElementById('jarvisMessages');
         const msgEl = document.createElement('div');
         msgEl.className = `message ${msg.type}`;
-        msgEl.textContent = msg.text;
+        msgEl.innerHTML = msg.text;
         container.appendChild(msgEl);
         container.scrollTop = container.scrollHeight;
     }
@@ -218,7 +218,18 @@ export class Jarvis {
         // Handle affirmative responses if we just asked a question
         if (this.lastAction === 'offer_call' && (q === 'yes' || q === 'yep' || q === 'sure' || q.includes('okay') || q.includes('please'))) {
             this.lastAction = null;
-            return `Excellent! You can book your free strategy call directly on our contact page: <a href="/contact.html" style="color: #00d2ff; text-decoration: underline;">Book Now</a>. Or shall I provide our phone number again?`;
+            return `Excellent! You can book your free strategy call directly on our <a href="/contact.html" style="color: #00d2ff; text-decoration: underline;">Contact Page</a>. Or shall I provide our phone number again?`;
+        }
+
+        // Handle negative responses
+        if (this.lastAction === 'offer_call' && (q === 'no' || q === 'not now' || q === 'nope' || q.includes('dont'))) {
+            this.lastAction = null;
+            return `No problem! I am here if you have any more questions about MONARCHY'S services. How else can I help?`;
+        }
+
+        if (q.includes('thanks') || q.includes('thank you') || q === 'ok' || q === 'okay') {
+            this.lastAction = null;
+            return "You're very welcome! Let me know if you need anything else to help your business grow.";
         }
 
         if (q.includes('what') && (q.includes('monarchy') || q.includes('this site') || q.includes('you do'))) {
