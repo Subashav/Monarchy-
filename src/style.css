@@ -55,44 +55,64 @@ body.loading {
   opacity: 0;
 }
 
-/* Robot Hand Divider Section */
-.robot-hand-section {
+/* Three Pillars Hero — Framer-style split layout */
+.pillars-hero {
   position: relative;
+  padding: 6rem 0 0;
+  overflow: hidden;
+}
+
+.pillars-hero-inner {
+  position: relative;
+  min-height: 65vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0;
-  height: 0;
-  overflow: visible;
-  pointer-events: none;
+  overflow: hidden;
 }
 
-.robot-hand-container {
+.pillars-hero-text {
+  width: 50%;
+  padding: 0 4rem 0 8%;
   position: relative;
-  width: 220px;
-  height: auto;
   z-index: 2;
-  margin-right: 8%;
-  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.06));
 }
 
-.robot-hand-img {
-  width: 100%;
-  height: auto;
-  transform: rotate(-10deg);
+.pillars-hero .robot-hand-img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55%;
+  max-width: 650px;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.04));
 }
 
 @media (max-width: 1024px) {
-  .robot-hand-container {
-    width: 160px;
-    margin-right: 5%;
+  .pillars-hero-inner {
+    min-height: 50vh;
+    flex-direction: column;
+    text-align: center;
+  }
+  .pillars-hero-text {
+    width: 100%;
+    padding: 2rem 5%;
+  }
+  .pillars-hero .robot-hand-img {
+    position: relative;
+    top: auto;
+    transform: none;
+    width: 60%;
+    max-width: 350px;
+    margin: 2rem auto 0;
   }
 }
 
 @media (max-width: 640px) {
-  .robot-hand-container {
-    width: 100px;
-    margin-right: 3%;
+  .pillars-hero .robot-hand-img {
+    width: 70%;
+    max-width: 250px;
   }
 }
 

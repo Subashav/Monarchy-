@@ -197,29 +197,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- Robot Hand Framer-level Animation ---
-        const robotHand = document.querySelector('.robot-hand-container');
-        if (robotHand && window.gsap && window.ScrollTrigger) {
-            // 1. Slide in from right edge
+        const robotHand = document.getElementById('robotHand');
+        if (robotHand) {
+            // 1. Slide in from right edge (scroll-scrubbed)
             window.gsap.fromTo(robotHand, 
-                { x: 200, opacity: 0, rotation: -20 },
+                { x: 300, opacity: 0 },
                 {
                     scrollTrigger: {
-                        trigger: '#robot-divider',
+                        trigger: '#three-pillars',
                         start: 'top 90%',
-                        end: 'top 40%',
+                        end: 'top 30%',
                         scrub: 1,
                     },
                     x: 0,
                     opacity: 1,
-                    rotation: -10,
                     ease: 'none'
                 }
             );
 
-            // 2. Subtle floating idle
+            // 2. Floating idle after entrance
             window.gsap.to(robotHand, {
-                y: -15,
-                duration: 3.5,
+                y: '-=20',
+                duration: 4,
                 repeat: -1,
                 yoyo: true,
                 ease: "power1.inOut"
