@@ -11,14 +11,42 @@ export class Jarvis {
             { id: 2, type: 'bot', text: 'How can I help you scale your business today? You can ask about our IT, Marketing, or HR solutions.' }
         ];
         this.suggestions = [
-            { label: 'IT Services', query: 'Tell me about IT services' },
-            { label: 'HR Solutions', query: 'How can you help with hiring?' },
-            { label: 'Marketing', query: 'What digital marketing services do you offer?' },
-            { label: 'Training', query: 'Tell me about your career training' },
-            { label: 'Contact Human', query: 'I want to talk to a person' }
+            { label: 'Services', query: 'What services do you provide?' },
+            { label: 'Hiring', query: 'How can you help with recruitment?' },
+            { label: 'Contact', query: 'What is your phone number and email?' },
+            { label: 'Training', query: 'Tell me about career training' }
         ];
         
+        this.knowledge = this.collectSiteData();
         this.init();
+    }
+
+    collectSiteData() {
+        const data = {
+            brand: 'MONARCHY',
+            phone: '+91 6385753874', // Fallback
+            email: 'contact@monarchsoftwares.company', // Fallback
+            tagline: 'Hire, Build, and Grow Effortlessly', // Fallback
+            services: []
+        };
+
+        // Try to find phone from tel: links
+        const telLink = document.querySelector('a[href^="tel:"]');
+        if (telLink) data.phone = telLink.textContent.trim();
+
+        // Try to find email from mailto: links
+        const mailLink = document.querySelector('a[href^="mailto:"]');
+        if (mailLink) data.email = mailLink.textContent.trim();
+
+        // Try to find tagline from hero h1
+        const heroTag = document.querySelector('.hero h1');
+        if (heroTag) data.tagline = heroTag.textContent.replace(/\s+/g, ' ').trim();
+
+        // Extract services from nav or dropdowns
+        const serviceLinks = document.querySelectorAll('.dropdown-menu .dropdown-content h5');
+        serviceLinks.forEach(s => data.services.push(s.textContent.trim()));
+
+        return data;
     }
 
     init() {
@@ -108,11 +136,27 @@ export class Jarvis {
         // Close on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
-                this.isOpen = false;
-                trigger.classList.remove('active');
-                windowEl.classList.remove('active');
+                this.close();
             }
         });
+
+        // Close on click outside
+        document.addEventListener('mousedown', (e) => {
+            if (!this.isOpen) return;
+            
+            const jarvisContainer = document.querySelector('.jarvis-instance');
+            if (jarvisContainer && !jarvisContainer.contains(e.target)) {
+                this.close();
+            }
+        });
+    }
+
+    close() {
+        const trigger = document.getElementById('jarvisTrigger');
+        const windowEl = document.getElementById('jarvisWindow');
+        this.isOpen = false;
+        if (trigger) trigger.classList.remove('active');
+        if (windowEl) windowEl.classList.remove('active');
     }
 
     addInitialMessages() {
@@ -171,26 +215,36 @@ export class Jarvis {
     getBotResponse(query) {
         const q = query.toLowerCase();
         
+        if (q.includes('what') && (q.includes('monarchy') || q.includes('this site') || q.includes('you do'))) {
+            return `${this.knowledge.brand} is your integrated growth partner. Our mission is to help you ${this.knowledge.tagline}.`;
+        }
+        if (q.includes('phone') || q.includes('number') || q.includes('call') || q.includes('mobile')) {
+            return `You can reach ${this.knowledge.brand} directly at ${this.knowledge.phone}. Would you like me to show you our contact page?`;
+        }
+        if (q.includes('email') || q.includes('mail') || q.includes('contact')) {
+            return `You can email us at ${this.knowledge.email} or call ${this.knowledge.phone}. We are always happy to help!`;
+        }
         if (q.includes('it') || q.includes('software') || q.includes('web') || q.includes('app')) {
-            return "Our IT division builds high-performance web platforms, mobile apps, and custom enterprise solutions. Would you like to see our IT services page?";
+            return `Our IT division builds high-performance web platforms, mobile apps, and custom enterprise solutions. We specialize in Next.js, React, and native app development.`;
         }
         if (q.includes('hr') || q.includes('hiring') || q.includes('recruit') || q.includes('talent')) {
-            return "We provide end-to-end HR solutions, talent sourcing, and recruitment process outsourcing. We find the people who build empires.";
+            return `We provide end-to-end HR solutions, talent sourcing, and recruitment process outsourcing. We have placed over 500+ professionals across various industries.`;
         }
         if (q.includes('mark') || q.includes('ads') || q.includes('seo') || q.includes('growth')) {
-            return "Our marketing engine drives visibility through SEO, PPC, and brand strategy to fill your sales pipeline with qualified leads.";
+            return `Our marketing engine drives visibility through SEO, PPC, and brand strategy. We focus on ROAS and pipeline growth, not just vanity metrics.`;
         }
         if (q.includes('training') || q.includes('career') || q.includes('fresher')) {
-            return "MONARCHY'S training program transforms freshers into industry-ready professionals. Check out our Training page for details!";
+            return `${this.knowledge.brand}'s training program transforms freshers into industry-ready professionals through real-world mentorship.`;
         }
-        if (q.includes('person') || q.includes('human') || q.includes('talk') || q.includes('contact')) {
-            return "Of course! You can book a free strategy call directly from our Contact page, or call us at +91 6385753874.";
+        if (q.includes('services') || q.includes('offer') || q.includes('do you do')) {
+            const services = this.knowledge.services.length > 0 ? this.knowledge.services.join(', ') : 'IT, HR, and Digital Marketing';
+            return `We offer a full-spectrum growth ecosystem: ${services}. Each pillar is synchronized for maximum business impact.`;
         }
-        if (q.includes('hello') || q.includes('hi')) {
-            return "Hello there! How can I assist you with your business growth engines today?";
+        if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+            return "Hello! I am JARVIS. How can I assist you with your business growth engines today?";
         }
         
-        return "That's interesting. I'd love to discuss how MONARCHY can help you scale in that area. Should we schedule a consultation call?";
+        return "I'd love to provide more details about that. Would you like to schedule a free strategy call with our experts?";
     }
 }
 
