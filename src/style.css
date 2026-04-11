@@ -7,7 +7,19 @@
   --glass-bg: rgba(255, 255, 255, 0.02);
   --glass-border: rgba(255, 255, 255, 0.1);
   --grid-color: rgba(255, 255, 255, 0.03);
-  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --accent-glow: rgba(255, 255, 255, 0.15);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.3));
+  z-index: 9999;
+  width: 0;
+  transition: width 0.1s ease-out;
 }
 
 * {
@@ -34,8 +46,9 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(30px) scale(0.98);
+  perspective: 1000px;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body.loading {

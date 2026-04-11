@@ -15,15 +15,10 @@ import { Jarvis } from './jarvis.js'
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Lenis Smooth Scrolling
     const lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.4,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
+        wheelMultiplier: 1.1,
+        smooth: true
     });
 
     function raf(time) {
@@ -31,6 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+
+    // 2. Scroll Progress Indicator
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
 
     // Handle Smooth Entrance
     setTimeout(() => {
@@ -63,11 +67,54 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initIcons();
 
-    // GSAP Scroll Animations
-    if (window.gsap) {
-        window.gsap.registerPlugin(window.ScrollTrigger);
+        // Magnetic Buttons Utility
+        document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                window.gsap.to(btn, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.6,
+                    ease: 'power3.out'
+                });
+            });
+            btn.addEventListener('mouseleave', () => {
+                window.gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'elastic.out(1, 0.3)'
+                });
+            });
+        });
 
-        // Header Scroll Effect
+        // Split Text Reveal for Headings
+        document.querySelectorAll('h1, h2').forEach(heading => {
+            const text = heading.innerText;
+            if (text.length > 5 && !heading.classList.contains('no-split')) {
+                heading.innerHTML = text.split(' ').map(word => `
+                    <span style="display: inline-block; overflow: hidden; vertical-align: top;">
+                        <span class="reveal-word" style="display: inline-block;">${word}&nbsp;</span>
+                    </span>
+                `).join('');
+                
+                window.gsap.from(heading.querySelectorAll('.reveal-word'), {
+                    scrollTrigger: {
+                        trigger: heading,
+                        start: 'top 90%',
+                    },
+                    y: 100,
+                    rotationX: -45,
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.05,
+                    ease: 'expo.out'
+                });
+            }
+        });
+ // Header Scroll Effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -87,21 +134,26 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 0.4
         });
 
-        // Generic Section Reveals - Consistent 0.7s duration
+        // Generic Section Reveals - 'Framer' style (Scale + Rotate + Slide)
         document.querySelectorAll('section').forEach(section => {
             const elements = section.querySelectorAll('.reveal');
             if (elements.length > 0) {
-                window.gsap.to(elements, {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 85%',
-                    },
-                    opacity: 1,
-                    y: 0,
-                    stagger: 0.1,
-                    duration: 0.7,
-                    ease: 'power2.out'
-                });
+                window.gsap.fromTo(elements, 
+                    { opacity: 0, y: 50, scale: 0.95, rotationX: -10 },
+                    {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 85%',
+                        },
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotationX: 0,
+                        stagger: 0.1,
+                        duration: 1,
+                        ease: 'expo.out'
+                    }
+                );
             }
         });
 
