@@ -89,29 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Split Text Reveal for Headings
-        document.querySelectorAll('h1, h2').forEach(heading => {
-            const text = heading.innerText;
-            if (text.length > 5 && !heading.classList.contains('no-split')) {
-                heading.innerHTML = text.split(' ').map(word => `
-                    <span style="display: inline-block; overflow: hidden; vertical-align: top;">
-                        <span class="reveal-word" style="display: inline-block;">${word}&nbsp;</span>
-                    </span>
-                `).join('');
-                
-                window.gsap.from(heading.querySelectorAll('.reveal-word'), {
-                    scrollTrigger: {
-                        trigger: heading,
-                        start: 'top 90%',
-                    },
-                    y: 100,
-                    rotationX: -45,
-                    opacity: 0,
-                    duration: 1,
-                    stagger: 0.05,
-                    ease: 'expo.out'
-                });
-            }
+        // Simple Heading/Section Reveals
+        document.querySelectorAll('h1, h2, h3, .reveal').forEach(el => {
+            if (el.classList.contains('no-split')) return;
+            window.gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 95%',
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                ease: 'expo.out',
+                clearProps: "all"
+            });
         });
  // Header Scroll Effect
         const header = document.getElementById('header');

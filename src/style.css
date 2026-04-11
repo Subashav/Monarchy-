@@ -421,13 +421,20 @@ header.scrolled {
 .nav-item-dropdown:hover .dropdown-menu {
     opacity: 1 !important;
     visibility: visible !important;
+    display: flex !important; /* Ensure it's never hidden if hovered */
     transform: translateX(-50%) translateY(0) !important;
 }
 
-/* Hardened Hero Visibility Fallback */
+/* Hardened Hero Visibility Fallback and Z-index */
+#header {
+    z-index: 10000 !important;
+    backdrop-filter: blur(15px) !important;
+}
+
 .hero-content {
     opacity: 1 !important;
     visibility: visible !important;
+    z-index: 100;
 }
 
 .hero-content .reveal {
