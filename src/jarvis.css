@@ -34,8 +34,17 @@
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
 }
 
-.jarvis-trigger .arc-reactor {
-    display: none; /* Hide glow on white background for clarity */
+.jarvis-trigger .bot-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.jarvis-trigger.active .bot-icon-img {
+    transform: scale(0);
+    opacity: 0;
 }
 
 @keyframes pulse {
@@ -106,27 +115,22 @@
 }
 
 .jarvis-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
     background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 }
 
-.jarvis-avatar::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 8px;
-    height: 8px;
-    background: #00ff88;
-    border-radius: 50%;
-    border: 2px solid #000;
+.jarvis-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .jarvis-info h3 {
