@@ -196,34 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Robot Hand: Subtle background watermark animation ---
-        const robotHand = document.getElementById('robotHand');
-        if (robotHand) {
-            // Gentle fade-in on scroll
-            window.gsap.fromTo(robotHand, 
-                { opacity: 0, scale: 0.9 },
-                {
-                    scrollTrigger: {
-                        trigger: '#three-pillars',
-                        start: 'top 80%',
-                        end: 'top 30%',
-                        scrub: true,
-                    },
-                    opacity: 0.1,
-                    scale: 1,
-                    ease: 'none'
-                }
-            );
 
-            // Slow gentle rotation
-            window.gsap.to(robotHand, {
-                rotation: 5,
-                duration: 8,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-        }
 
         // Global Card Hover Interactions (Lush Scale + Elevation)
         const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
