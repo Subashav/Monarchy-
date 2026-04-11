@@ -36,10 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = scrolled + '%';
     });
 
-    // Handle Smooth Entrance
-    setTimeout(() => {
-        document.body.classList.remove('loading');
-    }, 100);
+    // Handle Smooth Entrance Instantly
+    document.body.classList.remove('loading');
 
     // Initialize BorderGlow on elements with .glow-card class
     document.querySelectorAll('.glow-card').forEach(card => {
@@ -128,11 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hero Content Reveal - Enhanced Timing (Safe From Animation)
         window.gsap.from('.hero .reveal', {
             opacity: 0,
-            y: 30,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: 'expo.out',
-            delay: 0.4
+            y: 20,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: 'power2.out',
+            delay: 0.05
         });
 
         // Generic Section Reveals - 'Framer' style (Scale + Rotate + Slide)
@@ -143,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     {
                         scrollTrigger: {
                             trigger: section,
-                            start: 'top 85%',
+                            start: 'top 95%',
                         },
                         opacity: 0,
                         y: 50,
