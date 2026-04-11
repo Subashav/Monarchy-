@@ -409,9 +409,22 @@ header.scrolled {
 }
 
 .nav-item-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Hardened Hero Visibility Fallback */
+.hero-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hero-content .reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    /* We don't use animation here to avoid conflict with GSAP if it loads, 
+       but we ensure it's VISIBLE by default. */
 }
 
 .dropdown-item {
