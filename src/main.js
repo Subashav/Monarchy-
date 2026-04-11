@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     initIcons();
+    // GSAP Scroll Animations
+    if (window.gsap && window.ScrollTrigger) {
+        window.gsap.registerPlugin(window.ScrollTrigger);
 
         // Magnetic Buttons Utility
         document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
