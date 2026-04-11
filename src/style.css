@@ -532,10 +532,8 @@ header.scrolled {
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin-bottom: 1rem;
-  background: linear-gradient(to bottom, #fff, #bbb);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff; /* Fallback */
+  -webkit-text-fill-color: #ffffff; /* Force override of any transparent gradients during load */
 }
 
 .hero p {
