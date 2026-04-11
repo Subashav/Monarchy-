@@ -919,7 +919,7 @@ footer {
   .story-block,
   #origin-story > .container > .reveal,
   #contact-details > .container > div,
-  #why-monarchy > .container > .reveal,
+  #why-monarchsoftwares > .container > .reveal,
   #training-preview > .container > .reveal,
   #training-process .reveal[style*="grid-template-columns"],
   #it-services-detail .reveal,
@@ -1275,7 +1275,7 @@ footer {
     padding: 5rem 0 !important;
   }
 
-  /* === WHY CHOOSE MONARCHY === */
+  /* === WHY CHOOSE MONARCH SOFTWARES === */
   .why-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
