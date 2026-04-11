@@ -612,15 +612,19 @@ header.scrolled {
   gap: 1.5rem;
 }
 
-.service-card {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(255, 255, 255, 0.02);
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+/* Story Grid - Side by Side Layout */
+.story-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6rem !important;
+  align-items: center !important;
+}
+
+@media (max-width: 1024px) {
+  .story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
 }
 
 .service-card:hover {
