@@ -55,6 +55,33 @@ body.loading {
   opacity: 0;
 }
 
+/* Robot Hand Animation Styles */
+.robot-hand-container {
+  position: absolute;
+  right: -100px;
+  top: 15%;
+  width: 450px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.05));
+}
+
+.robot-hand-img {
+  width: 100%;
+  height: auto;
+  transform: rotate(-15deg);
+}
+
+@media (max-width: 1024px) {
+  .robot-hand-container {
+    width: 300px;
+    right: -50px;
+    opacity: 0.4;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;

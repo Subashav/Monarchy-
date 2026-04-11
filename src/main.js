@@ -196,6 +196,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // --- Robot Hand Framer-level Animation ---
+        const robotHand = document.querySelector('.robot-hand-container');
+        if (robotHand && window.gsap && window.ScrollTrigger) {
+            // 1. Entrance Animation (Scrubbed with scroll)
+            window.gsap.fromTo(robotHand, 
+                { x: 300, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: '#three-pillars',
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        scrub: 1,
+                    },
+                    x: 0,
+                    opacity: 0.8,
+                    ease: 'none'
+                }
+            );
+
+            // 2. Continuous Floating (Infinite Idle)
+            window.gsap.to(robotHand, {
+                y: -30,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
+        }
+
         // Global Card Hover Interactions (Lush Scale + Elevation)
         const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
         document.querySelectorAll(cardsToAnimate).forEach(card => {
