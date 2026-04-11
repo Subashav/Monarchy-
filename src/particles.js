@@ -1,4 +1,4 @@
-import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
+﻿import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 
 const hexToRgb = hex => {
   hex = hex.replace(/^#/, '');

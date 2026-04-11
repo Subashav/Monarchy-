@@ -1,11 +1,11 @@
-
+﻿
 export const legalContent = {
     privacy: {
         title: "Privacy Policy",
         content: `
             <div class="legal-section">
                 <h3>1. Introduction</h3>
-                <p>Welcome to MONARCHY. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
+                <p>Welcome to MONARCH SOFTWARES. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
             </div>
             <div class="legal-section">
                 <h3>2. The Data We Collect</h3>
@@ -45,19 +45,19 @@ export const legalContent = {
             </div>
             <div class="legal-section">
                 <h3>2. Use License</h3>
-                <p>Permission is granted to temporarily download one copy of the materials (information or software) on MONARCHY's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+                <p>Permission is granted to temporarily download one copy of the materials (information or software) on MONARCH SOFTWARES's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
             </div>
             <div class="legal-section">
                 <h3>3. Disclaimer</h3>
-                <p>The materials on MONARCHY's website are provided on an 'as is' basis. MONARCHY makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                <p>The materials on MONARCH SOFTWARES's website are provided on an 'as is' basis. MONARCH SOFTWARES makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
             </div>
             <div class="legal-section">
                 <h3>4. Limitations</h3>
-                <p>In no event shall MONARCHY or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on MONARCHY's website, even if MONARCHY or a MONARCHY authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+                <p>In no event shall MONARCH SOFTWARES or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on MONARCH SOFTWARES's website, even if MONARCH SOFTWARES or a MONARCH SOFTWARES authorized representative has been notified orally or in writing of the possibility of such damage.</p>
             </div>
             <div class="legal-section">
                 <h3>5. Accuracy of Materials</h3>
-                <p>The materials appearing on MONARCHY's website could include technical, typographical, or photographic errors. MONARCHY does not warrant that any of the materials on its website are accurate, complete or current. MONARCHY may make changes to the materials contained on its website at any time without notice.</p>
+                <p>The materials appearing on MONARCH SOFTWARES's website could include technical, typographical, or photographic errors. MONARCH SOFTWARES does not warrant that any of the materials on its website are accurate, complete or current. MONARCH SOFTWARES may make changes to the materials contained on its website at any time without notice.</p>
             </div>
             <div class="legal-section">
                 <h3>6. Governing Law</h3>

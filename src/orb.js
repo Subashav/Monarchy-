@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Orb.js - Vanilla JS port of the react-bits Orb component
  * Based on ogl library
  */

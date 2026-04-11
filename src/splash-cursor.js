@@ -1,4 +1,4 @@
-import { Renderer, Program, Mesh, Triangle, RenderTarget } from 'ogl';
+﻿import { Renderer, Program, Mesh, Triangle, RenderTarget } from 'ogl';
 
 export class SplashCursor {
     constructor(container, options = {}) {

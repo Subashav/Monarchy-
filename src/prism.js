@@ -1,4 +1,4 @@
-export class Prism {
+﻿export class Prism {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
     this.gl = canvas.getContext('webgl2') || canvas.getContext('webgl');

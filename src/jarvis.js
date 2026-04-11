@@ -1,6 +1,6 @@
-/**
+﻿/**
  * JARVIS - AI Growth Assistant
- * Custom chatbot for MONARCHY
+ * Custom chatbot for MONARCH SOFTWARES
  */
 
 export class Jarvis {
@@ -8,7 +8,7 @@ export class Jarvis {
         this.isOpen = false;
         this.lastAction = null; // Track the bot's last question/action
         this.messages = [
-            { id: 1, type: 'bot', text: 'Hello, I am JARVIS. Your AI Growth Assistant for MONARCHY.' },
+            { id: 1, type: 'bot', text: 'Hello, I am JARVIS. Your AI Growth Assistant for MONARCH SOFTWARES.' },
             { id: 2, type: 'bot', text: 'How can I help you scale your business today? You can ask about our IT, Marketing, or HR solutions.' }
         ];
         this.suggestions = [
@@ -24,7 +24,7 @@ export class Jarvis {
 
     collectSiteData() {
         const data = {
-            brand: 'MONARCHY',
+            brand: 'MONARCH SOFTWARES',
             phone: '+91 6385753874', // Fallback
             email: 'contact@monarchsoftwares.company', // Fallback
             tagline: 'Hire, Build, and Grow Effortlessly', // Fallback
@@ -224,7 +224,7 @@ export class Jarvis {
         // Handle negative responses
         if (this.lastAction === 'offer_call' && (q === 'no' || q === 'not now' || q === 'nope' || q.includes('dont'))) {
             this.lastAction = null;
-            return `No problem! I am here if you have any more questions about MONARCHY'S services. How else can I help?`;
+            return `No problem! I am here if you have any more questions about MONARCH SOFTWARES'S services. How else can I help?`;
         }
 
         if (q.includes('thanks') || q.includes('thank you') || q === 'ok' || q === 'okay') {
@@ -232,7 +232,7 @@ export class Jarvis {
             return "You're very welcome! Let me know if you need anything else to help your business grow.";
         }
 
-        if (q.includes('what') && (q.includes('monarchy') || q.includes('this site') || q.includes('you do'))) {
+        if (q.includes('what') && (q.includes('MONARCH SOFTWARES') || q.includes('this site') || q.includes('you do'))) {
             this.lastAction = null;
             return `${this.knowledge.brand} is your integrated growth partner. Our mission is to help you ${this.knowledge.tagline}. We handle IT, HR, and Marketing under one roof.`;
         }

@@ -1,4 +1,4 @@
-import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
+﻿import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
 
 export class Antigravity {
     constructor(container, options = {}) {

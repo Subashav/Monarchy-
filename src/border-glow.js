@@ -1,4 +1,4 @@
-/**
+﻿/**
  * BorderGlow - Vanilla JS implementation of the React component
  */
 
