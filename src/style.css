@@ -55,30 +55,42 @@ body.loading {
   opacity: 0;
 }
 
-/* Robot Hand Animation Styles */
+/* Robot Hand Divider Section */
+.robot-hand-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
 .robot-hand-container {
-  position: absolute;
-  right: -100px;
-  top: 15%;
-  width: 450px;
+  position: relative;
+  width: 400px;
   height: auto;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.05));
+  z-index: 1;
+  filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.08));
 }
 
 .robot-hand-img {
   width: 100%;
   height: auto;
-  transform: rotate(-15deg);
+  transform: rotate(-10deg);
 }
 
 @media (max-width: 1024px) {
+  .robot-hand-section {
+    padding: 4rem 0;
+  }
   .robot-hand-container {
-    width: 300px;
-    right: -50px;
-    opacity: 0.4;
+    width: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .robot-hand-container {
+    width: 180px;
   }
 }
 

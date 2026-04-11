@@ -201,23 +201,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (robotHand && window.gsap && window.ScrollTrigger) {
             // 1. Entrance Animation (Scrubbed with scroll)
             window.gsap.fromTo(robotHand, 
-                { x: 300, opacity: 0 },
+                { y: 80, opacity: 0, scale: 0.8, rotation: -25 },
                 {
                     scrollTrigger: {
-                        trigger: '#three-pillars',
-                        start: 'top 80%',
-                        end: 'top 20%',
+                        trigger: '#robot-divider',
+                        start: 'top 85%',
+                        end: 'center center',
                         scrub: 1,
                     },
-                    x: 0,
-                    opacity: 0.8,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotation: -10,
                     ease: 'none'
                 }
             );
 
             // 2. Continuous Floating (Infinite Idle)
             window.gsap.to(robotHand, {
-                y: -30,
+                y: -25,
                 duration: 4,
                 repeat: -1,
                 yoyo: true,
