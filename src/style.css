@@ -557,23 +557,23 @@ header.scrolled {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 5rem; /* Larger, bolder presence */
   font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-  margin-bottom: 1rem;
-  color: #ffffff; /* Fallback */
-  -webkit-text-fill-color: #ffffff; /* Force override of any transparent gradients during load */
+  letter-spacing: -0.05em;
+  line-height: 1.0;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .hero p {
-  font-size: 1.05rem;
+  font-size: 1.25rem; /* Slightly larger text */
   color: var(--text-secondary);
-  margin-bottom: 2rem;
-  max-width: 600px;
+  margin-bottom: 3.5rem;
+  max-width: 750px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .hero-visual {
