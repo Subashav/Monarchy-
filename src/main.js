@@ -8,6 +8,9 @@ import { initBorderGlow } from './border-glow.js'
 import { initLegalModals } from './legal.js'
 import { Particles } from './particles.js'
 import './particles.css'
+import './jarvis.css'
+import { Jarvis } from './jarvis.js'
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize BorderGlow on elements with .glow-card class
