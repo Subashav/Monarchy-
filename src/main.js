@@ -284,38 +284,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize Hero Orb
-    const orbContainer = document.getElementById('hero-orb');
-    if (orbContainer) {
-        new Orb(orbContainer, {
-            trackElement: document.querySelector('.hero'),
-            hue: 0,
-            hoverIntensity: 2,
-            rotateOnHover: true,
-            forceHoverState: false,
-            backgroundColor: '#000000'
-        });
+    try {
+        const orbContainer = document.getElementById('hero-orb');
+        if (orbContainer) {
+            new Orb(orbContainer, {
+                trackElement: document.querySelector('.hero'),
+                hue: 0,
+                hoverIntensity: 2,
+                rotateOnHover: true,
+                forceHoverState: false,
+                backgroundColor: '#000000'
+            });
+        }
+    } catch (e) {
+        console.error('Orb initialization failed:', e);
     }
 
     // Initialize Galaxy on services hero
-    const galaxyCanvas = document.getElementById('hero-galaxy');
-    const isTrainingPage = window.location.pathname.includes('training');
-    if (galaxyCanvas && !isTrainingPage) {
-        new Galaxy(galaxyCanvas, {
-            starSpeed: 0,
-            density: 3.0,
-            hueShift: 0,
-            speed: 1,
-            glowIntensity: 0.6,
-            saturation: 0,
-            mouseRepulsion: true,
-            repulsionStrength: 2.5,
-            twinkleIntensity: 0.8,
-            rotationSpeed: 0.002,
-            transparent: true,
-            starSize: 1.0,
-            brightness: 2.2,
-            exclusionRadius: 300
-        });
+    try {
+        const galaxyCanvas = document.getElementById('hero-galaxy');
+        const isTrainingPage = window.location.pathname.includes('training');
+        if (galaxyCanvas && !isTrainingPage) {
+            new Galaxy(galaxyCanvas, {
+                starSpeed: 0,
+                density: 3.0,
+                hueShift: 0,
+                speed: 1,
+                glowIntensity: 0.6,
+                saturation: 0,
+                mouseRepulsion: true,
+                repulsionStrength: 2.5,
+                twinkleIntensity: 0.8,
+                rotationSpeed: 0.002,
+                transparent: true,
+                starSize: 1.0,
+                brightness: 2.2,
+                exclusionRadius: 300
+            });
+        }
+    } catch (e) {
+        console.error('Galaxy initialization failed:', e);
     }
 
     // Initialize Prism on training hero
