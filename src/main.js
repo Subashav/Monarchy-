@@ -197,6 +197,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
+        // --- Tech Section: Robot Hand slides in on scroll ---
+        const techHand = document.getElementById('techRobotHand');
+        if (techHand) {
+            window.gsap.to(techHand, {
+                scrollTrigger: {
+                    trigger: '#tech-solutions',
+                    start: 'top 75%',
+                    end: 'top 25%',
+                    scrub: 1,
+                },
+                x: 0,
+                opacity: 1,
+                ease: 'none'
+            });
+
+            // Floating idle after entrance
+            window.gsap.to(techHand, {
+                y: -20,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                delay: 1,
+                ease: "sine.inOut"
+            });
+        }
 
         // Global Card Hover Interactions (Lush Scale + Elevation)
         const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
