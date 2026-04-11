@@ -50,10 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             borderRadius: 20
         });
     });
-    // Reveal all elements hidden initially to ensure visibility
-    document.querySelectorAll('.reveal').forEach(el => {
-        el.classList.add('reveal-hidden');
-    });
+
 
     // Initialize Lucide Icons with multiple retries if needed
     const initIcons = () => {

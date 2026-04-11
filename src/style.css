@@ -1592,15 +1592,7 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animations Reveal */
-.reveal {
-  opacity: 1;
-}
 
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(30px);
-}
 
 /* === STACKING SERVICES EFFECT === */
 .stacking-container {
