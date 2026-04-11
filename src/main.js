@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Hero Content Reveal - Enhanced Timing
-        window.gsap.to('.hero .reveal-hidden', {
+        window.gsap.to('.hero .reveal', {
             opacity: 1,
             y: 0,
             stagger: 0.1,
@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 0.4
         });
 
-        // Generic Section Reveals - Consistent 0.6s duration
+        // Generic Section Reveals - Consistent 0.7s duration
         document.querySelectorAll('section').forEach(section => {
-            const elements = section.querySelectorAll('.reveal-hidden');
+            const elements = section.querySelectorAll('.reveal');
             if (elements.length > 0) {
                 window.gsap.to(elements, {
                     scrollTrigger: {
