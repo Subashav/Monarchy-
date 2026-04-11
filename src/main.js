@@ -124,14 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Hero Content Reveal - Enhanced Timing (Safe From Animation)
-        window.gsap.from('.hero .reveal', {
-            opacity: 0,
-            y: 20,
-            stagger: 0.05,
-            duration: 0.5,
-            ease: 'power2.out',
-            delay: 0.05
-        });
+        window.gsap.fromTo('.hero .reveal', 
+            { opacity: 0, y: 30 },
+            { 
+                opacity: 1, 
+                y: 0, 
+                stagger: 0.1, 
+                duration: 1, 
+                ease: 'expo.out', 
+                delay: 0.2,
+                clearProps: "all" 
+            }
+        );
 
         // Generic Section Reveals - 'Framer' style (Scale + Rotate + Slide)
         document.querySelectorAll('section').forEach(section => {
