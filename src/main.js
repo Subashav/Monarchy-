@@ -196,30 +196,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Robot Hand: Exact Framer Motion replica ---
+        // --- Robot Hand: Subtle background watermark animation ---
         const robotHand = document.getElementById('robotHand');
         if (robotHand) {
-            // x: useTransform(scrollYProgress, [0, 1], [400, 0])
+            // Gentle fade-in on scroll
             window.gsap.fromTo(robotHand, 
-                { x: 400, opacity: 0, scale: 0.85 },
+                { opacity: 0, scale: 0.9 },
                 {
                     scrollTrigger: {
                         trigger: '#three-pillars',
-                        start: 'start 80%',
-                        end: 'end 20%',
+                        start: 'top 80%',
+                        end: 'top 30%',
                         scrub: true,
                     },
-                    x: 0,
-                    opacity: 0.8,
+                    opacity: 0.1,
                     scale: 1,
                     ease: 'none'
                 }
             );
 
-            // animate={{ y: [0, -15, 0] }} with 4s infinite
+            // Slow gentle rotation
             window.gsap.to(robotHand, {
-                y: '-=15',
-                duration: 4,
+                rotation: 5,
+                duration: 8,
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut"
