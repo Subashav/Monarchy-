@@ -44,11 +44,9 @@ body {
   transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal {
+body.gsap-ready .reveal {
   opacity: 0;
   transform: translateY(30px) scale(0.98);
-  perspective: 1000px;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body.loading {

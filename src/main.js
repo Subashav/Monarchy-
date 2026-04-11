@@ -1,4 +1,4 @@
-﻿import './style.css'
+import './style.css'
 import './border-glow.css'
 import { Orb } from './orb.js'
 import { Galaxy } from './galaxy.js'
@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // GSAP Scroll Animations
     if (window.gsap && window.ScrollTrigger) {
         window.gsap.registerPlugin(window.ScrollTrigger);
+        document.body.classList.add('gsap-ready');
 
         // Magnetic Buttons Utility
         document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
