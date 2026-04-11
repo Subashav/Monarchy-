@@ -13,6 +13,30 @@ import { Jarvis } from './jarvis.js'
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Handle Smooth Entrance
+    setTimeout(() => {
+        document.body.classList.remove('loading');
+    }, 100);
+
     // Initialize BorderGlow on elements with .glow-card class
     document.querySelectorAll('.glow-card').forEach(card => {
         initBorderGlow(card, {
@@ -53,30 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Hero Content Reveal
+        // Hero Content Reveal - Enhanced Timing
         window.gsap.to('.hero .reveal-hidden', {
             opacity: 1,
             y: 0,
-            stagger: 0.2,
-            duration: 1.2,
-            ease: 'power4.out',
-            delay: 0.5
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'expo.out',
+            delay: 0.4
         });
 
-        // Generic Section Reveals
+        // Generic Section Reveals - Consistent 0.6s duration
         document.querySelectorAll('section').forEach(section => {
             const elements = section.querySelectorAll('.reveal-hidden');
             if (elements.length > 0) {
                 window.gsap.to(elements, {
                     scrollTrigger: {
                         trigger: section,
-                        start: 'top 80%',
+                        start: 'top 85%',
                     },
                     opacity: 1,
                     y: 0,
-                    stagger: 0.15,
-                    duration: 1.2,
-                    ease: 'power4.out'
+                    stagger: 0.1,
+                    duration: 0.7,
+                    ease: 'power2.out'
                 });
             }
         });
@@ -106,21 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power2.out'
                 });
             });
+
+            // Parallax effect for the hero visual
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const heroVisual = document.querySelector('.hero-visual');
+                if (heroVisual) {
+                    heroVisual.style.transform = `translateY(${scrolled * 0.15}px)`;
+                }
+            });
         }
 
-        // Global Card Hover Interactions (Pop up & Highlight)
+        // Global Card Hover Interactions (Lush Scale + Elevation)
         const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
         document.querySelectorAll(cardsToAnimate).forEach(card => {
             card.addEventListener('mouseenter', () => {
                 window.gsap.to(card, {
-                    y: -20,
-                    scale: 1.04,
-                    zIndex: 100,
-                    boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.08)',
-                    borderColor: 'rgba(255, 255, 255, 0.4)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                    duration: 0.6,
-                    ease: 'expo.out'
+                    y: -12,
+                    scale: 1.02,
+                    zIndex: 10,
+                    boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05)',
+                    duration: 0.4,
+                    ease: 'power2.out'
                 });
             });
             card.addEventListener('mouseleave', () => {
@@ -129,10 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     scale: 1,
                     zIndex: 1,
                     boxShadow: 'none',
-                    borderColor: 'rgba(255, 255, 255, 0.08)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    duration: 0.6,
-                    ease: 'expo.out'
+                    duration: 0.4,
+                    ease: 'power2.out'
                 });
             });
         });
