@@ -448,5 +448,26 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSections.forEach(hero => observer.observe(hero));
         }
     };
+    // Interactive Cards Handler
+    document.querySelectorAll('.service-card, .stack-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const link = card.querySelector('a');
+            if (link) link.click();
+        });
+    });
+
+    // Mobile Dropdown Toggle
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                const menu = toggle.nextElementSibling;
+                if (menu) {
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
+            }
+        });
+    });
+
     initGlobalParticles();
 });

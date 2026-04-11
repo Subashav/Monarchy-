@@ -371,7 +371,17 @@ header.scrolled {
 /* Dropdown Menu Styles */
 .nav-item-dropdown {
     position: relative;
-    padding: 1rem 0;
+    padding: 1.5rem 0; /* Increased padding to keep hover active */
+}
+
+.nav-item-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px; /* Bridge gap between nav link and dropdown menu */
+    z-index: 5;
 }
 
 .dropdown-toggle {
@@ -602,6 +612,14 @@ header.scrolled {
   justify-content: flex-end;
   border: 1px solid rgba(255, 255, 255, 0.05);
   background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
 }
 
 .service-card:nth-child(1) { grid-column: span 8; }
