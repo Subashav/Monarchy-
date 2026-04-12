@@ -88,6 +88,7 @@ body.loading {
   transform: translate3d(140px, 0, 0);
   filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
   will-change: transform, opacity;
+  mix-blend-mode: screen; /* Key for background-less appearance of assets on black */
 }
 
 @media (max-width: 1024px) {
