@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             window.gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 90%',
-                    toggleActions: 'play none none none',
+                    start: 'top 92%',
+                    toggleActions: 'play none none reverse',
                     once: true,
                     invalidateOnRefresh: true
                 },
@@ -236,19 +236,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (visualWrap) {
-                // Periodic Floating idle animation on the wrapper
-                window.gsap.to(visualWrap, {
-                    y: -15,
-                    duration: 3 + Math.random() * 2,
-                    repeat: -1,
-                    yoyo: true,
-                    delay: index * 0.3,
-                    ease: "sine.inOut"
-                });
+                // Entrance animation for the robot/asset
+                const robotImg = visualWrap.querySelector('.reveal-robot');
+                if (robotImg) {
+                    window.gsap.from(robotImg, {
+                        scrollTrigger: {
+                            trigger: visualWrap,
+                            start: "top 90%",
+                            toggleActions: "play none none reverse"
+                        },
+                        y: 100,
+                        scale: 0.8,
+                        opacity: 0,
+                        duration: 1.8,
+                        ease: "expo.out"
+                    });
+
+                    // Continuous Floating idle animation
+                    window.gsap.to(robotImg, {
+                        y: -20,
+                        duration: 3 + Math.random() * 2,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut"
+                    });
+                }
             }
         });
 
-        window.gsap.utils.toArray('.story-grid, .tech-section-inner').forEach((grid) => {
+        window.gsap.utils.toArray('.story-grid, .tech-section-inner, .pillars-grid').forEach((grid) => {
             const cells = grid.querySelectorAll(':scope > *');
             cells.forEach((cell, index) => {
                 const fromX = index === 0 ? -56 : 56;

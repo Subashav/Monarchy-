@@ -73,22 +73,21 @@ body.loading {
 }
 
 .tech-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+    width: 100%;
+    z-index: 2;
 }
 
 .tech-robot-hand {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-  opacity: 0;
-  transform: translate3d(140px, 0, 0);
-  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
-  will-change: transform, opacity;
-  mix-blend-mode: screen; /* Key for background-less appearance of assets on black */
+    mix-blend-mode: lighten;
+    filter: brightness(1.2) contrast(1.1) drop-shadow(0 0 40px rgba(0, 150, 255, 0.3));
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 @media (max-width: 1024px) {
