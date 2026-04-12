@@ -15,9 +15,9 @@ import { Jarvis } from './jarvis.js'
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Lenis Smooth Scrolling
     const lenis = new Lenis({
-        duration: 1.4,
+        duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        wheelMultiplier: 1.1,
+        wheelMultiplier: 1.0,
         smooth: true
     });
 
@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+
+    // Sync ScrollTrigger with Lenis
+    lenis.on('scroll', ScrollTrigger.update);
 
     // 2. Scroll Progress Indicator
     const progressBar = document.createElement('div');
@@ -61,10 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     initIcons();
+
     // GSAP Scroll Animations
     if (window.gsap && window.ScrollTrigger) {
         window.gsap.registerPlugin(window.ScrollTrigger);
         document.body.classList.add('gsap-ready');
+
+        // Refresh ScrollTrigger on Lenis scroll to ensure accurate positions
+        ScrollTrigger.scrollerProxy(document.body, {
+            scrollTop(value) {
+                return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll;
+            },
+            getBoundingClientRect() {
+                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+            }
+        });
 
         // Magnetic Buttons Utility
         document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
@@ -89,22 +103,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Simple Heading/Section Reveals
+        // Unified Element Reveals - Triggers during scroll
+        // This handles individual elements as they enter the viewport
         document.querySelectorAll('h1, h2, h3, .reveal').forEach(el => {
-            if (el.classList.contains('no-split')) return;
+            if (el.classList.contains('no-split') && el.closest('.hero')) return; // Skip hero main title if already animated
+            
             window.gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 95%',
+                    start: 'top 92%', // Trigger as it enters the bottom 8% of viewport
+                    toggleActions: 'play none none none',
+                    once: true
                 },
-                y: 50,
+                y: 40,
+                scale: 0.98,
+                rotationX: -5,
                 opacity: 0,
-                duration: 1.2,
-                ease: 'expo.out',
+                duration: 1,
+                ease: 'power3.out',
                 clearProps: "all"
             });
         });
- // Header Scroll Effect
+
+        // Header Scroll Effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -114,36 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Hero Content Reveal - Enhanced Timing
+        // Hero Content Entrance Reveal
         window.gsap.from('.hero .reveal', {
-            y: 40,
-            stagger: 0.1,
+            y: 30,
+            opacity: 0,
+            stagger: 0.15,
             duration: 1.2,
             ease: 'expo.out',
             delay: 0.2,
             clearProps: "all"
-        });
-
-        // Generic Section Reveals - 'Framer' style (Scale + Rotate + Slide)
-        document.querySelectorAll('section').forEach(section => {
-            const elements = section.querySelectorAll('.reveal');
-            if (elements.length > 0) {
-                window.gsap.from(elements, 
-                    {
-                        scrollTrigger: {
-                            trigger: section,
-                            start: 'top 95%',
-                        },
-                        opacity: 0,
-                        y: 50,
-                        scale: 0.95,
-                        rotationX: -10,
-                        stagger: 0.1,
-                        duration: 1,
-                        ease: 'expo.out'
-                    }
-                );
-            }
         });
 
         // Hero Visual Parallax and Mouse move
@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
             window.gsap.to(techHand, {
                 scrollTrigger: {
                     trigger: '#tech-solutions',
-                    start: 'top 75%',
-                    end: 'top 25%',
+                    start: 'top 90%', // Trigger earlier for "during scrolling" feel
+                    end: 'top 20%',
                     scrub: 1,
                 },
                 x: 0,
@@ -461,4 +461,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initGlobalParticles();
+
+    // Ensure ScrollTrigger refreshes after all assets load
+    window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+    });
 });
