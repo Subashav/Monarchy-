@@ -211,34 +211,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        // --- Tech Section: scrub on hand; idle float on wrapper so transforms do not fight ---
-        const techHand = document.getElementById('techRobotHand');
-        const techVisualWrap = document.querySelector('#tech-solutions .tech-visual');
-        if (techHand) {
-            window.gsap.set(techHand, { x: 140, opacity: 0, force3D: true });
+        // --- Generalized Robot-Style Section Animations ---
+        document.querySelectorAll('.tech-section').forEach((section, index) => {
+            const robotImg = section.querySelector('.reveal-robot');
+            const visualWrap = section.querySelector('.tech-visual');
+            
+            if (robotImg) {
+                // Initial setup to avoid flash
+                window.gsap.set(robotImg, { x: 140, opacity: 0, force3D: true });
 
-            window.gsap.to(techHand, {
-                scrollTrigger: {
-                    trigger: '#tech-solutions',
-                    start: 'top 82%',
-                    end: 'bottom 55%',
-                    scrub: 0.5,
-                    invalidateOnRefresh: true
-                },
-                x: 0,
-                opacity: 1,
-                ease: 'none'
-            });
-        }
-        if (techVisualWrap) {
-            window.gsap.to(techVisualWrap, {
-                y: -10,
-                duration: 3.2,
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut'
-            });
-        }
+                // Entrance animation linked to scroll
+                window.gsap.to(robotImg, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        end: 'bottom 50%',
+                        scrub: 1,
+                        invalidateOnRefresh: true
+                    },
+                    x: 0,
+                    opacity: 1,
+                    ease: 'none'
+                });
+            }
+
+            if (visualWrap) {
+                // Periodic Floating idle animation on the wrapper
+                window.gsap.to(visualWrap, {
+                    y: -15,
+                    duration: 3 + Math.random() * 2,
+                    repeat: -1,
+                    yoyo: true,
+                    delay: index * 0.3,
+                    ease: "sine.inOut"
+                });
+            }
+        });
 
         window.gsap.utils.toArray('.story-grid, .tech-section-inner').forEach((grid) => {
             const cells = grid.querySelectorAll(':scope > *');
