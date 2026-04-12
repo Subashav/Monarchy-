@@ -15,9 +15,9 @@ import { Jarvis } from './jarvis.js'
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Lenis Smooth Scrolling
     const lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.4,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        wheelMultiplier: 1.0,
+        wheelMultiplier: 1.1,
         smooth: true
     });
 
@@ -26,9 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
-    // Sync ScrollTrigger with Lenis
-    lenis.on('scroll', ScrollTrigger.update);
 
     // 2. Scroll Progress Indicator
     const progressBar = document.createElement('div');
@@ -52,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // Initialize Lucide Icons with multiple retries if needed
     const initIcons = () => {
         if (window.lucide) {
@@ -70,14 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.gsap.registerPlugin(window.ScrollTrigger);
         document.body.classList.add('gsap-ready');
 
-        // Refresh ScrollTrigger on Lenis scroll to ensure accurate positions
-        ScrollTrigger.scrollerProxy(document.body, {
-            scrollTop(value) {
-                return arguments.length ? lenis.scrollTo(value, { immediate: true }) : lenis.scroll;
-            },
-            getBoundingClientRect() {
-                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-            }
+        // Sync Lenis scroll with GSAP's internal ticker for real-time updates
+        lenis.on('scroll', () => {
+            window.ScrollTrigger.update();
         });
 
         // Magnetic Buttons Utility
@@ -103,24 +94,46 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Unified Element Reveals - Triggers during scroll
-        // This handles individual elements as they enter the viewport
-        document.querySelectorAll('h1, h2, h3, .reveal').forEach(el => {
-            if (el.classList.contains('no-split') && el.closest('.hero')) return; // Skip hero main title if already animated
-            
+        // Section-level Reveals — animate .reveal children when their parent section scrolls in
+        document.querySelectorAll('section').forEach(section => {
+            // Skip the hero — it has its own dedicated entrance animation
+            if (section.classList.contains('hero') || section.classList.contains('services-hero') || section.classList.contains('training-hero')) return;
+
+            const elements = section.querySelectorAll('.reveal');
+            if (elements.length > 0) {
+                window.gsap.from(elements, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                    },
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.97,
+                    rotationX: -5,
+                    stagger: 0.12,
+                    duration: 1,
+                    ease: 'expo.out',
+                    clearProps: "all"
+                });
+            }
+        });
+
+        // Heading reveals (h1/h2/h3 not inside .reveal)
+        document.querySelectorAll('h1, h2, h3').forEach(el => {
+            // Skip if already covered by a .reveal parent or hero
+            if (el.closest('.reveal') || el.closest('.hero')) return;
+
             window.gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 92%', // Trigger as it enters the bottom 8% of viewport
+                    start: 'top 90%',
                     toggleActions: 'play none none none',
-                    once: true
                 },
                 y: 40,
-                scale: 0.98,
-                rotationX: -5,
                 opacity: 0,
                 duration: 1,
-                ease: 'power3.out',
+                ease: 'expo.out',
                 clearProps: "all"
             });
         });
@@ -135,11 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Hero Content Entrance Reveal
+        // Hero Content Entrance Reveal — immediate on page load
         window.gsap.from('.hero .reveal', {
-            y: 30,
+            y: 40,
             opacity: 0,
-            stagger: 0.15,
+            stagger: 0.1,
             duration: 1.2,
             ease: 'expo.out',
             delay: 0.2,
@@ -189,8 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
             window.gsap.to(techHand, {
                 scrollTrigger: {
                     trigger: '#tech-solutions',
-                    start: 'top 90%', // Trigger earlier for "during scrolling" feel
-                    end: 'top 20%',
+                    start: 'top 75%',
+                    end: 'top 25%',
                     scrub: 1,
                 },
                 x: 0,
@@ -242,14 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.gsap.to(card, {
                         scrollTrigger: {
                             trigger: stackCards[index + 1],
-                            start: "top 90%", // Start scaling sooner
-                            end: "top 120px", // Complete when it hits the stack top
-                            scrub: 1, // More lag for smoother visibility
+                            start: "top 90%",
+                            end: "top 120px",
+                            scrub: 1,
                             invalidateOnRefresh: true,
                         },
-                        scale: 0.85, // More aggressive scale for visibility
-                        opacity: 0.6, // Fades more to draw focus to the new top card
-                        y: -50, // More upward movement
+                        scale: 0.85,
+                        opacity: 0.6,
+                        y: -50,
                         filter: "brightness(0.3) blur(2px)",
                         ease: "power2.inOut"
                     });
@@ -417,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveParticlesOnHover: true,
             particleHoverFactor: 0.5,
             alphaParticles: true,
-            particleBaseSize: 60, // Increased size
+            particleBaseSize: 60,
             sizeRandomness: 0.8,
             cameraDistance: 25,
             disableRotation: false
@@ -439,6 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSections.forEach(hero => observer.observe(hero));
         }
     };
+
     // Interactive Cards Handler
     document.querySelectorAll('.service-card, .stack-card').forEach(card => {
         card.addEventListener('click', () => {
@@ -462,8 +476,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGlobalParticles();
 
-    // Ensure ScrollTrigger refreshes after all assets load
+    // Refresh ScrollTrigger after all assets are loaded for accurate positions
     window.addEventListener('load', () => {
-        ScrollTrigger.refresh();
+        if (window.ScrollTrigger) {
+            window.ScrollTrigger.refresh();
+        }
     });
 });
+
