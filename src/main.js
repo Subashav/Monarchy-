@@ -11,30 +11,57 @@ import './particles.css'
 import './jarvis.css'
 import { Jarvis } from './jarvis.js'
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lenis Smooth Scrolling
-    const lenis = new Lenis({
-        duration: 1.4,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        wheelMultiplier: 1.1,
-        smooth: true
-    });
+    const header = document.getElementById('header');
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // 2. Scroll Progress Indicator
+    // Scroll progress (Lenis does not always update window.scrollY — drive UI from Lenis)
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
-    window.addEventListener('scroll', () => {
-        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        progressBar.style.width = scrolled + '%';
+
+    // 1. Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        wheelMultiplier: 1.0,
+        smooth: true
     });
+
+    const updateScrollChrome = () => {
+        const limit = lenis.limit;
+        const pct = !limit || limit <= 0 ? 0 : Math.min(100, Math.max(0, (lenis.scroll / limit) * 100));
+        progressBar.style.width = pct + '%';
+        if (header) {
+            if (lenis.scroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+    };
+
+    lenis.on('scroll', () => {
+        if (window.ScrollTrigger) {
+            window.ScrollTrigger.update();
+        }
+        updateScrollChrome();
+    });
+
+    // Drive Lenis from GSAP ticker so ScrollTrigger and Lenis share one timeline (fixes scrub / pin drift)
+    if (window.gsap) {
+        window.gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        window.gsap.ticker.lagSmoothing(0);
+    } else {
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+
+    updateScrollChrome();
 
     // Handle Smooth Entrance Instantly
     document.body.classList.remove('loading');
@@ -49,27 +76,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
     // Initialize Lucide Icons with multiple retries if needed
     const initIcons = () => {
         if (window.lucide) {
             window.lucide.createIcons();
-            console.log('Lucide icons created');
         } else {
-            console.warn('Lucide not found, retrying...');
             setTimeout(initIcons, 500);
         }
     };
     initIcons();
 
-    // GSAP Scroll Animations
+    // GSAP Scroll Animations (Lenis scrolls document.documentElement — proxy must match)
+    const scrollRoot = document.documentElement;
+
     if (window.gsap && window.ScrollTrigger) {
         window.gsap.registerPlugin(window.ScrollTrigger);
         document.body.classList.add('gsap-ready');
 
-        // Sync Lenis scroll with GSAP's internal ticker for real-time updates
-        lenis.on('scroll', () => {
-            window.ScrollTrigger.update();
+        ScrollTrigger.scrollerProxy(scrollRoot, {
+            scrollTop(value) {
+                if (arguments.length) {
+                    lenis.scrollTo(value, { immediate: true });
+                }
+                return lenis.scroll;
+            },
+            getBoundingClientRect() {
+                return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+            },
+            pinType: scrollRoot.style.transform ? 'transform' : 'fixed'
         });
+
+        window.ScrollTrigger.defaults({ scroller: scrollRoot });
 
         // Magnetic Buttons Utility
         document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
@@ -94,69 +132,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Section-level Reveals — animate .reveal children when their parent section scrolls in
-        document.querySelectorAll('section').forEach(section => {
-            // Skip the hero — it has its own dedicated entrance animation
-            if (section.classList.contains('hero') || section.classList.contains('services-hero') || section.classList.contains('training-hero')) return;
-
-            const elements = section.querySelectorAll('.reveal');
-            if (elements.length > 0) {
-                window.gsap.from(elements, {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 85%',
-                        toggleActions: 'play none none none',
-                    },
-                    opacity: 0,
-                    y: 50,
-                    scale: 0.97,
-                    rotationX: -5,
-                    stagger: 0.12,
-                    duration: 1,
-                    ease: 'expo.out',
-                    clearProps: "all"
-                });
+        // Unified scroll reveals — skip headings nested inside .reveal; skip column wrappers handled by .story-grid stagger
+        document.querySelectorAll('h1, h2, h3, .reveal').forEach((el) => {
+            if (el.classList.contains('no-split') && el.closest('.hero')) {
+                return;
             }
-        });
-
-        // Heading reveals (h1/h2/h3 not inside .reveal)
-        document.querySelectorAll('h1, h2, h3').forEach(el => {
-            // Skip if already covered by a .reveal parent or hero
-            if (el.closest('.reveal') || el.closest('.hero')) return;
+            const tag = el.tagName;
+            if ((tag === 'H1' || tag === 'H2' || tag === 'H3') && el.closest('.reveal')) {
+                return;
+            }
+            if (el.classList.contains('reveal') && el.parentElement && el.parentElement.classList.contains('story-grid')) {
+                return;
+            }
+            if (el.classList.contains('reveal') && el.parentElement && el.parentElement.classList.contains('tech-section-inner')) {
+                return;
+            }
+            if (el.classList.contains('reveal') && el.closest('.hero')) {
+                return;
+            }
+            if (el.classList.contains('story-grid')) {
+                return;
+            }
 
             window.gsap.from(el, {
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 90%',
                     toggleActions: 'play none none none',
+                    once: true,
+                    invalidateOnRefresh: true
                 },
-                y: 40,
+                y: 48,
+                scale: 0.98,
+                rotationX: -4,
                 opacity: 0,
                 duration: 1,
-                ease: 'expo.out',
-                clearProps: "all"
+                ease: 'power3.out',
+                clearProps: 'transform,opacity,visibility'
             });
         });
 
-        // Header Scroll Effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Hero Content Entrance Reveal — immediate on page load
+        // Hero Content Entrance Reveal
         window.gsap.from('.hero .reveal', {
-            y: 40,
+            y: 30,
             opacity: 0,
-            stagger: 0.1,
+            stagger: 0.15,
             duration: 1.2,
             ease: 'expo.out',
             delay: 0.2,
-            clearProps: "all"
+            clearProps: 'transform,opacity,visibility'
         });
 
         // Hero Visual Parallax and Mouse move
@@ -184,43 +208,79 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: 'power2.out'
                 });
             });
-
-            // Parallax effect for the hero visual
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                const heroVisual = document.querySelector('.hero-visual');
-                if (heroVisual) {
-                    heroVisual.style.transform = `translateY(${scrolled * 0.15}px)`;
-                }
-            });
         }
 
 
-        // --- Tech Section: Robot Hand slides in on scroll ---
+        // --- Tech Section: scrub on hand; idle float on wrapper so transforms do not fight ---
         const techHand = document.getElementById('techRobotHand');
+        const techVisualWrap = document.querySelector('#tech-solutions .tech-visual');
         if (techHand) {
+            window.gsap.set(techHand, { x: 140, opacity: 0, force3D: true });
+
             window.gsap.to(techHand, {
                 scrollTrigger: {
                     trigger: '#tech-solutions',
-                    start: 'top 75%',
-                    end: 'top 25%',
-                    scrub: 1,
+                    start: 'top 82%',
+                    end: 'bottom 55%',
+                    scrub: 0.5,
+                    invalidateOnRefresh: true
                 },
                 x: 0,
                 opacity: 1,
                 ease: 'none'
             });
-
-            // Floating idle after entrance
-            window.gsap.to(techHand, {
-                y: -20,
-                duration: 4,
+        }
+        if (techVisualWrap) {
+            window.gsap.to(techVisualWrap, {
+                y: -10,
+                duration: 3.2,
                 repeat: -1,
                 yoyo: true,
-                delay: 1,
-                ease: "sine.inOut"
+                ease: 'sine.inOut'
             });
         }
+
+        window.gsap.utils.toArray('.story-grid, .tech-section-inner').forEach((grid) => {
+            const cells = grid.querySelectorAll(':scope > *');
+            cells.forEach((cell, index) => {
+                const fromX = index === 0 ? -56 : 56;
+                window.gsap.from(cell, {
+                    scrollTrigger: {
+                        trigger: grid,
+                        start: 'top 86%',
+                        once: true,
+                        invalidateOnRefresh: true
+                    },
+                    x: fromX,
+                    opacity: 0,
+                    duration: 1.05,
+                    delay: index * 0.1,
+                    ease: 'power3.out',
+                    clearProps: 'transform,opacity'
+                });
+            });
+        });
+
+        document.querySelectorAll('.process-timeline').forEach((row) => {
+            const steps = row.querySelectorAll(':scope > *');
+            if (steps.length === 0) {
+                return;
+            }
+            window.gsap.from(steps, {
+                scrollTrigger: {
+                    trigger: row,
+                    start: 'top 86%',
+                    once: true,
+                    invalidateOnRefresh: true
+                },
+                y: 44,
+                opacity: 0,
+                duration: 0.85,
+                stagger: 0.09,
+                ease: 'power3.out',
+                clearProps: 'transform,opacity'
+            });
+        });
 
         // Global Card Hover Interactions (Lush Scale + Elevation)
         const cardsToAnimate = '.glow-card, .service-card, .why-item, .stack-card, .marquee-card, .testimonial-card, .process-step, .price-card';
@@ -247,22 +307,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Stacking Methodology Animation
-        const stackCards = window.gsap.utils.toArray('.stack-card');
+        // Stacking deck animation (methodology section only — not services division cards)
+        const stackCards = window.gsap.utils.toArray('.cards-stack-container .stack-card');
         if (stackCards.length > 0) {
             stackCards.forEach((card, index) => {
                 if (index < stackCards.length - 1) {
                     window.gsap.to(card, {
                         scrollTrigger: {
                             trigger: stackCards[index + 1],
-                            start: "top 90%",
-                            end: "top 120px",
-                            scrub: 1,
+                            start: "top 90%", // Start scaling sooner
+                            end: "top 120px", // Complete when it hits the stack top
+                            scrub: 1, // More lag for smoother visibility
                             invalidateOnRefresh: true,
                         },
-                        scale: 0.85,
-                        opacity: 0.6,
-                        y: -50,
+                        scale: 0.85, // More aggressive scale for visibility
+                        opacity: 0.6, // Fades more to draw focus to the new top card
+                        y: -50, // More upward movement
                         filter: "brightness(0.3) blur(2px)",
                         ease: "power2.inOut"
                     });
@@ -376,39 +436,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    if (mobileToggle) {
+    if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-active');
             const icon = mobileToggle.querySelector('.lucide');
             if (navLinks.classList.contains('mobile-active')) {
-                if (icon) icon.setAttribute('data-lucide', 'x');
-                document.body.style.overflow = 'hidden'; // Prevent scroll
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'x');
+                }
+                document.body.style.overflow = 'hidden';
             } else {
-                if (icon) icon.setAttribute('data-lucide', 'menu');
-                document.body.style.overflow = ''; // Restore scroll
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                document.body.style.overflow = '';
             }
-            if (window.lucide) window.lucide.createIcons();
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
         });
 
-        // Close menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
+        navLinks.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('mobile-active');
-                mobileToggle.querySelector('i').setAttribute('data-lucide', 'menu');
+                const icon = mobileToggle.querySelector('.lucide');
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
                 document.body.style.overflow = '';
-                window.lucide.createIcons();
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
             });
         });
     }
 
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+            const href = this.getAttribute('href');
+            if (!href || !href.startsWith('#')) {
+                return;
             }
+            const target = href.length > 1 ? document.querySelector(href) : null;
+            if (!target) {
+                if (href === '#') {
+                    e.preventDefault();
+                }
+                return;
+            }
+            e.preventDefault();
+            lenis.scrollTo(target, {
+                offset: -90,
+                duration: 1.35,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
         });
     });
 
@@ -430,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveParticlesOnHover: true,
             particleHoverFactor: 0.5,
             alphaParticles: true,
-            particleBaseSize: 60,
+            particleBaseSize: 60, // Increased size
             sizeRandomness: 0.8,
             cameraDistance: 25,
             disableRotation: false
@@ -452,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSections.forEach(hero => observer.observe(hero));
         }
     };
-
     // Interactive Cards Handler
     document.querySelectorAll('.service-card, .stack-card').forEach(card => {
         card.addEventListener('click', () => {
@@ -461,10 +541,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mobile Dropdown Toggle
+    // Mobile dropdown toggle — must match CSS nav breakpoint (968px), not 1024px.
+    // Using 1024 here left inline display:block on the menu while desktop nav still showed,
+    // which forced vertical stacking and overrode the horizontal mega-menu layout.
+    const NAV_MOBILE_MAX = 968;
+
+    const clearDesktopDropdownInlineStyles = () => {
+        if (window.innerWidth > NAV_MOBILE_MAX) {
+            document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+                menu.style.removeProperty('display');
+            });
+        }
+    };
+
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
         toggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= NAV_MOBILE_MAX) {
                 e.preventDefault();
                 const menu = toggle.nextElementSibling;
                 if (menu) {
@@ -476,11 +568,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGlobalParticles();
 
-    // Refresh ScrollTrigger after all assets are loaded for accurate positions
+    clearDesktopDropdownInlineStyles();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            clearDesktopDropdownInlineStyles();
+            if (typeof lenis.resize === 'function') {
+                lenis.resize();
+            }
+            if (window.ScrollTrigger) {
+                window.ScrollTrigger.refresh();
+            }
+            updateScrollChrome();
+        }, 150);
+    });
+
     window.addEventListener('load', () => {
+        if (window.ScrollTrigger) {
+            window.ScrollTrigger.refresh();
+        }
+        if (typeof lenis.resize === 'function') {
+            lenis.resize();
+        }
+        updateScrollChrome();
+    });
+
+    requestAnimationFrame(() => {
         if (window.ScrollTrigger) {
             window.ScrollTrigger.refresh();
         }
     });
 });
-
