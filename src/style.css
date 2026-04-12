@@ -219,14 +219,14 @@ header {
   top: 0;
   width: 100%;
   z-index: 100;
-  padding: 0.6rem 0;
+  padding: 0.4rem 0;
   transition: var(--transition);
 }
 
 header.scrolled {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
-  padding: 1rem 0;
+  padding: 0.4rem 0;
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -328,7 +328,7 @@ header.scrolled {
 
 
 .logo img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   transition: var(--transition);
@@ -378,7 +378,7 @@ header.scrolled {
 /* Dropdown Menu Styles */
 .nav-item-dropdown {
     position: relative;
-    padding: 1.5rem 0; /* Increased padding to keep hover active */
+    padding: 0.8rem 0; /* Reduced padding to slim the header */
 }
 
 .nav-item-dropdown::after {
