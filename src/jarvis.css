@@ -155,11 +155,20 @@
     flex-direction: column;
     gap: 20px;
     background: #ffffff;
-    scrollbar-width: none; /* Hide for and-user aesthetics */
+    scrollbar-width: thin;
 }
 
 .jarvis-messages::-webkit-scrollbar {
-    width: 0px;
+    width: 6px;
+}
+
+.jarvis-messages::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+.jarvis-messages::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+    border-radius: 10px;
 }
 
 .message {

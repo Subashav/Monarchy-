@@ -31,8 +31,8 @@ export class Jarvis {
         this.brain = [
             // INTEGRATED MODEL / WHO WE ARE
             {
-                keywords: ['who are you', 'what is monarch', 'what do you do', 'about the company', 'monarch softwares'],
-                response: `MONARCH SOFTWARES is an integrated growth partner. We synchronize IT, HR, and Marketing under one roof to eliminate the coordination silos that slow down ambitious businesses. Instead of managing three agencies, you work with one synchronized team.`
+                keywords: ['your name', 'who is this', 'identity', 'what are you called', 'who are you', 'what is monarch', 'what do you do', 'about the company', 'monarch softwares'],
+                response: `I am JARVIS, the AI Growth Assistant for MONARCH SOFTWARES. I help synchronize your IT, HR, and Marketing into a single growth engine.`
             },
             {
                 keywords: ['how it works', 'integrated model', 'synchronized', 'why monarch', 'advantage'],
