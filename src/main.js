@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.ScrollTrigger.defaults({ scroller: scrollRoot });
 
         // Magnetic Buttons Utility
-        document.querySelectorAll('.btn-primary, .btn-outline, .logo').forEach(btn => {
+        document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
@@ -259,6 +259,40 @@ document.addEventListener('DOMContentLoaded', () => {
                         repeat: -1,
                         yoyo: true,
                         ease: "sine.inOut"
+                    });
+                }
+
+                // Framer-style Interactive 3D Tilt (Experimental)
+                if (section.querySelector('[data-animation="framer"]')) {
+                    const framerTarget = section.querySelector('[data-animation="framer"]');
+                    const framerImg = framerTarget.querySelector('img');
+
+                    window.addEventListener('mousemove', (e) => {
+                        const rect = framerTarget.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+
+                        if (Math.abs(x) < 500 && Math.abs(y) < 500) {
+                            window.gsap.to(framerImg, {
+                                rotateY: x / 20,
+                                rotateX: -y / 20,
+                                x: x / 40,
+                                y: y / 40,
+                                duration: 1,
+                                ease: "power2.out"
+                            });
+                        }
+                    });
+
+                    framerTarget.addEventListener('mouseleave', () => {
+                        window.gsap.to(framerImg, {
+                            rotateY: 0,
+                            rotateX: 0,
+                            x: 0,
+                            y: 0,
+                            duration: 1.5,
+                            ease: "elastic.out(1, 0.3)"
+                        });
                     });
                 }
             }

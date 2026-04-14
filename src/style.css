@@ -84,10 +84,12 @@ body.loading {
 
 .tech-robot-hand {
     mix-blend-mode: lighten;
-    filter: brightness(1.2) contrast(1.1) drop-shadow(0 0 40px rgba(0, 150, 255, 0.3));
+    filter: brightness(1.4) contrast(1.25) drop-shadow(0 0 40px rgba(0, 150, 255, 0.3));
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at center, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 75% 70% at center, #000 40%, transparent 100%);
 }
 
 @media (max-width: 1024px) {
@@ -161,6 +163,38 @@ h1, h2, h3, h4 {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
+}
+
+/* Framer-style Interactive Overrides */
+[data-animation="framer"] {
+    perspective: 1000px;
+}
+
+[data-animation="framer"] img {
+    transform-style: preserve-3d;
+    transition: filter 0.3s ease;
+}
+
+[data-animation="framer"]:hover img {
+    filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 60px rgba(0, 150, 255, 0.5));
+}
+
+[data-animation="framer"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+[data-animation="framer"]:hover::after {
+    opacity: 1;
 }
 
 .gradient-text {
@@ -336,7 +370,7 @@ header.scrolled {
 }
 
 .logo:hover img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .nav-links {
@@ -598,8 +632,8 @@ header.scrolled {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.6;
-  filter: grayscale(1);
+  opacity: 0.6; filter: grayscale(1);
+  
   mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
   -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
   background: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.4) 0%, transparent 70%);
@@ -609,7 +643,7 @@ header.scrolled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.6; filter: grayscale(1);
   filter: saturate(0) brightness(1.2);
   animation: float 15s infinite ease-in-out;
 }
@@ -1240,7 +1274,7 @@ footer {
   color: #fff;
   font-size: 0.85rem;
   transition: var(--transition);
-  opacity: 0.6;
+  opacity: 0.6; filter: grayscale(1);
 }
 
 .link-group ul li a:hover {
@@ -1975,7 +2009,7 @@ footer {
   gap: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  opacity: 0.9;
+  opacity: 0.6; filter: grayscale(1);
 }
 
 .gran-group h4 i {

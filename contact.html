@@ -73,11 +73,14 @@
 
     <main>
         <!-- HERO -->
-        <section class="hero" style="min-height: 50vh;">
-            <div class="hero-visual"><div id="contact-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
-            <div class="container hero-content">
-                <h1 class="reveal no-split">Let's <br><span class="gradient-text">Connect.</span></h1>
-                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8;">Whether you're scaling your team, launching a product, or breaking into new markets, the first step is a conversation. No pitch deck, no pressure, just a genuine strategy discussion about where you are and where you want to go.</p>
+        <section class="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 0;">
+            <div class="hero-visual" style="pointer-events: none;"><div id="contact-antigravity" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div></div>
+            <div class="container hero-content" style="position: relative; z-index: 100; max-width: 850px;">
+                <div class="reveal no-split" style="margin-bottom: 2rem;">
+                    <span style="text-transform: uppercase; letter-spacing: 0.8rem; font-weight: 900; color: #fff; font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif;">MONARCH</span>
+                </div>
+                <h1 class="reveal no-split" style="font-size: 3.2rem; line-height: 1.1; font-weight: 900; color: #ffffff !important; margin-bottom: 2.5rem; -webkit-text-fill-color: #ffffff !important; letter-spacing: -0.03em;">Let's <br><span class="gradient-text" style="-webkit-text-fill-color: initial !important;">Connect.</span></h1>
+                <p class="reveal" style="max-width: 620px; margin: 1.5rem auto 0; line-height: 1.8; font-size: 1.05rem;">Whether you're scaling your team, launching a product, or breaking into new markets, the first step is a conversation. No pitch deck, no pressure, just a genuine strategy discussion about where you are and where you want to go.</p>
             </div>
         </section>
 
@@ -137,7 +140,7 @@
                     </div>
 
                     <!-- Right: Form -->
-                    <div class="glass reveal glow-card" style="padding: 3.5rem; border-radius: 28px;">
+                    <div class="glass reveal" style="padding: 3.5rem; border-radius: 28px; transform: none !important;">
                         <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Book Your Free Strategy Call</h3>
                         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2.5rem; line-height: 1.6;">Fill in the details below and we'll be in touch within 24 hours to schedule your call.</p>
                         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
@@ -151,13 +154,13 @@
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                  <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">What do you need help with?</label>
-                                 <select style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; appearance: none;">
-                                     <option value="">Select a service</option>
-                                     <option value="it">IT & Software Engineering</option>
-                                     <option value="marketing">Digital Marketing & Growth</option>
-                                     <option value="hr">HR & Talent Solutions</option>
-                                     <option value="training">Career Training Program</option>
-                                     <option value="full">Full Growth Ecosystem</option>
+                                 <select style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; cursor: pointer; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                                     <option value="" style="background:#111;color:#aaa;">Select a service</option>
+                                     <option value="it" style="background:#111;color:#fff;">IT & Software Engineering</option>
+                                     <option value="marketing" style="background:#111;color:#fff;">Digital Marketing & Growth</option>
+                                     <option value="hr" style="background:#111;color:#fff;">HR & Talent Solutions</option>
+                                     <option value="training" style="background:#111;color:#fff;">Career Training Program</option>
+                                     <option value="full" style="background:#111;color:#fff;">Full Growth Ecosystem</option>
                                  </select>
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
