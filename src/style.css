@@ -2305,3 +2305,90 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* ==========================================================
+   COMPREHENSIVE MOBILE OPTIMIZATION OVERRIDES
+   ========================================================== */
+
+@media (max-width: 968px) {
+  /* Global section padding reduce */
+  section, .hero {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  /* Font size scaling */
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.8rem !important; }
+  h3 { font-size: 1.5rem !important; }
+  p { font-size: 0.95rem !important; }
+
+  /* Story grid gap smoothing */
+  .story-grid {
+    gap: 2.5rem !important;
+  }
+
+  /* Header adjustments */
+  .logo img {
+    height: 48px !important;
+  }
+
+  /* CTA alignment */
+  .hero-btns, #cta div[style*="flex"] {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    gap: 1rem !important;
+  }
+  
+  .hero-btns .btn, #cta .btn {
+    width: 100% !important;
+  }
+
+  /* Marquee fluidity */
+  .marquee-card {
+    width: 300px !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Stacking cards mobile fix */
+  .cards-stack-container {
+    padding: 4rem 1.25rem !important;
+  }
+  
+  .cards-stack-container .stack-card {
+    height: auto !important;
+    min-height: 350px !important;
+    padding: 2.5rem 1.5rem !important;
+    top: 100px !important;
+  }
+
+  /* Footer Links */
+  .footer-links {
+    gap: 2rem !important;
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-mobile typography */
+  h1 { font-size: 1.9rem !important; }
+  h2 { font-size: 1.6rem !important; }
+  
+  /* Container breathing room */
+  .container {
+    padding: 0 1.25rem !important;
+  }
+
+  /* Illustration sizing */
+  .tech-robot-hand {
+    max-width: 280px !important;
+  }
+
+  /* Floating actions safety */
+  .floating-actions {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+}
