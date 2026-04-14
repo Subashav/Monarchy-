@@ -2068,7 +2068,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .float-btn {
