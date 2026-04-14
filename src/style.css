@@ -88,8 +88,15 @@ body.loading {
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-mask-image: radial-gradient(ellipse 75% 70% at center, #000 40%, transparent 100%);
     mask-image: radial-gradient(ellipse 75% 70% at center, #000 40%, transparent 100%);
+    cursor: pointer;
+}
+
+.tech-robot-hand:hover {
+    transform: scale(1.06) translateY(-15px);
+    filter: brightness(1.7) contrast(1.35) drop-shadow(0 0 60px rgba(0, 150, 255, 0.6));
 }
 
 @media (max-width: 1024px) {
