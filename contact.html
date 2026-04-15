@@ -140,7 +140,7 @@
                     </div>
 
                     <!-- Right: Form -->
-                    <form id="contact-form" class="glass reveal" style="padding: 3.5rem; border-radius: 28px; transform: none !important;">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="glass reveal" style="padding: 3.5rem; border-radius: 28px; transform: none !important;">
                         <input type="hidden" name="access_key" value="ae20c46b-3d3f-496c-a545-4e89f43c5178">
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Book Your Free Strategy Call</h3>
@@ -250,69 +250,69 @@
     
 
     <script>
-    const form = document.getElementById('contact-form');
-    const result = document.getElementById('form-result');
-    const submitBtn = document.getElementById('submit-btn');
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('contact-form');
+        const result = document.getElementById('form-result');
+        const submitBtn = document.getElementById('submit-btn');
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Update UI
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin" style="margin-right: 0.5rem; width:16px; height:16px;"></i> Sending...';
-        if(window.lucide) window.lucide.createIcons();
-        result.style.color = "var(--text-secondary)";
-        result.innerHTML = "Processing your inquiry...";
+        if (!form) return;
 
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Update UI
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span style="display:flex; align-items:center; gap:0.5rem;"><svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending...</span>';
+            
+            result.style.color = "var(--text-secondary)";
+            result.innerHTML = "Processing your inquiry...";
 
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: json
-        })
-        .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-                result.style.color = "#00ff88";
-                result.innerHTML = "Inquiry sent to Email! Redirecting to WhatsApp...";
-                
-                // Construct WhatsApp Msg
-                const name = object.name;
-                const email = object.email;
-                const service = object.service;
-                const message = object.message;
-                
-                const whatsappMsg = encodeURIComponent(`*New Inquiry from MONARCH Website*\n\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n*Message:* ${message}`);
-                const whatsappUrl = `https://wa.me/916385753874?text=${whatsappMsg}`;
-                
-                // Open WhatsApp after a short delay
-                setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                    form.reset();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.style.color = "#00ff88";
+                    result.innerHTML = "Inquiry sent to Email! Redirecting to WhatsApp...";
+                    
+                    const name = object.name || '';
+                    const email = object.email || '';
+                    const service = object.service || '';
+                    const message = object.message || '';
+                    
+                    const whatsappMsg = encodeURIComponent(`*New Inquiry from MONARCH Website*\n\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n*Message:* ${message}`);
+                    const whatsappUrl = `https://wa.me/916385753874?text=${whatsappMsg}`;
+                    
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Send Inquiry';
+                    }, 1000);
+                } else {
+                    result.style.color = "#ff4444";
+                    result.innerHTML = json.message || "Submission failed. Please try again.";
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = 'Send Inquiry';
-                    if(window.lucide) window.lucide.createIcons();
-                }, 1500);
-            } else {
-                console.log(response);
+                }
+            })
+            .catch(error => {
+                console.error(error);
                 result.style.color = "#ff4444";
-                result.innerHTML = json.message || "Failed to send to Email. Please contact us directly.";
+                result.innerHTML = "Network error. Please check your connection.";
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Send Inquiry';
-            }
-        })
-        .catch(error => {
-            console.log(error);
-            result.style.color = "#ff4444";
-            result.innerHTML = "Something went wrong! Please check your connection.";
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Inquiry';
+            });
         });
     });
     </script>
