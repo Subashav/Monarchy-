@@ -130,7 +130,7 @@
                             </div>
                             <div style="display: flex; gap: 1rem; align-items: center;">
                                 <i data-lucide="mail" size="20" style="opacity: 0.5;"></i>
-                                <span style="font-size: 1rem; color: var(--text-secondary);">contact@monarchsoftwares.company</span>
+                                <span style="font-size: 1rem; color: var(--text-secondary);">subash.monarchsoftwares@gmail.com</span>
                             </div>
                             <div style="display: flex; gap: 1rem; align-items: center;">
                                 <i data-lucide="map-pin" size="20" style="opacity: 0.5;"></i>
@@ -140,37 +140,40 @@
                     </div>
 
                     <!-- Right: Form -->
-                    <div class="glass reveal" style="padding: 3.5rem; border-radius: 28px; transform: none !important;">
+                    <form id="contact-form" class="glass reveal" style="padding: 3.5rem; border-radius: 28px; transform: none !important;">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Book Your Free Strategy Call</h3>
                         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2.5rem; line-height: 1.6;">Fill in the details below and we'll be in touch within 24 hours to schedule your call.</p>
                         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                  <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Full Name</label>
-                                 <input type="text" placeholder="Your name" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                                 <input type="text" name="name" placeholder="Your name" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                  <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Work Email</label>
-                                 <input type="email" placeholder="you@company.com" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                                 <input type="email" name="email" placeholder="you@company.com" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                  <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">What do you need help with?</label>
-                                 <select style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; cursor: pointer; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                                 <select name="service" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; cursor: pointer; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                                      <option value="" style="background:#111;color:#aaa;">Select a service</option>
-                                     <option value="it" style="background:#111;color:#fff;">IT & Software Engineering</option>
-                                     <option value="marketing" style="background:#111;color:#fff;">Digital Marketing & Growth</option>
-                                     <option value="hr" style="background:#111;color:#fff;">HR & Talent Solutions</option>
-                                     <option value="training" style="background:#111;color:#fff;">Career Training Program</option>
-                                     <option value="full" style="background:#111;color:#fff;">Full Growth Ecosystem</option>
+                                     <option value="IT & Software Engineering" style="background:#111;color:#fff;">IT & Software Engineering</option>
+                                     <option value="Digital Marketing & Growth" style="background:#111;color:#fff;">Digital Marketing & Growth</option>
+                                     <option value="HR & Talent Solutions" style="background:#111;color:#fff;">HR & Talent Solutions</option>
+                                     <option value="Career Training Program" style="background:#111;color:#fff;">Career Training Program</option>
+                                     <option value="Full Growth Ecosystem" style="background:#111;color:#fff;">Full Growth Ecosystem</option>
                                  </select>
                              </div>
                              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                  <label style="font-size: 0.85rem; opacity: 0.6; font-weight: 500;">Tell us briefly about your project</label>
-                                 <textarea rows="4" placeholder="What are you building? What challenges are you facing?" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; resize: vertical; font-family: inherit; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+                                 <textarea name="message" rows="4" placeholder="What are you building? What challenges are you facing?" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.9rem 1.2rem; border-radius: 12px; color: #fff; font-size: 0.95rem; outline: none; resize: vertical; font-family: inherit; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='rgba(255,255,255,0.3)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
                              </div>
-                             <button class="btn btn-primary" style="margin-top: 1rem; justify-content: center; padding: 1rem; border-radius: 12px; font-weight: 700;">Send Inquiry</button>
+                             <button type="submit" class="btn btn-primary" id="submit-btn" style="margin-top: 1rem; justify-content: center; padding: 1rem; border-radius: 12px; font-weight: 700;">Send Inquiry</button>
+                             <div id="form-result" style="text-align: center; font-size: 0.85rem; margin-top: 1rem;"></div>
                              <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center; opacity: 0.5; margin-top: 0.5rem;">We respect your privacy. No spam, no data sharing.</p>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -186,7 +189,7 @@
                         <a href="https://www.linkedin.com/company/monarchsoftwares" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
                         <a href="https://www.instagram.com/__.monarchsoftwares.__?igsh=MW1kancxcmQyZXJ4aQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
                         <a href="https://twitter.com/monarchsoftwares" target="_blank" rel="noopener" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
-                        <a href="mailto:contact@monarchsoftwares.company" aria-label="Email"><i data-lucide="mail" size="18"></i></a>
+                        <a href="mailto:subash.monarchsoftwares@gmail.com" aria-label="Email"><i data-lucide="mail" size="18"></i></a>
                     </div>
                 </div>
 
@@ -213,7 +216,7 @@
                         <h4>Get in Touch</h4>
                         <ul>
                             <li><i data-lucide="phone" size="14"></i><a href="tel:+916385753874">+91 6385753874</a></li>
-                            <li><i data-lucide="mail" size="14"></i><a href="mailto:contact@monarchsoftwares.company">contact@monarchsoftwares.company</a></li>
+                            <li><i data-lucide="mail" size="14"></i><a href="mailto:subash.monarchsoftwares@gmail.com">subash.monarchsoftwares@gmail.com</a></li>
                             <li><i data-lucide="map-pin" size="14"></i><span style="color: #fff; font-size: 0.85rem; opacity: 0.6;">India (Onsite)</span></li>
                         </ul>
                     </div>
@@ -246,5 +249,72 @@
     </div>
     
 
+    <script>
+    const form = document.getElementById('contact-form');
+    const result = document.getElementById('form-result');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Update UI
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin" style="margin-right: 0.5rem; width:16px; height:16px;"></i> Sending...';
+        if(window.lucide) window.lucide.createIcons();
+        result.style.color = "var(--text-secondary)";
+        result.innerHTML = "Processing your inquiry...";
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.style.color = "#00ff88";
+                result.innerHTML = "Inquiry sent to Email! Redirecting to WhatsApp...";
+                
+                // Construct WhatsApp Msg
+                const name = object.name;
+                const email = object.email;
+                const service = object.service;
+                const message = object.message;
+                
+                const whatsappMsg = encodeURIComponent(`*New Inquiry from MONARCH Website*\n\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n*Message:* ${message}`);
+                const whatsappUrl = `https://wa.me/916385753874?text=${whatsappMsg}`;
+                
+                // Open WhatsApp after a short delay
+                setTimeout(() => {
+                    window.open(whatsappUrl, '_blank');
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Inquiry';
+                    if(window.lucide) window.lucide.createIcons();
+                }, 1500);
+            } else {
+                console.log(response);
+                result.style.color = "#ff4444";
+                result.innerHTML = json.message || "Failed to send to Email. Please contact us directly.";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Inquiry';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.style.color = "#ff4444";
+            result.innerHTML = "Something went wrong! Please check your connection.";
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Send Inquiry';
+        });
+    });
+    </script>
 </body>
 </html>
