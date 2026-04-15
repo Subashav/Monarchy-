@@ -627,6 +627,10 @@ header.scrolled {
   line-height: 1.7;
 }
 
+#hero-orb, #hero-antigravity, #hero-galaxy, #hero-prism, #contact-antigravity, #training-antigravity {
+    filter: grayscale(1);
+}
+
 .hero-visual {
   position: absolute;
   top: 0;
