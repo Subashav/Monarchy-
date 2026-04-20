@@ -22,7 +22,7 @@ export class Jarvis {
         this.knowledge = {
             brand: 'MONARCH SOFTWARES',
             phone: '+91 6385753874',
-            email: 'contact@monarchsoftwares.company',
+            email: 'contact@monarchsoftwares.com',
             location: 'Bangalore, India (Onsite)',
             tagline: 'The integrated growth engine for ambitious businesses.'
         };
