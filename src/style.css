@@ -1937,6 +1937,12 @@ footer {
     gap: 1rem !important;
   }
 
+  /* Global typography overrides for mobile */
+  h1 { font-size: var(--h1-size) !important; }
+  h2 { font-size: var(--h2-size) !important; }
+  h3 { font-size: var(--h3-size) !important; }
+  p { font-size: 0.95rem !important; }
+
   /* Grid stacking for all common patterns */
   .story-grid, 
   .tech-section-inner, 
