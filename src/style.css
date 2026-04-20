@@ -9,6 +9,40 @@
   --grid-color: rgba(255, 255, 255, 0.03);
   --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   --accent-glow: rgba(255, 255, 255, 0.15);
+  
+  /* Responsive Scale System */
+  --section-padding: 10rem;
+  --container-padding: 4rem;
+  --grid-gap: 4rem;
+  --h1-size: 3.5rem;
+  --h2-size: 2.8rem;
+  --h3-size: 2rem;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --container-padding: 2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  :root {
+    --section-padding: 5rem;
+    --container-padding: 1.5rem;
+    --grid-gap: 2.5rem;
+    --h1-size: 2.5rem;
+    --h2-size: 2rem;
+    --h3-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --h1-size: 2rem;
+    --h2-size: 1.7rem;
+    --container-padding: 1.25rem;
+    --grid-gap: 1.5rem;
+  }
 }
 
 .scroll-progress {
@@ -59,10 +93,10 @@ body.loading {
 .tech-section-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--container-padding);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: var(--grid-gap);
   align-items: center;
   min-height: 60vh;
 }
@@ -168,6 +202,10 @@ h1, h2, h3, h4 {
   line-height: 1.1;
 }
 
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+
 /* Framer-style Interactive Overrides */
 [data-animation="framer"] {
     perspective: 1000px;
@@ -228,7 +266,7 @@ h1, h2, h3, h4 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--container-padding);
 }
 
 .text-center {
@@ -238,12 +276,12 @@ h1, h2, h3, h4 {
 .container-wide {
   max-width: 100% !important;
   width: 100% !important;
-  padding: 0 4rem !important;
+  padding: 0 var(--container-padding) !important;
   margin: 0 !important;
 }
 
 section {
-  padding: 12rem 0;
+  padding: var(--section-padding) 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -271,7 +309,7 @@ header.scrolled {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
-  padding: 0 4rem !important;
+  padding: 0 var(--container-padding) !important;
 }
 
 .logo {
@@ -589,7 +627,7 @@ header.scrolled {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 0 40px 0;
+  padding: 0 !important;
   overflow: hidden;
 }
 
@@ -670,7 +708,7 @@ header.scrolled {
 .story-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 6rem !important;
+  gap: var(--grid-gap) !important;
   align-items: center !important;
 }
 
@@ -750,7 +788,7 @@ header.scrolled {
 .service-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: var(--grid-gap);
   align-items: center;
   padding: 4rem;
   border-radius: 32px;
@@ -1135,6 +1173,7 @@ header.scrolled {
 .marquee-card {
   flex-shrink: 0;
   width: 420px;
+  max-width: 85vw;
   padding: 2.5rem;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1321,127 +1360,18 @@ footer {
 
 /* ===== STORYTELLING GRID MOBILE OVERRIDES ===== */
 
-/* Tablet: Stack 2-col grids at 1024px */
+/* === TABLET OVERRIDES (1024px) === */
 @media (max-width: 1024px) {
-  .story-block,
-  #origin-story > .container > .story-grid,
-  #origin-story > .container > .reveal,
-  #contact-details > .container > .story-grid,
-  #contact-details > .container > div,
-  #why-monarchsoftwares > .container > .story-grid,
-  #why-monarchsoftwares > .container > .reveal,
-  #training-process > .container .story-grid,
-  #training-preview > .container > .story-grid,
-  #training-preview > .container > .reveal,
-  #training-process .reveal[style*="grid-template-columns"],
-  #it-services-detail .story-grid,
-  #marketing-services-detail .story-grid,
-  #hr-services-detail .story-grid,
-  #it-services-detail .reveal,
-  #marketing-services-detail .reveal,
-  #hr-services-detail .reveal,
-  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 6rem"],
-  div[style*="grid-template-columns: 1fr 1.2fr"] {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 3rem !important;
-  }
-
-  /* Reset order for alternating layouts */
-  .story-block > div[style*="order"],
-  #it-services-detail div[style*="order"],
-  #marketing-services-detail div[style*="order"],
-  #hr-services-detail div[style*="order"],
-  #training-process div[style*="order"] {
-    order: 0 !important;
-  }
-  
-  /* Stats grids: 4-col -> 2-col */
-  div[style*="grid-template-columns: repeat(4, 1fr)"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  /* 3-col grids -> 1-col on tablet */
-  div[style*="grid-template-columns: repeat(3, 1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-  
-  /* Process 4-col grid */
-  .process-timeline[style*="grid-template-columns: repeat(4, 1fr)"] {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .story-grid,
+  .tech-section-inner,
+  .service-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--grid-gap);
   }
 }
 
-/* Mobile Toggle - hidden on desktop */
-.mobile-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #fff;
-  background: none;
-  border: none;
-  padding: 0;
-  z-index: 1001;
-}
-
-/* Mobile Responsiveness Improvements */
-
-/* Base container adjustment */
-@media (max-width: 1200px) {
-  .container-wide {
-    padding: 0 2rem !important;
-  }
-  .nav {
-    padding: 0 2rem !important;
-  }
-}
-
+/* === MOBILE OVERRIDES (968px) === */
 @media (max-width: 968px) {
-  /* === GLOBAL SECTION RESET === */
-  section {
-    padding: 4rem 0 !important;
-    min-height: auto !important;
-    display: block !important;
-    height: auto !important;
-  }
-
-  .hero {
-    height: auto !important;
-    min-height: 80vh;
-    padding: 120px 0 60px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero p {
-    font-size: 0.95rem;
-    padding: 0 1rem;
-  }
-
-  .hero-content img {
-    max-width: 240px !important;
-  }
-
-  /* === NAVIGATION === */
-  .nav {
-    padding: 0 1.5rem !important;
-  }
-
-  .nav-right {
-    gap: 1rem !important;
-  }
-
-  .nav-links {
-    display: none !important;
-  }
-
   .mobile-toggle {
     display: flex !important;
     align-items: center;
@@ -1456,15 +1386,8 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .footer-map-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-top: 2rem !important;
-    height: 180px !important;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .nav-links {
+    display: none !important;
   }
 
   .nav-links.mobile-active {
@@ -1474,377 +1397,60 @@ footer {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: #000;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    gap: 1.25rem;
+    gap: 2rem;
     z-index: 1000;
-    padding: 6rem 2rem 2rem;
-    overflow-y: auto;
-    animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
   }
 
   .nav-links.mobile-active li {
-    width: 100%;
-    text-align: center;
+    list-style: none;
   }
 
   .nav-links.mobile-active a {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.02em;
     text-transform: uppercase;
-    display: block;
-    padding: 0.4rem;
   }
 
-  /* Mobile Dropdown Overrides */
   .nav-item-dropdown {
-    width: 100%;
-    padding: 0 !important;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .nav-links.mobile-active .dropdown-toggle {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    gap: 0.6rem;
-    cursor: default;
-  }
-
-  .nav-links.mobile-active .dropdown-toggle i {
-    width: 16px !important;
-    height: 16px !important;
-  }
-
-  .nav-links.mobile-active .dropdown-menu {
+  .dropdown-menu {
     position: static !important;
-    transform: none !important;
     opacity: 1 !important;
     visibility: visible !important;
     background: transparent !important;
     border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    min-width: auto !important;
-    backdrop-filter: none !important;
+    display: none; /* Toggled by JS */
+    text-align: center;
+    padding: 1rem 0 !important;
   }
 
-  .nav-links.mobile-active .dropdown-item {
-    padding: 0.25rem 0 !important;
-    justify-content: center;
-    gap: 0.5rem;
+  .dropdown-item {
+    justify-content: center !important;
+    padding: 0.5rem 0 !important;
   }
 
-  .nav-links.mobile-active .dropdown-item i {
-    width: 16px !important;
-    height: 16px !important;
-    margin-top: 0;
-    opacity: 0.7;
-    display: flex !important;
-  }
-
-  .nav-links.mobile-active .dropdown-content h5 {
-    font-size: 0.95rem !important;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-  }
-
-  .nav-links.mobile-active .dropdown-content p {
+  .dropdown-content p {
     display: none;
   }
 
-  .nav-links.mobile-active .dropdown-item:hover .dropdown-content h5 {
-    color: #fff;
-  }
-
-  .nav-actions {
-    display: none !important;
-  }
-
-  #about-preview > .container > div[style],
-  #training-preview > .container > div[style],
-  #mission-vision > .container > div[style],
-  #contact-info > .container > div[style],
-  #placement-section > .container > div[style],
-  #training-paths > .container > div[style],
-  #readiness > div[style],
-  #readiness div[style*="grid"],
-  #service-details .container > div[style],
-  #service-details div[style*="grid"],
-  #detailed-services .container > div[style],
-  #detailed-services div[style*="grid"],
-  .service-text div[style*="grid"],
-  div[style*="display: grid; grid-template-columns: 1fr 1fr"],
-  div[style*="display: grid; grid-template-columns: 1fr 1.5fr"] {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-  }
-
-  /* Force image containers to fixed height */
-  #about-preview div[style*="height"],
-  #training-preview div[style*="height"],
-  #placement-section div[style*="height"] {
-    height: 250px !important;
-  }
-
-  /* === SERVICES BENTO GRID (homepage) === */
-  .services-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.25rem !important;
-  }
-
-  .service-card {
-    width: 100% !important;
-    height: auto !important;
-    padding: 2rem !important;
-  }
-
-  /* === SERVICE ROWS (services.html detail cards) === */
-  .service-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-    padding: 2rem 1.5rem !important;
-  }
-
-  .service-row ul {
-    grid-template-columns: 1fr !important;
-  }
-
-  .service-img-wrapper {
-    height: 220px !important;
-    width: 100% !important;
-  }
-
-  .service-reverse .service-img-wrapper,
-  .service-reverse .service-text {
-    order: 0 !important;
-  }
-
-  /* service detail containers gap override */
-  div[style*="flex-direction: column"][style*="gap: 8rem"],
-  div[style*="flex-direction: column"][style*="gap: 10rem"] {
-    gap: 4rem !important;
-  }
-
-  /* Stats grids: 4-col and 3-col stack */
-  div[style*="grid-template-columns: repeat(4, 1fr)"],
-  div[style*="grid-template-columns: repeat(3, 1fr)"] {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  /* Training comparison and 2-col grids within glass cards */
-  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 4rem"],
-  div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 1.5rem"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Process timeline 4-col */
-  .process-timeline[style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Large section headings */
-  h2[style*="font-size: 3rem"],
-  h2[style*="font-size: 3.2rem"],
-  h2[style*="font-size: 2.8rem"] {
-    font-size: 2rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h3[style*="font-size: 2.5rem"],
-  h3[style*="font-size: 2.2rem"],
-  h3[style*="font-size: 2rem"] {
-    font-size: 1.6rem !important;
-    line-height: 1.2 !important;
-  }
-
-  /* Large gap sections */
-  .story-block,
-  #three-pillars .story-block {
-    margin-bottom: 4rem !important;
-  }
-
-  /* Reduce section padding */
-  section[style*="padding: 10rem"],
-  section[style*="padding: 12rem"],
-  section[style*="padding: 8rem"] {
-    padding: 5rem 0 !important;
-  }
-
-  /* === WHY CHOOSE MONARCHY === */
-  .why-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  .why-item {
-    padding: 1.5rem !important;
-    flex-direction: row !important;
-  }
-
-  /* === PROCESS TIMELINE === */
-  .process-timeline {
-    flex-direction: column !important;
-    gap: 1.25rem !important;
-  }
-
-  .process-timeline::before {
-    display: none !important;
-  }
-
-  .process-step {
-    padding: 2rem !important;
-    width: 100% !important;
-  }
-
-  /* === METHODOLOGY STACKING CARDS === */
-  .cards-stack-container {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
+  /* Specific Section Alignment */
+  .tech-visual img {
     max-width: 100% !important;
-    padding: 2rem 1.5rem !important;
-    gap: 1.25rem !important;
-    margin: 0 !important;
-  }
-
-  .cards-stack-container .stack-card {
-    position: sticky !important;
-    top: 80px !important;
-    width: 100% !important;
-    margin-bottom: 2rem !important;
-    padding: 2rem 1.5rem !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
-  }
-
-  .cards-stack-container .stack-card h3 {
-    font-size: 1.5rem !important;
-  }
-
-  .cards-stack-container .stack-card p {
-    max-width: 100% !important;
-    font-size: 0.9rem !important;
-  }
-
-  .card-number {
-    font-size: 2rem !important;
-    top: 1rem !important;
-    right: 1.5rem !important;
-  }
-
-  .card-tags {
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    margin-top: 1.5rem !important;
-  }
-
-  .card-tags span {
-    font-size: 0.75rem !important;
-    padding: 0.3rem 0.75rem !important;
-  }
-
-  /* === TESTIMONIALS MARQUEE === */
-  .marquee {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .marquee-card {
-    width: 280px !important;
-    padding: 1.25rem !important;
-  }
-
-  /* === CONTACT FORM === (exclude careers job cards — they use border-glow + inner padding) */
-  .glass.glow-card:not(.careers-job-card) {
-    padding: 2rem !important;
-  }
-
-  /* === SECTION HEADERS === */
-  .section-header h2 {
-    font-size: 1.85rem !important;
-    line-height: 1.2 !important;
-  }
-
-  #cta h2 {
-    font-size: 2rem !important;
+    margin: 0 auto;
   }
 
   .hero h1 {
-    font-size: 2.5rem !important;
-    line-height: 1.1 !important;
-  }
-
-  .hero p {
-    font-size: 0.95rem !important;
-    padding: 0 1rem !important;
-  }
-
-  /* Improve form elements on mobile */
-  form {
-    padding: 0 !important;
-    gap: 1rem !important;
-  }
-
-  input, select, textarea {
-    font-size: 16px !important; /* Prevent iOS zoom on focus */
-  }
-
-  /* === FOOTER === */
-  .footer-content {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2.5rem !important;
-  }
-
-  .footer-links {
-    display: flex !important;
-    width: 100% !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-  }
-
-  .footer-bottom {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-    text-align: center !important;
-  }
-
-  .footer-legal {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1.5rem !important;
-  }
-
-  /* === CONTAINER GLOBAL === */
-  .container {
-    padding: 0 1.5rem !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  .container-wide {
-    padding: 0 1.5rem !important;
+    font-size: var(--h1-size) !important;
   }
 }
 
@@ -2312,34 +1918,72 @@ footer {
 }
 
 /* ==========================================================
-   COMPREHENSIVE MOBILE OPTIMIZATION OVERRIDES
+   CONSOLIDATED MOBILE OPTIMIZATION
    ========================================================== */
 
 @media (max-width: 968px) {
-  /* Global section padding reduce */
+  /* Global section spacing */
   section, .hero {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
+    padding-top: var(--section-padding) !important;
+    padding-bottom: var(--section-padding) !important;
   }
 
-  /* Font size scaling */
-  h1 { font-size: 2.2rem !important; }
-  h2 { font-size: 1.8rem !important; }
-  h3 { font-size: 1.5rem !important; }
-  p { font-size: 0.95rem !important; }
-
-  /* Story grid gap smoothing */
-  .story-grid {
-    gap: 2.5rem !important;
-  }
-
-  /* Header adjustments */
+  /* Navigation adjustments */
   .logo img {
     height: 48px !important;
   }
 
-  /* CTA alignment */
-  .hero-btns, #cta div[style*="flex"] {
+  .nav-right {
+    gap: 1rem !important;
+  }
+
+  /* Grid stacking for all common patterns */
+  .story-grid, 
+  .tech-section-inner, 
+  .why-grid, 
+  .process-timeline,
+  .footer-links,
+  .home-cards-row,
+  .service-row {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--grid-gap) !important;
+  }
+
+  /* Reset order for alternating layouts */
+  .service-reverse .service-img-wrapper,
+  .service-reverse .service-text,
+  [style*="order"] {
+    order: 0 !important;
+  }
+
+  /* Marquee fluidity */
+  .marquee-card {
+    width: min(320px, 85vw) !important;
+    padding: 1.5rem !important;
+  }
+
+  /* Methodology stacking cards fix */
+  .cards-stack-container {
+    padding: 2rem var(--container-padding) !important;
+    gap: 1.5rem !important;
+  }
+  
+  .cards-stack-container .stack-card {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 2rem 1.5rem !important;
+    top: 90px !important;
+    position: relative !important; /* Disable sticky on very small screens if it feels cramped */
+    transform: none !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* CTA and Button stack */
+  .hero-btns, 
+  #cta div[style*="display: flex"],
+  .nav-actions {
     flex-direction: column !important;
     width: 100% !important;
     max-width: 320px !important;
@@ -2347,53 +1991,39 @@ footer {
     gap: 1rem !important;
   }
   
-  .hero-btns .btn, #cta .btn {
+  .btn {
     width: 100% !important;
+    justify-content: center !important;
   }
 
-  /* Marquee fluidity */
-  .marquee-card {
-    width: 300px !important;
-    padding: 1.5rem !important;
-  }
-
-  /* Stacking cards mobile fix */
-  .cards-stack-container {
-    padding: 4rem 1.25rem !important;
-  }
-  
-  .cards-stack-container .stack-card {
-    height: auto !important;
-    min-height: 350px !important;
-    padding: 2.5rem 1.5rem !important;
-    top: 100px !important;
-  }
-
-  /* Footer Links */
-  .footer-links {
-    gap: 2rem !important;
+  /* Footer stack */
+  .footer-content {
     flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* Ultra-mobile typography */
-  h1 { font-size: 1.9rem !important; }
-  h2 { font-size: 1.6rem !important; }
-  
-  /* Container breathing room */
-  .container {
-    padding: 0 1.25rem !important;
-  }
-
   /* Illustration sizing */
   .tech-robot-hand {
-    max-width: 280px !important;
+    max-width: 240px !important;
   }
 
   /* Floating actions safety */
   .floating-actions {
     bottom: 1rem !important;
     right: 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .float-btn {
+    width: 44px !important;
+    height: 44px !important;
   }
 }
