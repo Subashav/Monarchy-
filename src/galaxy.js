@@ -1,9 +1,10 @@
-﻿export class Galaxy {
+export class Galaxy {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.stars = [];
     this.mouse = { x: -1000, y: -1000 };
+    this.isVisible = true;
     
     this.options = {
       starSpeed: options.starSpeed || 0.05,
@@ -24,6 +25,7 @@
     };
 
     this.init();
+    this._setupVisibility();
     this.animate();
     
     window.addEventListener('resize', () => {
@@ -35,7 +37,7 @@
         const rect = this.canvas.getBoundingClientRect();
         this.mouse.x = e.clientX - rect.left;
         this.mouse.y = e.clientY - rect.top;
-      });
+      }, { passive: true });
     }
   }
 
@@ -80,80 +82,100 @@
     }
   }
 
+  _setupVisibility() {
+    if ('IntersectionObserver' in window) {
+      const target = this.canvas.closest('section') || this.canvas.parentElement || this.canvas;
+      this._visObs = new IntersectionObserver((entries) => {
+        this.isVisible = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      this._visObs.observe(target);
+    }
+  }
+
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    const ctx = this.ctx;
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    ctx.clearRect(0, 0, w, h);
 
-    const centerX = this.canvas.width / 2;
-    const centerY = this.canvas.height / 2;
+    const centerX = w * 0.5;
+    const centerY = h * 0.5;
+    const stars = this.stars;
+    const len = stars.length;
+    const rotSpeed = this.options.rotationSpeed;
+    const mouseRepulsion = this.options.mouseRepulsion && this.options.repulsionStrength > 0;
+    const repStr = this.options.repulsionStrength;
+    const mouseX = this.mouse.x;
+    const mouseY = this.mouse.y;
+    const twinkle = this.options.twinkleIntensity;
+    const bright = this.options.brightness;
+    const exclRadius = this.options.exclusionRadius;
+    const exclRadiusSq = exclRadius * exclRadius;
+    const glowOn = this.options.glowIntensity > 0;
+    const sat = this.options.saturation;
+    const TAU = 6.283185307;
 
-    this.stars.forEach(star => {
-      // Rotate around center slightly
-      star.angle += this.options.rotationSpeed;
+    for (let i = 0; i < len; i++) {
+      const star = stars[i];
+      star.angle += rotSpeed;
       star.originalX = centerX + Math.cos(star.angle) * star.dist;
       star.originalY = centerY + Math.sin(star.angle) * star.dist;
 
-      // Mouse repulsion
-      if (this.options.mouseRepulsion && this.options.repulsionStrength > 0) {
-        const dx = star.x - this.mouse.x;
-        const dy = star.y - this.mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
-        if (dist < 200) {
-          const force = (200 - dist) / 200 * this.options.repulsionStrength;
+      if (mouseRepulsion) {
+        const dx = star.x - mouseX;
+        const dy = star.y - mouseY;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 40000) { // 200*200
+          const dist = Math.sqrt(distSq);
+          const force = (200 - dist) / 200 * repStr;
           star.x += (dx / dist) * force;
           star.y += (dy / dist) * force;
         } else {
-          // Return to original pos
           star.x += (star.originalX - star.x) * 0.02;
           star.y += (star.originalY - star.y) * 0.02;
         }
       } else {
-          star.x = star.originalX;
-          star.y = star.originalY;
+        star.x = star.originalX;
+        star.y = star.originalY;
       }
 
-      // Linear Movement fallback
       star.x += star.vx;
       star.y += star.vy;
 
-      // Twinkle with Center Fade-out for Readability
-      const dxCenter = star.x - centerX;
-      const dyCenter = star.y - centerY;
-      const distToCenter = Math.sqrt(dxCenter * dxCenter + dyCenter * dyCenter);
-      
       star.opacity += star.blinkSpeed;
       if (star.opacity > 1 || star.opacity < 0.1) star.blinkSpeed *= -1;
 
-      // Calculate center exclusion/fade
+      const dxC = star.x - centerX;
+      const dyC = star.y - centerY;
+      const distCenterSq = dxC * dxC + dyC * dyC;
+
       let centerFade = 1;
-      const exclusionRadius = this.options.exclusionRadius; 
-      if (distToCenter < exclusionRadius) {
-          centerFade = Math.pow(distToCenter / exclusionRadius, 1.5); // Curvy fade
+      if (distCenterSq < exclRadiusSq) {
+        centerFade = Math.pow(Math.sqrt(distCenterSq) / exclRadius, 1.5);
       }
 
-      const alpha = star.opacity * this.options.twinkleIntensity * centerFade * this.options.brightness;
-      const color = `hsla(${star.hue}, ${this.options.saturation}%, 100%, ${alpha})`;
-      
-      this.ctx.beginPath();
-      this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-      this.ctx.fillStyle = color;
-      
-      // Removed ShadowBlur for performance, using a radial gradient for large stars if needed
-      // Instead, just draw a slightly larger faint circle for "glow"
-      if (this.options.glowIntensity > 0 && star.size > 1.2) {
-          this.ctx.globalAlpha = alpha * 0.7;
-          this.ctx.beginPath();
-          this.ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
-          this.ctx.fill();
-          this.ctx.globalAlpha = 1;
+      const alpha = star.opacity * twinkle * centerFade * bright;
+
+      if (glowOn && star.size > 1.2) {
+        ctx.globalAlpha = alpha * 0.7;
+        ctx.fillStyle = `hsla(${star.hue},${sat}%,100%,1)`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 3, 0, TAU);
+        ctx.fill();
+        ctx.globalAlpha = 1;
       }
 
-      this.ctx.fill();
-    });
+      ctx.fillStyle = `hsla(${star.hue},${sat}%,100%,${alpha})`;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, TAU);
+      ctx.fill();
+    }
   }
 
   animate() {
-    this.draw();
+    if (this.isVisible) {
+      this.draw();
+    }
     requestAnimationFrame(() => this.animate());
   }
 }

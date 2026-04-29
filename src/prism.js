@@ -1,4 +1,4 @@
-﻿export class Prism {
+export class Prism {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
     this.gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
@@ -27,8 +27,10 @@
       ...options
     };
 
+    this.isVisible = true;
     this.init();
     this.bindEvents();
+    this._setupVisibility();
     this.animate();
   }
 
@@ -224,7 +226,17 @@
       const rect = this.canvas.getBoundingClientRect();
       this.targetMouse.x = (e.clientX - rect.left) / rect.width;
       this.targetMouse.y = 1.0 - (e.clientY - rect.top) / rect.height;
-    });
+    }, { passive: true });
+  }
+
+  _setupVisibility() {
+    if ('IntersectionObserver' in window) {
+      const target = this.canvas.closest('section') || this.canvas.parentElement || this.canvas;
+      this._visObs = new IntersectionObserver((entries) => {
+        this.isVisible = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      this._visObs.observe(target);
+    }
   }
 
   draw() {
@@ -262,7 +274,8 @@
   }
 
   animate() {
-    this.draw();
     requestAnimationFrame(() => this.animate());
+    if (!this.isVisible) return;
+    this.draw();
   }
 }

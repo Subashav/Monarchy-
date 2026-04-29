@@ -1,4 +1,4 @@
-﻿import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
+import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 
 const hexToRgb = hex => {
   hex = hex.replace(/^#/, '');
@@ -97,6 +97,7 @@ export class Particles {
         this.lastTime = performance.now();
         this.elapsed = 0;
         this.rafId = null;
+        this.isVisible = true;
 
         this.init();
     }
@@ -124,7 +125,15 @@ export class Particles {
         window.addEventListener('resize', this.resize);
 
         if (this.moveParticlesOnHover) {
-            window.addEventListener('mousemove', this.handleMouseMove);
+            window.addEventListener('mousemove', this.handleMouseMove, { passive: true });
+        }
+
+        // Visibility observer to pause when offscreen
+        if ('IntersectionObserver' in window) {
+            this._visObs = new IntersectionObserver((entries) => {
+                this.isVisible = entries[0].isIntersecting;
+            }, { threshold: 0 });
+            this._visObs.observe(this.container);
         }
 
         const count = this.particleCount;
@@ -190,6 +199,7 @@ export class Particles {
 
     render(t) {
         this.rafId = requestAnimationFrame(this.render);
+        if (!this.isVisible) return;
         const delta = t - this.lastTime;
         this.lastTime = t;
         this.elapsed += delta * this.speed;

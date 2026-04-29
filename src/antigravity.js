@@ -1,4 +1,4 @@
-﻿import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
+import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
 
 export class Antigravity {
     constructor(container, options = {}) {
@@ -23,6 +23,7 @@ export class Antigravity {
         this.mouse = new Vec2(0, 0);
         this.targetMouse = new Vec2(0, 0);
         this.time = 0;
+        this.isVisible = true;
         this.init();
     }
 
@@ -151,7 +152,16 @@ export class Antigravity {
             const x = (e.clientX / window.innerWidth) * 2 - 1;
             const y = (1.0 - e.clientY / window.innerHeight) * 2 - 1;
             this.targetMouse.set(x, y);
-        });
+        }, { passive: true });
+
+        // Visibility observer to pause when offscreen
+        if ('IntersectionObserver' in window) {
+            const target = this.container.closest('section') || this.container;
+            this._visObs = new IntersectionObserver((entries) => {
+                this.isVisible = entries[0].isIntersecting;
+            }, { threshold: 0 });
+            this._visObs.observe(target);
+        }
 
         this.update();
     }
@@ -164,6 +174,9 @@ export class Antigravity {
     }
 
     update() {
+        this.rafId = requestAnimationFrame(() => this.update());
+        if (!this.isVisible) return;
+
         this.time += 0.016;
         this.mouse.lerp(this.targetMouse, this.options.lerpSpeed);
 
@@ -171,7 +184,6 @@ export class Antigravity {
         this.program.uniforms.uMouse.value = this.mouse;
 
         this.renderer.render({ scene: this.mesh, camera: this.camera });
-        this.rafId = requestAnimationFrame(() => this.update());
     }
 
     destroy() {

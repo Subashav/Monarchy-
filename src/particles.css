@@ -8,6 +8,8 @@
     z-index: -2;
     opacity: 0.6;
     transition: opacity 1s ease;
+    will-change: opacity;
+    contain: strict;
 }
 
 .particles-background.hidden {

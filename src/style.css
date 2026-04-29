@@ -53,6 +53,7 @@
   background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.3));
   z-index: 9999;
   width: 0;
+  will-change: width;
   transition: width 0.1s ease-out;
 }
 
@@ -676,6 +677,8 @@ header.scrolled {
 
 #hero-orb, #hero-antigravity, #hero-galaxy, #hero-prism, #contact-antigravity, #training-antigravity {
     filter: grayscale(1);
+    will-change: transform;
+    contain: strict;
 }
 
 .hero-visual {
@@ -686,6 +689,7 @@ header.scrolled {
   height: 100%;
   z-index: -1;
   opacity: 1; 
+  will-change: transform;
   
   mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
   -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 80%);

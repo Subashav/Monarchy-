@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Orb.js - Vanilla JS port of the react-bits Orb component
  * Based on ogl library
  */
@@ -62,6 +62,8 @@ export class Orb {
         this.currentRot = 0;
         this.rotationSpeed = 0.3;
         this.rafId = null;
+        this.isVisible = true;
+        this._bgVec3 = null;
 
         this.init();
     }
@@ -252,9 +254,11 @@ export class Orb {
         this.resize();
         window.addEventListener('resize', () => this.resize());
 
-        this.trackElement.addEventListener('mousemove', e => this.handleMouseMove(e));
+        this.trackElement.addEventListener('mousemove', e => this.handleMouseMove(e), { passive: true });
         this.trackElement.addEventListener('mouseleave', () => this.handleMouseLeave());
 
+        this._bgVec3 = hexToVec3(this.backgroundColor);
+        this._setupVisibility();
         this.rafId = requestAnimationFrame(t => this.update(t));
     }
 
@@ -267,6 +271,16 @@ export class Orb {
         this.gl.canvas.style.width = width + 'px';
         this.gl.canvas.style.height = height + 'px';
         this.program.uniforms.iResolution.value.set(this.gl.canvas.width, this.gl.canvas.height, this.gl.canvas.width / this.gl.canvas.height);
+    }
+
+    _setupVisibility() {
+        if ('IntersectionObserver' in window) {
+            const target = this.container.closest('section') || this.container;
+            this._visObs = new IntersectionObserver((entries) => {
+                this.isVisible = entries[0].isIntersecting;
+            }, { threshold: 0 });
+            this._visObs.observe(target);
+        }
     }
 
     handleMouseMove(e) {
@@ -294,6 +308,9 @@ export class Orb {
     }
 
     update(t) {
+        this.rafId = requestAnimationFrame(t => this.update(t));
+        if (!this.isVisible) return;
+
         if (!this.lastTime) this.lastTime = t;
         const dt = (t - this.lastTime) * 0.001;
         this.lastTime = t;
@@ -301,7 +318,7 @@ export class Orb {
         this.program.uniforms.iTime.value = t * 0.001;
         this.program.uniforms.hue.value = this.hue;
         this.program.uniforms.hoverIntensity.value = this.hoverIntensity;
-        this.program.uniforms.backgroundColor.value = hexToVec3(this.backgroundColor);
+        this.program.uniforms.backgroundColor.value = this._bgVec3;
 
         const effectiveHover = this.forceHoverState ? 1 : this.targetHover;
         this.program.uniforms.hover.value += (effectiveHover - this.program.uniforms.hover.value) * 0.1;
@@ -312,7 +329,6 @@ export class Orb {
         this.program.uniforms.rot.value = this.currentRot;
 
         this.renderer.render({ scene: this.mesh });
-        this.rafId = requestAnimationFrame(t => this.update(t));
     }
 
     destroy() {

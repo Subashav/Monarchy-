@@ -109,25 +109,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.ScrollTrigger.defaults({ scroller: scrollRoot });
 
-        // Magnetic Buttons Utility
+        // Magnetic Buttons Utility (throttled)
         document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+            let btnRafPending = false;
             btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                window.gsap.to(btn, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.6,
-                    ease: 'power3.out'
+                if (btnRafPending) return;
+                btnRafPending = true;
+                requestAnimationFrame(() => {
+                    btnRafPending = false;
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    window.gsap.to(btn, {
+                        x: x * 0.3,
+                        y: y * 0.3,
+                        duration: 0.6,
+                        ease: 'power3.out',
+                        overwrite: 'auto'
+                    });
                 });
-            });
+            }, { passive: true });
             btn.addEventListener('mouseleave', () => {
+                btnRafPending = false;
                 window.gsap.to(btn, {
                     x: 0,
                     y: 0,
                     duration: 0.8,
-                    ease: 'elastic.out(1, 0.3)'
+                    ease: 'elastic.out(1, 0.3)',
+                    overwrite: 'auto'
                 });
             });
         });
@@ -198,16 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 scale: 1.1
             });
 
+            let heroRafPending = false;
             document.addEventListener('mousemove', (e) => {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
-                window.gsap.to('.hero-visual', {
-                    rotateX: yAxis,
-                    rotateY: xAxis,
-                    duration: 1,
-                    ease: 'power2.out'
+                if (heroRafPending) return;
+                heroRafPending = true;
+                requestAnimationFrame(() => {
+                    heroRafPending = false;
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                    window.gsap.to('.hero-visual', {
+                        rotateX: yAxis,
+                        rotateY: xAxis,
+                        duration: 1,
+                        ease: 'power2.out',
+                        overwrite: 'auto'
+                    });
                 });
-            });
+            }, { passive: true });
         }
 
 
@@ -267,22 +283,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     const framerTarget = section.querySelector('[data-animation="framer"]');
                     const framerImg = framerTarget.querySelector('img');
 
+                    let framerRafPending = false;
                     window.addEventListener('mousemove', (e) => {
-                        const rect = framerTarget.getBoundingClientRect();
-                        const x = e.clientX - rect.left - rect.width / 2;
-                        const y = e.clientY - rect.top - rect.height / 2;
+                        if (framerRafPending) return;
+                        framerRafPending = true;
+                        requestAnimationFrame(() => {
+                            framerRafPending = false;
+                            const rect = framerTarget.getBoundingClientRect();
+                            const x = e.clientX - rect.left - rect.width / 2;
+                            const y = e.clientY - rect.top - rect.height / 2;
 
-                        if (Math.abs(x) < 500 && Math.abs(y) < 500) {
-                            window.gsap.to(framerImg, {
-                                rotateY: x / 20,
-                                rotateX: -y / 20,
-                                x: x / 40,
-                                y: y / 40,
-                                duration: 1,
-                                ease: "power2.out"
-                            });
-                        }
-                    });
+                            if (Math.abs(x) < 500 && Math.abs(y) < 500) {
+                                window.gsap.to(framerImg, {
+                                    rotateY: x / 20,
+                                    rotateX: -y / 20,
+                                    x: x / 40,
+                                    y: y / 40,
+                                    duration: 1,
+                                    ease: "power2.out",
+                                    overwrite: 'auto'
+                                });
+                            }
+                        });
+                    }, { passive: true });
 
                     framerTarget.addEventListener('mouseleave', () => {
                         window.gsap.to(framerImg, {
