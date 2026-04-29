@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
 
-    // 1. Initialize Lenis for smooth scrolling
+    /**
+     * 1. Initialize Lenis for Smooth Scrolling
+     * Configures the duration, easing, and wheel behavior for a premium feel.
+     */
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -99,7 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.gsap.registerPlugin(window.ScrollTrigger);
         document.body.classList.add('gsap-ready');
 
-        // Link Lenis scroll position to ScrollTrigger
+        /**
+         * Link Lenis scroll position to GSAP ScrollTrigger
+         * Enables frame-perfect scroll-based animations using the smooth scroll position.
+         */
         ScrollTrigger.scrollerProxy(scrollRoot, {
             scrollTop(value) {
                 if (arguments.length) {
@@ -115,7 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.ScrollTrigger.defaults({ scroller: scrollRoot });
 
-        // Magnetic Buttons Utility (throttled)
+        /**
+         * Magnetic Buttons Utility
+         * Adds a sophisticated "magnetic" attraction effect to primary buttons on hover.
+         */
         document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
             let btnRafPending = false;
             btn.addEventListener('mousemove', (e) => {

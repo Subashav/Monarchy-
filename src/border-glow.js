@@ -3,13 +3,22 @@
  * Handles mouse proximity detection and dynamic gradient updates.
  */
 
-// Helper to parse HSL strings into component values
+/**
+ * Helper function to parse an HSL color string into component values (h, s, l).
+ * Expected format: "H S L" or "H S% L%".
+ */
+function parseHSL(hslStr) {
   const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
   if (!match) return { h: 40, s: 80, l: 80 };
   return { h: parseFloat(match[1]), s: parseFloat(match[2]), l: parseFloat(match[3]) };
 }
 
-// Build CSS variables for the glow effect based on color and intensity
+/**
+ * Generates a set of CSS custom properties (variables) for the glow effect.
+ * Creates multiple opacity variants of the base HSL color.
+ * @param {string} glowColor - Base HSL string.
+ * @param {number} intensity - Scaling factor for the opacity.
+ */
 function buildGlowVars(glowColor, intensity) {
   const { h, s, l } = parseHSL(glowColor);
   const base = `${h}deg ${s}% ${l}%`;
@@ -26,7 +35,10 @@ const GRADIENT_POSITIONS = ['80% 55%', '69% 34%', '8% 6%', '41% 38%', '86% 85%',
 const GRADIENT_KEYS = ['--gradient-one', '--gradient-two', '--gradient-three', '--gradient-four', '--gradient-five', '--gradient-six', '--gradient-seven'];
 const COLOR_MAP = [0, 1, 2, 0, 1, 2, 1];
 
-// Build CSS variables for the background gradients
+/**
+ * Builds CSS radial gradient variables for the multi-colored background effect.
+ * @param {string[]} colors - Array of color strings to use in the gradients.
+ */
 function buildGradientVars(colors) {
   const vars = {};
   for (let i = 0; i < 7; i++) {
