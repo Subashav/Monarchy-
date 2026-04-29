@@ -1,3 +1,7 @@
+/**
+ * Antigravity.js - Instanced WebGL particle animation.
+ * Creates a field of particles that react to mouse movement and float gracefully.
+ */
 import { Renderer, Program, Mesh, Vec2, Vec3, Color, Geometry, Camera, Plane } from 'ogl';
 
 export class Antigravity {
@@ -27,6 +31,7 @@ export class Antigravity {
         this.init();
     }
 
+    // Initialize WebGL context, shaders, and instanced geometry
     init() {
         this.renderer = new Renderer({ alpha: true, antialias: true, premultipliedAlpha: false });
         this.gl = this.renderer.gl;
@@ -173,6 +178,7 @@ export class Antigravity {
         this.camera.perspective({ aspect: width / height });
     }
 
+    // Main animation loop to update uniforms and render the frame
     update() {
         this.rafId = requestAnimationFrame(() => this.update());
         if (!this.isVisible) return;

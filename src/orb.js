@@ -1,9 +1,10 @@
 /**
- * Orb.js - Vanilla JS port of the react-bits Orb component
- * Based on ogl library
+ * Orb.js - WebGL-based animated orb component.
+ * Uses the 'ogl' library for high-performance rendering.
  */
 import { Mesh, Program, Renderer, Triangle, Vec3 } from 'ogl';
 
+// Helper to convert HEX/RGB/HSL colors to WebGL-compatible Vec3 format
 function hexToVec3(color) {
     if (color.startsWith('#')) {
         const r = parseInt(color.slice(1, 3), 16) / 255;
@@ -47,6 +48,9 @@ function hslToRgb(h, s, l) {
     return new Vec3(r, g, b);
 }
 
+/**
+ * Main Orb class for managing the WebGL lifecycle, shaders, and user interaction.
+ */
 export class Orb {
     constructor(container, options = {}) {
         this.container = container;
@@ -68,6 +72,7 @@ export class Orb {
         this.init();
     }
 
+    // Initialize WebGL context and shaders
     init() {
         if (!this.container) return;
 
@@ -179,6 +184,7 @@ export class Orb {
                 return intensity / (1.0 + dist * dist * attenuation);
             }
 
+            // Main drawing function for the orb shape and glow
             vec4 draw(vec2 uv) {
                 vec3 color1 = adjustHue(baseColor1, hue);
                 vec3 color2 = adjustHue(baseColor2, hue);
@@ -307,6 +313,7 @@ export class Orb {
         this.targetHover = 0;
     }
 
+    // Main animation loop
     update(t) {
         this.rafId = requestAnimationFrame(t => this.update(t));
         if (!this.isVisible) return;

@@ -1,3 +1,7 @@
+/**
+ * Particles.js - WebGL-based particle background system.
+ * Creates a swarm of floating, interactive particles.
+ */
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 
 const hexToRgb = hex => {
@@ -77,6 +81,9 @@ const fragment = /* glsl */ `
   }
 `;
 
+/**
+ * Main Particles class to handle particle lifecycle and rendering.
+ */
 export class Particles {
     constructor(container, options = {}) {
         this.container = container;
@@ -102,6 +109,7 @@ export class Particles {
         this.init();
     }
 
+    // Initialize WebGL context, shaders, and particle geometry
     init() {
         if (!this.container) return;
 
@@ -197,6 +205,7 @@ export class Particles {
         this.mouse = { x, y };
     }
 
+    // Render loop to update particle positions and rotation
     render(t) {
         this.rafId = requestAnimationFrame(this.render);
         if (!this.isVisible) return;

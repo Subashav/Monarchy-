@@ -1,3 +1,7 @@
+/**
+ * Prism.js - WebGL-based prismatic crystal animation component.
+ * Creates a rotating, refractive triangular prism effect.
+ */
 export class Prism {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
@@ -34,6 +38,7 @@ export class Prism {
     this.animate();
   }
 
+  // Initialize WebGL context, shaders, and buffers
   init() {
     this.resize();
     window.addEventListener('resize', () => this.resize());
@@ -195,6 +200,7 @@ export class Prism {
     };
   }
 
+  // Helper to compile individual WebGL shaders
   compileShader(type, src) {
     const gl = this.gl;
     const shader = gl.createShader(type);
@@ -239,6 +245,7 @@ export class Prism {
     }
   }
 
+  // Main render function to draw the prism frame
   draw() {
     const gl = this.gl;
     if (!gl || !this.program) return;
@@ -273,6 +280,7 @@ export class Prism {
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   }
 
+  // Main animation loop
   animate() {
     requestAnimationFrame(() => this.animate());
     if (!this.isVisible) return;

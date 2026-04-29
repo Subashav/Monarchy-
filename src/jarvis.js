@@ -1,8 +1,7 @@
 /**
  * JARVIS - AI Growth Assistant
- * Fully Trained Chatbot for MONARCH SOFTWARES
+ * A rule-based chatbot specialized in Monarch Softwares' ecosystem.
  */
-
 export class Jarvis {
     constructor() {
         this.isOpen = false;
@@ -27,7 +26,7 @@ export class Jarvis {
             tagline: 'The integrated growth engine for ambitious businesses.'
         };
 
-        // Training Data - 100+ patterns handled via categories
+        // Knowledge Base: Patterns and responses for various user queries
         this.brain = [
             // INTEGRATED MODEL / WHO WE ARE
             {
@@ -143,6 +142,7 @@ export class Jarvis {
         this.init();
     }
 
+    // Initial rendering and event setup
     init() {
         this.render();
         this.setupEventListeners();
@@ -278,6 +278,7 @@ export class Jarvis {
         this.renderMessage({ type: 'bot', text: response });
     }
 
+    // Logic to determine the best bot response based on keywords
     getBotResponse(query) {
         const q = query.toLowerCase().trim();
         

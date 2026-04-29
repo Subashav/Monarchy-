@@ -1,3 +1,4 @@
+// Import styles and components
 import './style.css'
 import './border-glow.css'
 import { Orb } from './orb.js'
@@ -11,15 +12,17 @@ import './particles.css'
 import './jarvis.css'
 import { Jarvis } from './jarvis.js'
 
+// Initialize everything when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Setup scroll progress bar and header scroll detection
     const header = document.getElementById('header');
 
-    // Scroll progress (Lenis does not always update window.scrollY — drive UI from Lenis)
+    // Create scroll progress indicator
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
 
-    // 1. Initialize Lenis Smooth Scrolling
+    // 1. Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -27,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         smooth: true
     });
 
+    // Update progress bar and header state on scroll
     const updateScrollChrome = () => {
         const limit = lenis.limit;
         const pct = !limit || limit <= 0 ? 0 : Math.min(100, Math.max(0, (lenis.scroll / limit) * 100));
@@ -40,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on('scroll', () => {
         if (window.ScrollTrigger) {
             window.ScrollTrigger.update();
@@ -47,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateScrollChrome();
     });
 
-    // Drive Lenis from GSAP ticker so ScrollTrigger and Lenis share one timeline (fixes scrub / pin drift)
+    // Integration of Lenis with GSAP ticker for frame-perfect sync
     if (window.gsap) {
         window.gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
@@ -87,13 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initIcons();
 
-    // GSAP Scroll Animations (Lenis scrolls document.documentElement — proxy must match)
+    // GSAP ScrollTrigger Configuration and Proxy setup
     const scrollRoot = document.documentElement;
 
     if (window.gsap && window.ScrollTrigger) {
         window.gsap.registerPlugin(window.ScrollTrigger);
         document.body.classList.add('gsap-ready');
 
+        // Link Lenis scroll position to ScrollTrigger
         ScrollTrigger.scrollerProxy(scrollRoot, {
             scrollTop(value) {
                 if (arguments.length) {
@@ -577,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Legal Modals
     initLegalModals();
 
-    // Initialize Global Subtle Particles Background
+    // Initialize Global Background Particles
     const initGlobalParticles = () => {
         const particleContainer = document.createElement('div');
         particleContainer.id = 'global-particles';
@@ -592,13 +598,13 @@ document.addEventListener('DOMContentLoaded', () => {
             moveParticlesOnHover: true,
             particleHoverFactor: 0.5,
             alphaParticles: true,
-            particleBaseSize: 60, // Increased size
+            particleBaseSize: 60,
             sizeRandomness: 0.8,
             cameraDistance: 25,
             disableRotation: false
         });
 
-        // "Except hero section" - Hide particles when hero is in view
+        // Toggle particle visibility based on hero section presence
         const heroSections = document.querySelectorAll('.hero, .services-hero, .training-hero');
         if (heroSections.length > 0 && window.IntersectionObserver) {
             const observer = new IntersectionObserver((entries) => {

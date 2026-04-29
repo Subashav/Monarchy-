@@ -1,5 +1,8 @@
-﻿
-export const legalContent = {
+/**
+ * Legal.js - Manages Privacy Policy and Terms of Service modals.
+ */
+
+// HTML content for legal pages
     privacy: {
         title: "Privacy Policy",
         content: `
@@ -67,6 +70,9 @@ export const legalContent = {
     }
 };
 
+/**
+ * Initializes the legal modal structure and sets up event listeners for triggers.
+ */
 export function initLegalModals() {
     // Create Modal Structure
     const modalHTML = `

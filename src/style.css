@@ -1,3 +1,8 @@
+/* 
+   Monarchy CSS Design System
+   Contains: Design Tokens, Layout, Components, and Animations
+*/
+
 :root {
   --bg-color: #000000;
   --text-primary: #ffffff;
@@ -45,6 +50,7 @@
   }
 }
 
+/* Scroll progress bar indicator at the top of the page */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -247,6 +253,7 @@ h3 { font-size: var(--h3-size); }
 }
 
 /* Glassmorphism Utilities */
+/* Glassmorphism card effects */
 .glass {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
@@ -289,6 +296,7 @@ section {
 }
 
 /* Header */
+/* Navigation Header and Brand Logo styles */
 header {
   position: fixed;
   top: 0;
@@ -592,6 +600,7 @@ header.scrolled {
 }
 
 /* Buttons */
+/* Button components and hover states */
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
@@ -630,6 +639,7 @@ header.scrolled {
 }
 
 /* Hero Section */
+/* Hero section layouts and visual effects */
 .hero {
   position: relative;
   min-height: 100vh;

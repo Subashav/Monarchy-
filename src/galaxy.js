@@ -1,3 +1,7 @@
+/**
+ * Galaxy.js - Canvas-based animated star field component.
+ * Features rotation, mouse repulsion, and twinkling effects.
+ */
 export class Galaxy {
   constructor(canvas, options = {}) {
     this.canvas = canvas;
@@ -41,6 +45,7 @@ export class Galaxy {
     }
   }
 
+  // Initialize stars and layout dimensions
   init() {
     this.resize();
     // Adjust density to be more manageable
@@ -92,6 +97,7 @@ export class Galaxy {
     }
   }
 
+  // Render the current frame of the galaxy
   draw() {
     const ctx = this.ctx;
     const w = this.canvas.width;
@@ -172,6 +178,7 @@ export class Galaxy {
     }
   }
 
+  // Main animation loop to drive the rendering
   animate() {
     if (this.isVisible) {
       this.draw();

@@ -1,4 +1,8 @@
-﻿import { Renderer, Program, Mesh, Triangle, RenderTarget } from 'ogl';
+/**
+ * SplashCursor.js - High-performance WebGL fluid simulation for cursor effects.
+ * Implements Navier-Stokes equations for realistic fluid motion.
+ */
+import { Renderer, Program, Mesh, Triangle, RenderTarget } from 'ogl';
 
 export class SplashCursor {
     constructor(container, options = {}) {
@@ -22,6 +26,7 @@ export class SplashCursor {
         this.init();
     }
 
+    // Initialize WebGL context, shaders, and simulation buffers
     init() {
         this.renderer = new Renderer({ 
             alpha: this.options.TRANSPARENT,
@@ -181,6 +186,7 @@ export class SplashCursor {
             }
         `;
 
+        // Display shader to render the final fluid state to the screen
         const displayShader = /* glsl */ `
             precision highp float;
             varying vec2 vUv;
@@ -278,6 +284,7 @@ export class SplashCursor {
         this.renderer.setSize(width, height);
     }
 
+    // Main render function to run simulation steps and display output
     render(dt) {
         const gl = this.gl;
         const p = this.programs;
@@ -332,6 +339,7 @@ export class SplashCursor {
         this.mesh.draw();
     }
 
+    // Function to add a 'splat' of velocity and density to the simulation
     splat(x, y, dx, dy, color) {
         const p = this.programs;
         p.splat.uniforms = {

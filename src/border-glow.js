@@ -1,13 +1,15 @@
-﻿/**
- * BorderGlow - Vanilla JS implementation of the React component
+/**
+ * BorderGlow - Vanilla JS implementation for interactive card glow effects.
+ * Handles mouse proximity detection and dynamic gradient updates.
  */
 
-function parseHSL(hslStr) {
+// Helper to parse HSL strings into component values
   const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
   if (!match) return { h: 40, s: 80, l: 80 };
   return { h: parseFloat(match[1]), s: parseFloat(match[2]), l: parseFloat(match[3]) };
 }
 
+// Build CSS variables for the glow effect based on color and intensity
 function buildGlowVars(glowColor, intensity) {
   const { h, s, l } = parseHSL(glowColor);
   const base = `${h}deg ${s}% ${l}%`;
@@ -24,6 +26,7 @@ const GRADIENT_POSITIONS = ['80% 55%', '69% 34%', '8% 6%', '41% 38%', '86% 85%',
 const GRADIENT_KEYS = ['--gradient-one', '--gradient-two', '--gradient-three', '--gradient-four', '--gradient-five', '--gradient-six', '--gradient-seven'];
 const COLOR_MAP = [0, 1, 2, 0, 1, 2, 1];
 
+// Build CSS variables for the background gradients
 function buildGradientVars(colors) {
   const vars = {};
   for (let i = 0; i < 7; i++) {
@@ -49,6 +52,9 @@ function animateValue({ start = 0, end = 100, duration = 1000, delay = 0, ease =
   setTimeout(() => requestAnimationFrame(tick), delay);
 }
 
+/**
+ * Main initialization function to apply the border glow effect to an element.
+ */
 export function initBorderGlow(element, options = {}) {
   const {
     edgeSensitivity = 30,
@@ -133,6 +139,7 @@ export function initBorderGlow(element, options = {}) {
     return degrees;
   };
 
+  // Handler for pointer movement to update glow position and intensity
   const handlePointerMove = (e) => {
     const rect = element.getBoundingClientRect();
     const x = e.clientX - rect.left;
