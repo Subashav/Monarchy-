@@ -3,6 +3,7 @@
  */
 
 // HTML content for legal pages
+const legalContent = {
     privacy: {
         title: "Privacy Policy",
         content: `

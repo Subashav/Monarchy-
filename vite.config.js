@@ -2,6 +2,14 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
+  plugins: [
+    {
+      name: 'html-transform',
+      transformIndexHtml(html) {
+        return html.replace(/%PUBLIC_URL%/g, '');
+      },
+    },
+  ],
   build: {
     rollupOptions: {
       input: {
