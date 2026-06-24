@@ -22,7 +22,7 @@ export class Jarvis {
             brand: 'MONARCH SOFTWARES',
             phone: '+91 6385753874',
             email: 'contact@monarchsoftwares.com',
-            location: 'Saravanampatti, Coimbatore (Onsite)',
+            location: 'Kovilpalayam, Coimbatore (Onsite)',
             tagline: 'The integrated growth engine for ambitious businesses.'
         };
 
@@ -116,7 +116,7 @@ export class Jarvis {
                 response: `You can reach us at ${this.knowledge.phone} or email ${this.knowledge.email}. Our headquarters are in ${this.knowledge.location}. Would you like to book a consultation?`
             },
             {
-                keywords: ['location', 'where are you', 'office', 'coimbatore', 'saravanampatti', 'city'],
+                keywords: ['location', 'where are you', 'office', 'coimbatore', 'kovilpalayam', 'city'],
                 response: `We are based in ${this.knowledge.location}. You can see our exact location on the map in the footer of our website.`
             },
             {
