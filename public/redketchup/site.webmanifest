@@ -1,6 +1,6 @@
 {
-    "name": "MONARCH SOFTWARES",
-    "short_name": "MONARCH",
+    "name": "",
+    "short_name": "",
     "icons": [
        {
           "src": "/android-chrome-192x192.png",
@@ -8,7 +8,7 @@
           "type": "image/png"
        }
     ],
-    "theme_color": "#000000",
-    "background_color": "#000000",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
     "display": "standalone"
  }
